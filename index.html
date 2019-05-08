@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Teclado para CAA</title>
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<style type="text/css">
+		.h100{
+			height:calc(100vh - 50px); /* This will calculate the 100% viewport height minus 50px */
+		}
+		.h-20{
+			height: 20% !important;
+		}
+		button{
+			font-size: 8rem !important;
+		}
+		textarea{
+			font-size: 3rem !important;
+		}
+	</style>
+	<script>
+		function myFunction(val) {
+		 	document.getElementById("text").value += val;
+		}
+	</script>
+</head>
+<body>
+	<div class="container-fluid h100">
+		<div class="row mt-4">
+			<form class="col h-20">
+				<textarea id="text" class="form-control"></textarea>
+			</form>
+		</div>
+		<div class="row h-20 mt-4">
+			<div class="col">
+				<button type="button" onclick="myFunction('A')" class="alphabet btn btn-outline-primary h-100 w-100">A</button>
+			</div>
+			<div class="col">
+				<button type="button" onclick="myFunction('B')" class="alphabet btn btn-outline-primary h-100 w-100">B</button>
+			</div>
+			<div class="col">
+				<button type="button" onclick="myFunction('C')" class="alphabet btn btn-outline-primary h-100 w-100">C</button>
+			</div>
+			<div class="col">
+				<button type="button" onclick="myFunction('D')" class="alphabet btn btn-outline-primary h-100 w-100">D</button>
+			</div>
+			<div class="col">
+				<button type="button" onclick="myFunction('E')" class="alphabet btn btn-outline-primary h-100 w-100">E</button>
+			</div>
+			<div class="col">
+				<button type="button" onclick="myFunction('F')" class="alphabet btn btn-outline-primary h-100 w-100">F</button>
+			</div>
+			<div class="col">
+				<button type="button" onclick="myFunction('G')" class="alphabet btn btn-outline-primary h-100 w-100">G</button>
+			</div>
+		</div>
+		<div class="row h-20 mt-4">
+			<div class="col">
+				<button type="button" onclick="myFunction('H')" class="alphabet btn btn-outline-primary h-100 w-100">H</button>
+			</div>
+			<div class="col">
+				<button type="button" onclick="myFunction('I')" class="alphabet btn btn-outline-primary h-100 w-100">I</button>
+			</div>
+			<div class="col">
+				<button type="button" onclick="myFunction('J')" class="alphabet btn btn-outline-primary h-100 w-100">J</button>
+			</div>
+			<div class="col">
+				<button type="button" onclick="myFunction('K')" class="alphabet btn btn-outline-primary h-100 w-100">K</button>
+			</div>
+			<div class="col">
+				<button type="button" onclick="myFunction('L')" class="alphabet btn btn-outline-primary h-100 w-100">L</button>
+			</div>
+			<div class="col">
+				<button type="button" onclick="myFunction('M')" class="alphabet btn btn-outline-primary h-100 w-100">M</button>
+			</div>
+			<div class="col">
+				<button type="button" onclick="myFunction('N')" class="alphabet btn btn-outline-primary h-100 w-100">N</button>
+			</div>
+		</div>
+		<div class="row h-20 mt-4">
+			<div class="col">
+				<button type="button" onclick="myFunction('O')" class="alphabet btn btn-outline-primary h-100 w-100">O</button>
+			</div>
+			<div class="col">
+				<button type="button" onclick="myFunction('P')" class="alphabet btn btn-outline-primary h-100 w-100">P</button>
+			</div>
+			<div class="col">
+				<button type="button" onclick="myFunction('Q')" class="alphabet btn btn-outline-primary h-100 w-100">Q</button>
+			</div>
+			<div class="col">
+				<button type="button" onclick="myFunction('R')" class="alphabet btn btn-outline-primary h-100 w-100">R</button>
+			</div>
+			<div class="col">
+				<button type="button" onclick="myFunction('S')" class="alphabet btn btn-outline-primary h-100 w-100">S</button>
+			</div>
+			<div class="col">
+				<button type="button" onclick="myFunction('T')" class="alphabet btn btn-outline-primary h-100 w-100">T</button>
+			</div>
+			<div class="col">
+				<button type="button" onclick="myFunction('U')" class="alphabet btn btn-outline-primary h-100 w-100">U</button>
+			</div>
+		</div>
+		<div class="row h-20 mt-4">
+			<div class="col">
+				<button type="button" onclick="myFunction('V')" class="alphabet btn btn-outline-primary h-100 w-100">V</button>
+			</div>
+			<div class="col">
+				<button type="button" onclick="myFunction('W')" class="alphabet btn btn-outline-primary h-100 w-100">W</button>
+			</div>
+			<div class="col">
+				<button type="button" onclick="myFunction('X')" class="alphabet btn btn-outline-primary h-100 w-100">X</button>
+			</div>
+			<div class="col">
+				<button type="button" onclick="myFunction('Y')" class="alphabet btn btn-outline-primary h-100 w-100">Y</button>
+			</div>
+			<div class="col">
+				<button type="button" onclick="myFunction('Z')" class="alphabet btn btn-outline-primary h-100 w-100">Z</button>
+			</div>
+			<div class="col">
+				<button type="button" onclick="myFunction('&nbsp;')" class="alphabet btn btn-outline-primary h-100 w-100">_</button>
+			</div>
+			<div class="col">
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>
