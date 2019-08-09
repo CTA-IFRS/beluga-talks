@@ -1,129 +1,248 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
 	<title>Teclado para CAA</title>
+
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	
+	<!-- Bootstrap -->
+	<!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	
 	<style type="text/css">
-		.h100{
-			height:calc(100vh - 50px); /* This will calculate the 100% viewport height minus 50px */
-		}
-		.h-20{
-			height: 20% !important;
+		button:focus{
+			background: #007bff;
+			color: #fff;
 		}
 		button{
+			font-size: 5rem !important;
+		}
+		.teclado button{
 			font-size: 8rem !important;
+		}
+		.teclado .simnao button{
+			font-size: 6rem !important;
 		}
 		textarea{
 			font-size: 3rem !important;
 		}
 	</style>
+	
 	<script>
-		function myFunction(val) {
+		function escreve(val) {
 		 	document.getElementById("text").value += val;
-		}
+		};
+
+		$(document).ready(function(){
+			$('#backspace').on('click', function (){
+				var input = $('#text')[0];
+				input.value = input.value.replace(/.$/, '');
+			});
+    	});
+
+    	function trocaTeclado(val) {
+    		var alfabetico = val;
+    		if (alfabetico) {
+    			document.getElementById("tecladoAlfabetico").className = "d-none";
+    			var element = document.getElementById("tecladoNumerico");
+  				element.className = element.className.replace(/\bd-none\b/g, "");
+  				document.getElementById("botaoTrocaTeclado").onclick = function() {trocaTeclado(false);};
+    		}else{
+    			document.getElementById("tecladoNumerico").className = "d-none";
+    			var element = document.getElementById("tecladoAlfabetico");
+  				element.className = element.className.replace(/\bd-none\b/g, "");
+  				document.getElementById("botaoTrocaTeclado").onclick = function() {trocaTeclado(true);};
+    		}
+    	};
 	</script>
+
 </head>
 <body>
-	<div class="container-fluid h100">
+	<div class="container-fluid">
 		<div class="row mt-4">
-			<form class="col h-20">
+			<form class="col-8">
 				<textarea id="text" class="form-control"></textarea>
 			</form>
-		</div>
-		<div class="row h-20 mt-4">
-			<div class="col">
-				<button type="button" onclick="myFunction('A')" class="alphabet btn btn-outline-primary h-100 w-100">A</button>
+			<div class="col-2">
+				<button type="button" id="backspace" class="btn btn-outline-primary w-100">←</button>
 			</div>
-			<div class="col">
-				<button type="button" onclick="myFunction('B')" class="alphabet btn btn-outline-primary h-100 w-100">B</button>
-			</div>
-			<div class="col">
-				<button type="button" onclick="myFunction('C')" class="alphabet btn btn-outline-primary h-100 w-100">C</button>
-			</div>
-			<div class="col">
-				<button type="button" onclick="myFunction('D')" class="alphabet btn btn-outline-primary h-100 w-100">D</button>
-			</div>
-			<div class="col">
-				<button type="button" onclick="myFunction('E')" class="alphabet btn btn-outline-primary h-100 w-100">E</button>
-			</div>
-			<div class="col">
-				<button type="button" onclick="myFunction('F')" class="alphabet btn btn-outline-primary h-100 w-100">F</button>
-			</div>
-			<div class="col">
-				<button type="button" onclick="myFunction('G')" class="alphabet btn btn-outline-primary h-100 w-100">G</button>
+			<div class="col-2">
+				<button type="button" id="botaoTrocaTeclado" onclick="trocaTeclado(true)" class="btn btn-outline-primary w-100">123</button>
 			</div>
 		</div>
-		<div class="row h-20 mt-4">
-			<div class="col">
-				<button type="button" onclick="myFunction('H')" class="alphabet btn btn-outline-primary h-100 w-100">H</button>
+
+		<div class="row teclado" id="tecladoAlfabetico">
+			
+			<div class="col-10">
+				<div class="row mt-4">
+					<div class="col">
+						<button type="button" onclick="escreve('A')" class="btn btn-outline-primary w-100">A</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('B')" class="btn btn-outline-primary w-100">B</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('C')" class="btn btn-outline-primary w-100">C</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('D')" class="btn btn-outline-primary w-100">D</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('E')" class="btn btn-outline-primary w-100">E</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('F')" class="btn btn-outline-primary w-100">F</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('G')" class="btn btn-outline-primary w-100">G</button>
+					</div>
+				</div>
+				<div class="row mt-4">
+					<div class="col">
+						<button type="button" onclick="escreve('H')" class="btn btn-outline-primary w-100">H</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('I')" class="btn btn-outline-primary w-100">I</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('J')" class="btn btn-outline-primary w-100">J</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('K')" class="btn btn-outline-primary w-100">K</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('L')" class="btn btn-outline-primary w-100">L</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('M')" class="btn btn-outline-primary w-100">M</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('N')" class="btn btn-outline-primary w-100">N</button>
+					</div>
+				</div>
+				<div class="row mt-4">
+					<div class="col">
+						<button type="button" onclick="escreve('O')" class="btn btn-outline-primary w-100">O</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('P')" class="btn btn-outline-primary w-100">P</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('Q')" class="btn btn-outline-primary w-100">Q</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('R')" class="btn btn-outline-primary w-100">R</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('S')" class="btn btn-outline-primary w-100">S</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('T')" class="btn btn-outline-primary w-100">T</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('U')" class="btn btn-outline-primary w-100">U</button>
+					</div>
+				</div>
+				<div class="row mt-4">
+					<div class="col">
+						<button type="button" onclick="escreve('V')" class="btn btn-outline-primary w-100">V</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('W')" class="btn btn-outline-primary w-100">W</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('X')" class="btn btn-outline-primary w-100">X</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('Y')" class="btn btn-outline-primary w-100">Y</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('Z')" class="btn btn-outline-primary w-100">Z</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('&nbsp;')" class="btn btn-outline-primary w-100">_</button>
+					</div>
+					<div class="col">
+						
+					</div>
+				</div>
 			</div>
-			<div class="col">
-				<button type="button" onclick="myFunction('I')" class="alphabet btn btn-outline-primary h-100 w-100">I</button>
+
+			<div class="col-2 simnao">
+				<div class="row mt-4">
+					<div class="col">
+						<button type="button" onclick="escreve('Sim')" class="btn btn-outline-primary w-100">Sim</button>
+					</div>
+				</div>
+				<div class="row simnao">
+					<div class="col">
+						<button type="button" onclick="escreve('Não')" class="btn btn-outline-primary w-100">Não</button>
+					</div>
+				</div>
 			</div>
-			<div class="col">
-				<button type="button" onclick="myFunction('J')" class="alphabet btn btn-outline-primary h-100 w-100">J</button>
+
+		</div>
+
+
+		<div class="row teclado" id="tecladoNumerico">
+			
+			<div class="col-10">
+				<div class="row mt-4">
+					<div class="col">
+						<button type="button" onclick="escreve('1')" class="btn btn-outline-primary w-100">1</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('2')" class="btn btn-outline-primary w-100">2</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('3')" class="btn btn-outline-primary w-100">3</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('4')" class="btn btn-outline-primary w-100">4</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('5')" class="btn btn-outline-primary w-100">5</button>
+					</div>
+				</div>
+				<div class="row mt-4">
+					<div class="col">
+						<button type="button" onclick="escreve('6')" class="btn btn-outline-primary w-100">6</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('7')" class="btn btn-outline-primary w-100">7</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('8')" class="btn btn-outline-primary w-100">8</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('9')" class="btn btn-outline-primary w-100">9</button>
+					</div>
+					<div class="col">
+						<button type="button" onclick="escreve('&nbsp;')" class="btn btn-outline-primary w-100">_</button>
+					</div>
+				</div>
 			</div>
-			<div class="col">
-				<button type="button" onclick="myFunction('K')" class="alphabet btn btn-outline-primary h-100 w-100">K</button>
-			</div>
-			<div class="col">
-				<button type="button" onclick="myFunction('L')" class="alphabet btn btn-outline-primary h-100 w-100">L</button>
-			</div>
-			<div class="col">
-				<button type="button" onclick="myFunction('M')" class="alphabet btn btn-outline-primary h-100 w-100">M</button>
-			</div>
-			<div class="col">
-				<button type="button" onclick="myFunction('N')" class="alphabet btn btn-outline-primary h-100 w-100">N</button>
+
+			<div class="col-2 simnao">
+				<div class="row mt-4">
+					<div class="col">
+						<button type="button" onclick="escreve('Sim')" class="btn btn-outline-primary w-100">Sim</button>
+					</div>
+				</div>
+				<div class="row simnao">
+					<div class="col">
+						<button type="button" onclick="escreve('Não')" class="btn btn-outline-primary w-100">Não</button>
+					</div>
+				</div>
 			</div>
 		</div>
-		<div class="row h-20 mt-4">
-			<div class="col">
-				<button type="button" onclick="myFunction('O')" class="alphabet btn btn-outline-primary h-100 w-100">O</button>
-			</div>
-			<div class="col">
-				<button type="button" onclick="myFunction('P')" class="alphabet btn btn-outline-primary h-100 w-100">P</button>
-			</div>
-			<div class="col">
-				<button type="button" onclick="myFunction('Q')" class="alphabet btn btn-outline-primary h-100 w-100">Q</button>
-			</div>
-			<div class="col">
-				<button type="button" onclick="myFunction('R')" class="alphabet btn btn-outline-primary h-100 w-100">R</button>
-			</div>
-			<div class="col">
-				<button type="button" onclick="myFunction('S')" class="alphabet btn btn-outline-primary h-100 w-100">S</button>
-			</div>
-			<div class="col">
-				<button type="button" onclick="myFunction('T')" class="alphabet btn btn-outline-primary h-100 w-100">T</button>
-			</div>
-			<div class="col">
-				<button type="button" onclick="myFunction('U')" class="alphabet btn btn-outline-primary h-100 w-100">U</button>
-			</div>
-		</div>
-		<div class="row h-20 mt-4">
-			<div class="col">
-				<button type="button" onclick="myFunction('V')" class="alphabet btn btn-outline-primary h-100 w-100">V</button>
-			</div>
-			<div class="col">
-				<button type="button" onclick="myFunction('W')" class="alphabet btn btn-outline-primary h-100 w-100">W</button>
-			</div>
-			<div class="col">
-				<button type="button" onclick="myFunction('X')" class="alphabet btn btn-outline-primary h-100 w-100">X</button>
-			</div>
-			<div class="col">
-				<button type="button" onclick="myFunction('Y')" class="alphabet btn btn-outline-primary h-100 w-100">Y</button>
-			</div>
-			<div class="col">
-				<button type="button" onclick="myFunction('Z')" class="alphabet btn btn-outline-primary h-100 w-100">Z</button>
-			</div>
-			<div class="col">
-				<button type="button" onclick="myFunction('&nbsp;')" class="alphabet btn btn-outline-primary h-100 w-100">_</button>
-			</div>
-			<div class="col">
-				
-			</div>
-		</div>
+
 	</div>
 </body>
 </html>
