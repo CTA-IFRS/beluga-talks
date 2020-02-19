@@ -32,6 +32,20 @@
 		textarea{
 			font-size: 2.5rem !important;
 		}
+
+		.SN{
+			height: 27.2rem !important;
+		}
+		.esp{
+			width: 26.6rem !important;
+		}
+
+		.SNN{
+			height: 12.9rem !important;
+		}
+		.espN{
+			width: 31.4rem !important;
+		}
 	</style>
 	
 	<script>
@@ -51,12 +65,12 @@
     		if (alfabetico) {
     			document.getElementById("tecladoAlfabetico").className = "d-none";
     			var element = document.getElementById("tecladoNumerico");
-  				element.className = element.className.replace(/\bd-none\b/g, "");
+  				element.className = element.className.replace(/\bd-none\b/g, "row teclado");
   				document.getElementById("botaoTrocaTeclado").onclick = function() {trocaTeclado(false);};
     		}else{
     			document.getElementById("tecladoNumerico").className = "d-none";
     			var element = document.getElementById("tecladoAlfabetico");
-  				element.className = element.className.replace(/\bd-none\b/g, "");
+  				element.className = element.className.replace(/\bd-none\b/g, "row teclado");
   				document.getElementById("botaoTrocaTeclado").onclick = function() {trocaTeclado(true);};
     		}
     	};
@@ -166,10 +180,7 @@
 						<button type="button" onclick="escreve('Z')" class="btn btn-outline-primary w-100">Z</button>
 					</div>
 					<div class="col">
-						<button type="button" onclick="escreve('&nbsp;')" class="btn btn-outline-primary w-100">_</button>
-					</div>
-					<div class="col">
-						
+						<button type="button" onclick="escreve('&nbsp;')" class="btn btn-outline-primary esp">_</button>
 					</div>
 				</div>
 			</div>
@@ -177,12 +188,12 @@
 			<div class="col-2 simnao">
 				<div class="row mt-4">
 					<div class="col">
-						<button type="button" onclick="escreve('Sim')" class="btn btn-outline-primary w-100">Sim</button>
+						<button type="button" onclick="escreve('Sim')" class="btn btn-outline-primary w-100 SN">Sim</button>
 					</div>
 				</div>
-				<div class="row simnao">
+				<div class="row mt-4">
 					<div class="col">
-						<button type="button" onclick="escreve('Não')" class="btn btn-outline-primary w-100">Não</button>
+						<button type="button" onclick="escreve('Não')" class="btn btn-outline-primary w-100 SN">Não</button>
 					</div>
 				</div>
 			</div>
@@ -194,6 +205,9 @@
 			
 			<div class="col-10">
 				<div class="row mt-4">
+					<div class="col">
+						<button type="button" onclick="escreve('0')" class="btn btn-outline-primary w-100">0</button>
+					</div>
 					<div class="col">
 						<button type="button" onclick="escreve('1')" class="btn btn-outline-primary w-100">1</button>
 					</div>
@@ -224,7 +238,7 @@
 						<button type="button" onclick="escreve('9')" class="btn btn-outline-primary w-100">9</button>
 					</div>
 					<div class="col">
-						<button type="button" onclick="escreve('&nbsp;')" class="btn btn-outline-primary w-100">_</button>
+						<button type="button" onclick="escreve('&nbsp;')" class="btn btn-outline-primary espN">_</button>
 					</div>
 				</div>
 			</div>
@@ -232,12 +246,12 @@
 			<div class="col-2 simnao">
 				<div class="row mt-4">
 					<div class="col">
-						<button type="button" onclick="escreve('Sim')" class="btn btn-outline-primary w-100">Sim</button>
+						<button type="button" onclick="escreve('Sim')" class="btn btn-outline-primary w-100 SNN">Sim</button>
 					</div>
-				</div>
-				<div class="row simnao">
+				</div> 
+				<div class="row mt-4">
 					<div class="col">
-						<button type="button" onclick="escreve('Não')" class="btn btn-outline-primary w-100">Não</button>
+						<button type="button" onclick="escreve('Não')" class="btn btn-outline-primary w-100 SNN">Não</button>
 					</div>
 				</div>
 			</div>
