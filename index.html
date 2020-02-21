@@ -14,6 +14,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="http://code.responsivevoice.org/responsivevoice.js"></script>
 	
 	<style type="text/css">
 		button:focus{
@@ -51,12 +52,23 @@
 	<script>
 		function escreve(val) {
 		 	document.getElementById("text").value += val;
+			responsiveVoice.speak(val,"Brazilian Portuguese Female");
+			val=encodeURIComponent(valor);
 		};
 
 		$(document).ready(function(){
 			$('#backspace').on('click', function (){
 				var input = $('#text')[0];
 				input.value = input.value.replace(/.$/, '');
+			});
+			$(".le").on('click', function(e){
+				//previne erro
+				e.preventDefault();
+				//recebe o valor do input, o que deseja ser escutado
+				var text = $("#text").val();
+				//função que transforma o texto do input em áudio, com base na voz selecionada
+				responsiveVoice.speak(text,"Brazilian Portuguese Female");
+				text=encodeURIComponent(text);
 			});
     	});
 
@@ -180,7 +192,10 @@
 						<button type="button" onclick="escreve('Z')" class="btn btn-outline-primary w-100">Z</button>
 					</div>
 					<div class="col">
-						<button type="button" onclick="escreve('&nbsp;')" class="btn btn-outline-primary esp">_</button>
+						<button type="button" onclick="escreve('&nbsp;')" class="btn btn-outline-primary w-100">_</button>
+					</div>
+					<div class="col">
+						<button type="button" class="btn btn-outline-primary w-100 le">LÊ</button>
 					</div>
 				</div>
 			</div>
@@ -238,7 +253,10 @@
 						<button type="button" onclick="escreve('9')" class="btn btn-outline-primary w-100">9</button>
 					</div>
 					<div class="col">
-						<button type="button" onclick="escreve('&nbsp;')" class="btn btn-outline-primary espN">_</button>
+						<button type="button" onclick="escreve('&nbsp;')" class="btn btn-outline-primary w-100">_</button>
+					</div>
+					<div class="col">
+						<button type="button" class="btn btn-outline-primary w-100 le">LÊ</button>
 					</div>
 				</div>
 			</div>
