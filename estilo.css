@@ -8,6 +8,7 @@ button{
 .teclado button{
     font-size: 7rem !important;
 }
+
 .teclado .simnao button{
     font-size: 6rem !important;
 }
@@ -153,7 +154,7 @@ textarea{
         margin-bottom: 50%;
     }
     .SN{
-        width: 115% !important;
+        width: 107% !important;
         height: 275% !important;
     }
 
@@ -177,7 +178,7 @@ textarea{
         width:	100% !important;
     }
     #botaoTrocaTeclado{
-        width:	130% !important;
+        width:	125% !important;
     }
 
     .teclado button{
@@ -209,8 +210,8 @@ textarea{
         margin-bottom: 65%;
     }
     .SN{
-        width: 6.7rem !important;
-        height: 283% !important;
+        width: 107% !important;
+        height: 282% !important;
     }
 
     .teclado .simnao .SS{
@@ -219,7 +220,7 @@ textarea{
     }
     .SNN{
         height: 134% !important;
-        width: 115% !important;
+        width: 107% !important;
     }
 
     textarea{
@@ -241,8 +242,8 @@ textarea{
     }
 
     .teclado button{
-        font-size: 225% !important;
-        margin: -6% !important;
+        font-size: 223% !important;
+        margin: -7% !important;
     }
     .mt-4 .col-8{
         margin-right: -16%;
@@ -262,8 +263,8 @@ textarea{
         font-size: 2rem !important;
     }
     .SN{
-        width: 6rem !important;
-        height: 7.8rem !important;
+        width: 110% !important;
+        height: 7.5rem !important;
     }
     .teclado .simnao .S{
         margin-bottom: 0;
@@ -300,11 +301,11 @@ textarea{
         width:	5rem !important;
     }
     #botaoTrocaTeclado{
-        width:	5.3rem !important;
+        width:	100% !important;
     }
 
     .teclado button{
-        font-size: 1.9rem !important;
+        font-size: 1.77rem !important;
         margin: -8% !important;
     }
 
@@ -321,7 +322,7 @@ textarea{
     }
     .SN{
         width: 5rem !important;
-        height: 6.5rem !important;
+        height: 6.3rem !important;
     }
     
     .teclado .simnao .SS{
