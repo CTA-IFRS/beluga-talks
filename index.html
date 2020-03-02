@@ -26,26 +26,32 @@
 
 		var lingua = "Brazilian Portuguese Female";
 
+
 		function escreve(val) {
 		 	document.getElementById("text").value += val;
-			responsiveVoice.speak(val, lingua);
-			val=encodeURIComponent(valor);
+            var fala = new SpeechSynthesisUtterance(val);
+            window.speechSynthesis.speak(fala);
 		};
 
 		$(document).ready(function(){
 			$('#backspace').on('click', function (){
-				responsiveVoice.speak("Apagar", lingua);
+				var fala = new SpeechSynthesisUtterance("Apagar");
+            	window.speechSynthesis.speak(fala);
+
 				var input = $('#text')[0];
 				input.value = input.value.replace(/.$/, '');
 			});
 
 			$('#erase').on('click', function (){
-				responsiveVoice.speak("Limpar", lingua);
+				var fala = new SpeechSynthesisUtterance("Limpar");
+            	window.speechSynthesis.speak(fala);
+
 				$("#text").val("");
 			});
 
 			$('.espaco').on('click', function (){
-				responsiveVoice.speak("Espaço", lingua);
+				var fala = new SpeechSynthesisUtterance("Espaço");
+            	window.speechSynthesis.speak(fala);
 			});
 
 			$(".le").on('click', function(e){
@@ -53,9 +59,10 @@
 				e.preventDefault();
 				//recebe o valor do input, o que deseja ser escutado
 				var text = $("#text").val();
-				//função que transforma o texto do input em áudio, com base na voz selecionada
-				responsiveVoice.speak(text, lingua);
-				text=encodeURIComponent(text);
+
+				
+				var fala = new SpeechSynthesisUtterance(text);
+            	window.speechSynthesis.speak(fala);
 			});
     	});
 
@@ -64,15 +71,19 @@
     		var alfabetico = val;
 
     		if (alfabetico) {
-				responsiveVoice.speak("Troca para teclado numérico", lingua);
+				var fala = new SpeechSynthesisUtterance("Teclado numérico");
+            	window.speechSynthesis.speak(fala);
 
     			document.getElementById("tecladoAlfabetico").className = "d-none";
 				document.getElementById("botaoTrocaTeclado").innerHTML = "ABC";
     			var element = document.getElementById("tecladoNumerico");
   				element.className = element.className.replace(/\bd-none\b/g, "row teclado");
   				document.getElementById("botaoTrocaTeclado").onclick = function() {trocaTeclado(false);};
+
     		}else{
-				responsiveVoice.speak("Troca para teclado alfabético", lingua);
+				
+				var fala = new SpeechSynthesisUtterance("Teclado alfabético");
+            	window.speechSynthesis.speak(fala);
 
     			document.getElementById("tecladoNumerico").className = "d-none";
 				document.getElementById("botaoTrocaTeclado").innerHTML = "123";
