@@ -23,35 +23,55 @@
 	
 	
 	<script>
+
+		var lingua = "Brazilian Portuguese Female";
+
 		function escreve(val) {
 		 	document.getElementById("text").value += val;
-			responsiveVoice.speak(val,"Brazilian Portuguese Female");
+			responsiveVoice.speak(val, lingua);
+			val=encodeURIComponent(valor);
 		};
 
 		$(document).ready(function(){
 			$('#backspace').on('click', function (){
+				responsiveVoice.speak("Apagar", lingua);
 				var input = $('#text')[0];
 				input.value = input.value.replace(/.$/, '');
 			});
+
+			$('#erase').on('click', function (){
+				responsiveVoice.speak("Limpar", lingua);
+			});
+
+			$('#espaco').on('click', function (){
+				responsiveVoice.speak("Espaço", lingua);
+			});
+
 			$(".le").on('click', function(e){
 				//previne erro
 				e.preventDefault();
 				//recebe o valor do input, o que deseja ser escutado
 				var text = $("#text").val();
 				//função que transforma o texto do input em áudio, com base na voz selecionada
-				responsiveVoice.speak(text,"Brazilian Portuguese Female");
+				responsiveVoice.speak(text, lingua);
 				text=encodeURIComponent(text);
 			});
     	});
 
     	function trocaTeclado(val) {
+
     		var alfabetico = val;
+
     		if (alfabetico) {
+				responsiveVoice.speak("Troca para teclado numérico", lingua);
+
     			document.getElementById("tecladoAlfabetico").className = "d-none";
     			var element = document.getElementById("tecladoNumerico");
   				element.className = element.className.replace(/\bd-none\b/g, "row teclado");
   				document.getElementById("botaoTrocaTeclado").onclick = function() {trocaTeclado(false);};
     		}else{
+				responsiveVoice.speak("Troca para teclado alfabético", lingua);
+
     			document.getElementById("tecladoNumerico").className = "d-none";
     			var element = document.getElementById("tecladoAlfabetico");
   				element.className = element.className.replace(/\bd-none\b/g, "row teclado");
@@ -167,7 +187,7 @@
 						<button type="button" onclick="escreve('Z')" class="btn btn-outline-primary w-100">Z</button>
 					</div>
 					<div class="col">
-						<button type="button" onclick="escreve('&nbsp;')" class="btn btn-outline-primary w-100">_</button>
+						<button type="button" id="espaco" onclick="escreve('&nbsp;')" class="btn btn-outline-primary w-100">_</button>
 					</div>
 					<div class="col">
 						<button type="button" class="btn btn-outline-primary w-100 le"><i class="fas fa-volume-up"></i></button>
