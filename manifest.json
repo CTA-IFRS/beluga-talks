@@ -1,0 +1,16 @@
+{
+    "name": "Prancha Alfanumérica",
+    "short_name": "Prancha",
+    "theme_color": "#007bff",
+    "background_color": "#007bff",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/?utm_source=homescreen",
+    "lang": "pt-BR",
+    "orientation": "horizontal",
+    "icons": [{
+      "src": "images/icon10.png",
+        "sizes": "512x512",
+        "type": "image/png"
+    }]
+  }
