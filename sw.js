@@ -8,7 +8,7 @@ const files = [
     '/LICENSE',
     '/estilo.css',
     '/manifest.json',
-    '/imagens/icon10.png',
+    '/imagens/Icon10.png',
   ];
 
 // Faz cache dos arquivos ao instalar 
