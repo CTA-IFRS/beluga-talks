@@ -1,5 +1,5 @@
 // Criando um nome para o arquivo de cache
-const staticCache = "prancha_alfanumérica_2020_03_09_10_02"; //ano_mes_dia_hora_min
+const staticCache = "prancha_alfanumérica_2020_03_09_10_10"; //ano_mes_dia_hora_min
 
 //Install
 // Lista de arquivos que devem ser cacheados
