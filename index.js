@@ -1,7 +1,7 @@
 // verifica se o navegador suporta service workers
   if (navigator.serviceWorker) {
     // Registre o service worker
-    navigator.serviceWorkerRegistration.register ("./ sw.js")
+    navigator.serviceWorker.register ("./sw.js")
     .then (function (registration) {
     console.info ("Registro do Service Worker bem-sucedido com escopo:", registration.scope);
     })

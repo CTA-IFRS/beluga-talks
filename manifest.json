@@ -7,7 +7,7 @@
     "scope": "/",
     "start_url": "/index.html?home",
     "lang": "pt-BR",
-    "orientation": "landscape-right",
+    "orientation": "landscape",
     "icons": [{
       "src": "imagens/Icon10.png",
         "sizes": "192x192",
