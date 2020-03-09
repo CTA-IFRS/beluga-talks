@@ -1,5 +1,5 @@
 // Criando um nome para o arquivo de cache
-const staticCache = "prancha_alfanumérica_2020_03_09_10_10"; //ano_mes_dia_hora_min
+const staticCache = "prancha_alfanumerica_2020_03_09_10_39"; //ano_mes_dia_hora_min
 
 //Install
 // Lista de arquivos que devem ser cacheados
@@ -30,7 +30,7 @@ this.addEventListener('activate', event => {
       caches.keys().then(cacheNames => {
         return Promise.all(
           cacheNames
-            .filter(cacheName => (cacheName.startsWith('prancha_alfanumérica_')))
+            .filter(cacheName => (cacheName.startsWith('prancha_alfanumerica_')))
             .filter(cacheName => (cacheName !== staticCache))
             .map(cacheName => caches.delete(cacheName))
         );
