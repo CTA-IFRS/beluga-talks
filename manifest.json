@@ -5,7 +5,7 @@
     "background_color": "#007bff",
     "display": "fullscreen",
     "scope": "/",
-    "start_url": "/index.html?",
+    "start_url": "/index.html?home",
     "lang": "pt-BR",
     "orientation": "landscape-default",
     "icons": [{
