@@ -1,7 +1,5 @@
-//const staticCacheName = 'prancha_alfanumérica-{{ site.time | date: "%Y-%m-%d-%H-%M" }}';
-
 // Criando um nome para o arquivo de cache
-const staticCache = "prancha_alfanumérica_2020_03_06";
+const staticCache = "prancha_alfanumérica_2020_03_09_08_34"; //ano_mes_dia_hora_min
 
 //Install
 // Lista de arquivos que devem ser cacheados
