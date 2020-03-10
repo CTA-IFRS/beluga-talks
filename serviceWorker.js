@@ -54,13 +54,25 @@ this.addEventListener("fetch", event => {
           // Retorna o cache
           if (response) {
             return response;
+          }else{
+            // Faz a requisição  
+            return fetch(event.request)
+              .then(function(res){
+                return caches.open(CACHE_DYNAMIC_NAME)
+                .then(function(cache) {
+                  cache.put(event.request.url, res.clone());    
+                  //save the response for future
+                  return res;   
+                  // return the fetched data
+                })
+              })
+              .catch(function(err){
+                return caches.open(CACHE_CONTAINING_ERROR_MESSAGES)
+                .then(function(cache){
+                  return cache.match('./index.html');
+                })
+              })
           }
-          // Faz a requisição  
-          return fetch(event.request);
-        })
-        .catch(() => {
-          // Mostra uma página de offline
-          return caches.match('./index.html');
         })
     )
   }); 
