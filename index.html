@@ -95,7 +95,7 @@
             	window.speechSynthesis.speak(fala);
 
     			document.getElementById("tecladoAlfabetico").className = "d-none";
-				document.getElementById("botaoTrocaTeclado").innerHTML = "A B C";
+				document.getElementById("botaoTrocaTeclado").innerHTML = "ABC";
     			var element = document.getElementById("tecladoNumerico");
   				element.className = element.className.replace(/\bd-none\b/g, "row teclado");
   				document.getElementById("botaoTrocaTeclado").onclick = function() {trocaTeclado(false);};
@@ -106,7 +106,7 @@
             	window.speechSynthesis.speak(fala);
 
     			document.getElementById("tecladoNumerico").className = "d-none";
-				document.getElementById("botaoTrocaTeclado").innerHTML = "1 2 3";
+				document.getElementById("botaoTrocaTeclado").innerHTML = "123";
     			var element = document.getElementById("tecladoAlfabetico");
   				element.className = element.className.replace(/\bd-none\b/g, "row teclado");
   				document.getElementById("botaoTrocaTeclado").onclick = function() {trocaTeclado(true);};
@@ -130,7 +130,7 @@
 				<button type="button" aria-label="Botão limpar textarea" id="erase" class="btn btn-outline-primary w-100"><i class="fas fa-trash"></i></button>
 			</div>
 			<div class="col-2">
-				<button type="button" name="troca teclado" id="botaoTrocaTeclado" onclick="trocaTeclado(true)" class="btn btn-outline-primary w-100">1 2 3</button>
+				<button type="button" name="troca teclado" id="botaoTrocaTeclado" onclick="trocaTeclado(true)" class="btn btn-outline-primary w-100"> 123</button>
 			</div>
 		</div>
 
