@@ -1,5 +1,5 @@
 // Criando um nome para o arquivo de cache
-var staticCache = "prancha_alfanumerica_2020_03_10_08_50"; //ano_mes_dia_hora_min
+var staticCache = "prancha_alfanumerica_2020_03_10_10_30"; //ano_mes_dia_hora_min
 
 //Install
 // Lista de arquivos que devem ser cacheados
