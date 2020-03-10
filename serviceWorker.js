@@ -4,12 +4,12 @@ var staticCache = "prancha_alfanumerica_2020_03_10_08_50"; //ano_mes_dia_hora_mi
 //Install
 // Lista de arquivos que devem ser cacheados
 var files = [
-    '/',
-    '/index.html',
-    '/LICENSE',
-    '/estilo.css',
-    '/manifest.json',
-    '/imagens/Icon10.png',
+    './',
+    './index.html',
+    './index.js',
+    './estilo.css',
+    './manifest.json',
+    './imagens/Icon10.png'
   ];
 
 // Faz cache dos arquivos ao instalar 
