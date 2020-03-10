@@ -47,6 +47,7 @@ this.addEventListener('activate', event => {
  // Reponde o request direto do cache
 this.addEventListener("fetch", event => {
   console.log("Fetch");
+  
     event.respondWith(
       caches.match(event.request)
         .then(response => {
