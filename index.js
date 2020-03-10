@@ -2,7 +2,7 @@
   if ('serviceWorker' in navigator) {
     // Registre o service worker
      navigator.serviceWorker
-      .register ('./serviceWorker.js', { scope: './' })
+      .register ('./serviceWorker.js')
       .then (function (registration) {
       console.info ("Registro do Service Worker bem-sucedido com escopo:", registration.scope);
       })
