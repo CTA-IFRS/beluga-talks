@@ -1,7 +1,7 @@
 // verifica se o navegador suporta service workers
   if ('serviceWorker' in navigator) {
     // Registre o service worker
-     navigator.serviceWorker.register ('./serviceWorker.js')
+     navigator.serviceWorker.register ('./testesw.js')
       .then (function (registration) {
       console.info ("Registro do Service Worker bem-sucedido com escopo:", registration.scope);
       })
@@ -9,4 +9,4 @@
       // Log do erro não consiga registrar o service worker
       console.error( 'Registro do ServiceWorker falhou:' ,  err );
       });
-  }
+  } 
