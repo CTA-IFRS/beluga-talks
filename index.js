@@ -1,7 +1,5 @@
 // verifica se o navegador suporta service workers
   if ('serviceWorker' in navigator) {
-
-    console.log("está aqui");
     // Registre o service worker
      navigator.serviceWorker
       .register ('./serviceWorker.js', { scope: './' })

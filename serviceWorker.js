@@ -1,10 +1,11 @@
 // Criando um nome para o arquivo de cache
-const staticCache = "prancha_alfanumerica_2020_03_09_10_39"; //ano_mes_dia_hora_min
+var staticCache = "prancha_alfanumerica_2020_03_10_08_50"; //ano_mes_dia_hora_min
 
 //Install
 // Lista de arquivos que devem ser cacheados
-const files = [
+var files = [
     '/',
+    '/index.html',
     '/LICENSE',
     '/estilo.css',
     '/manifest.json',
@@ -13,11 +14,13 @@ const files = [
 
 // Faz cache dos arquivos ao instalar 
 this.addEventListener("install", event => {
+  console.log("Install");
     this.skipWaiting();
   
     event.waitUntil(
       caches.open(staticCache)
         .then(cache => {
+          console.log("Catching files");
           return cache.addAll(files);
       })
     )
@@ -26,6 +29,8 @@ this.addEventListener("install", event => {
 //Activate
 // Limpa o cache antigo 
 this.addEventListener('activate', event => {
+  console.log("Activate");
+
     event.waitUntil(
       caches.keys().then(cacheNames => {
         return Promise.all(
@@ -41,6 +46,7 @@ this.addEventListener('activate', event => {
  //Fetch
  // Reponde o request direto do cache
 this.addEventListener("fetch", event => {
+  console.log("Fetch");
     event.respondWith(
       caches.match(event.request)
         .then(response => {
@@ -53,7 +59,7 @@ this.addEventListener("fetch", event => {
         })
         .catch(() => {
           // Mostra uma página de offline
-          return caches.match('/index.html');
+          return caches.match('./index.html');
         })
     )
   }); 
