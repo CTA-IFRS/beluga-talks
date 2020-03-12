@@ -11,7 +11,6 @@ var files = [
     './index.js',
     './estilo.css',
     './manifest.json',
-    './offline.html',
     './imagens/Icon10.png'
   ];
 
