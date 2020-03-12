@@ -1,5 +1,5 @@
 // Criando um nome para o arquivo de cache
-var staticCache = "prancha_alfanumerica_2020_03_10_10_30"; //ano_mes_dia_hora_min
+var staticCache = "prancha_alfanumerica_2020_03_12_09_00"; //ano_mes_dia_hora_min
 
 //Install
 // Lista de arquivos que devem ser cacheados
@@ -10,7 +10,8 @@ var files = [
     './estilo.css',
     './manifest.json',
     './offline.html',
-    './imagens/Icon10.png'
+    './imagens/Icon10.png',
+    'https://kit.fontawesome.com/9f8ae42967.js'
   ];
 
 // Faz cache dos arquivos ao instalar 

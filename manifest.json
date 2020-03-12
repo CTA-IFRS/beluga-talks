@@ -1,11 +1,11 @@
 {
     "name": "Prancha Alfanumérica",
-    "short_name": "Prancha",
+    "short_name": "Teclado - CAA",
     "theme_color": "#007bff",
     "background_color": "#007bff",
     "display": "fullscreen",
     "scope": "/",
-    "start_url": "./index.html?home",
+    "start_url": "/",
     "lang": "pt-BR",
     "orientation": "landscape",
     "icons": [{
