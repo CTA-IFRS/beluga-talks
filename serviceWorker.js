@@ -1,6 +1,8 @@
 // Criando um nome para o arquivo de cache
 var staticCache = "prancha_alfanumerica_2020_03_12_09_35"; //ano_mes_dia_hora_min
 
+console.log("Inicio do cache");
+
 //Install
 // Lista de arquivos que devem ser cacheados
 var files = [
