@@ -11,7 +11,7 @@ var files = [
     './manifest.json',
     './offline.html',
     './imagens/Icon10.png',
-    'https://kit.fontawesome.com/9f8ae42967.js'
+    'https://kit.fontawesome.com/9f8ae42967.js crossorigin=anonymous'
   ];
 
 // Faz cache dos arquivos ao instalar 
