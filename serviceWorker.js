@@ -1,5 +1,7 @@
 // Criando um nome para o arquivo de cache
-var staticCache = "prancha_alfanumerica_2020_03_12_11_00"; //ano_mes_dia_hora_min
+var staticCache = "prancha_alfanumerica_2020_03_12_10_34"; //ano_mes_dia_hora_min
+
+console.log("Inicio do cache");
 
 //Install
 // Lista de arquivos que devem ser cacheados
@@ -9,7 +11,6 @@ var files = [
     './index.js',
     './estilo.css',
     './manifest.json',
-    './offline.html',
     './imagens/Icon10.png'
   ];
 
@@ -62,7 +63,7 @@ this.addEventListener("fetch", event => {
         })
         .catch(() => {
           // Mostra uma página de offline
-          return caches.match('./offline.html');
+          return caches.match('./index.html');
         })
     )
   }); 
