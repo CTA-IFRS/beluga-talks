@@ -1,5 +1,5 @@
 // Criando um nome para o arquivo de cache
-var staticCache = "prancha_alfanumerica_2020_03_12_10_34"; //ano_mes_dia_hora_min
+var staticCache = "prancha_alfanumerica_2020_03_13_09_01"; //ano_mes_dia_hora_min
 
 console.log("Inicio do cache");
 
@@ -11,7 +11,9 @@ var files = [
     './index.js',
     './estilo.css',
     './manifest.json',
-    './imagens/Icon10.png'
+    './imagens/Icon10.png',
+    'https://fontawesome.com/icons/trash?style=solid',
+    'https://fontawesome.com/icons/volume-up?style=solid'
   ];
 
 // Faz cache dos arquivos ao instalar 
