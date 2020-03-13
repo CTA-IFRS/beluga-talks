@@ -5,6 +5,17 @@ button:focus{
 button{
     font-size: 5rem !important;
 }
+
+#label{
+    height:0;
+    width:0;
+    font-size:0;
+    display: block;
+    text-indent: -20000px;
+    margin: 0;
+    padding: 0;
+}
+
 .teclado button{
     font-size: 7rem !important;
 }
@@ -16,7 +27,7 @@ textarea{
     font-size: 2.5rem !important;
 }
 .form-control{
-    width:50rem !important;
+    width:55rem !important;
 }	
 .mt-4 .col-8{
     margin-right: -19%;
