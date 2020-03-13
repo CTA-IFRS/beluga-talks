@@ -7,13 +7,7 @@ button{
 }
 
 #label{
-    height:0;
-    width:0;
-    font-size:0;
-    display: block;
-    text-indent: -20000px;
-    margin: 0;
-    padding: 0;
+    display: none;
 }
 
 .teclado button{
