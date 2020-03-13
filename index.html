@@ -48,7 +48,7 @@
 
 
 		function escreve(val) {
-		 	document.getElementById("text").value += val;
+			 document.getElementById("text").value += val.toUpperCase();
             var fala = new SpeechSynthesisUtterance(val);
             window.speechSynthesis.speak(fala);
 		};
@@ -139,88 +139,88 @@
 			<div class="col-10">
 				<div class="row mt-4">
 					<div class="col">
-						<button type="button" name="letra A" onclick="escreve('A')" class="btn btn-outline-primary w-100">A</button>
+						<button type="button" name="letra A" onclick="escreve('a')" class="btn btn-outline-primary w-100">A</button>
 					</div>
 					<div class="col">
-						<button type="button" name="letra B" onclick="escreve('B')" class="btn btn-outline-primary w-100">B</button>
+						<button type="button" name="letra B" onclick="escreve('b')" class="btn btn-outline-primary w-100">B</button>
 					</div>
 					<div class="col">
-						<button type="button" name="letra C" onclick="escreve('C')" class="btn btn-outline-primary w-100">C</button>
+						<button type="button" name="letra C" onclick="escreve('c')" class="btn btn-outline-primary w-100">C</button>
 					</div>
 					<div class="col">
-						<button type="button" name="letra D" onclick="escreve('D')" class="btn btn-outline-primary w-100">D</button>
+						<button type="button" name="letra D" onclick="escreve('d')" class="btn btn-outline-primary w-100">D</button>
 					</div>
 					<div class="col">
-						<button type="button" name="letra E" onclick="escreve('E')" class="btn btn-outline-primary w-100">E</button>
+						<button type="button" name="letra E" onclick="escreve('e')" class="btn btn-outline-primary w-100">E</button>
 					</div>
 					<div class="col">
-						<button type="button" name="letra F" onclick="escreve('F')" class="btn btn-outline-primary w-100">F</button>
+						<button type="button" name="letra F" onclick="escreve('f')" class="btn btn-outline-primary w-100">F</button>
 					</div>
 					<div class="col">
-						<button type="button" name="letra G" onclick="escreve('G')" class="btn btn-outline-primary w-100">G</button>
-					</div>
-				</div>
-				<div class="row mt-4">
-					<div class="col">
-						<button type="button" name="letra H" onclick="escreve('H')" class="btn btn-outline-primary w-100">H</button>
-					</div>
-					<div class="col">
-						<button type="button" name="letra I" onclick="escreve('I')" class="btn btn-outline-primary w-100">I</button>
-					</div>
-					<div class="col">
-						<button type="button" name="letra J" onclick="escreve('J')" class="btn btn-outline-primary w-100">J</button>
-					</div>
-					<div class="col">
-						<button type="button" name="letra K" onclick="escreve('K')" class="btn btn-outline-primary w-100">K</button>
-					</div>
-					<div class="col">
-						<button type="button" name="letra L" onclick="escreve('L')" class="btn btn-outline-primary w-100">L</button>
-					</div>
-					<div class="col">
-						<button type="button" name="letra M" onclick="escreve('M')" class="btn btn-outline-primary w-100">M</button>
-					</div>
-					<div class="col">
-						<button type="button" name="letra N" onclick="escreve('N')" class="btn btn-outline-primary w-100">N</button>
+						<button type="button" name="letra G" onclick="escreve('g')" class="btn btn-outline-primary w-100">G</button>
 					</div>
 				</div>
 				<div class="row mt-4">
 					<div class="col">
-						<button type="button" name="letra O" onclick="escreve('O')" class="btn btn-outline-primary w-100">O</button>
+						<button type="button" name="letra H" onclick="escreve('h')" class="btn btn-outline-primary w-100">H</button>
 					</div>
 					<div class="col">
-						<button type="button" name="letra P" onclick="escreve('P')" class="btn btn-outline-primary w-100">P</button>
+						<button type="button" name="letra I" onclick="escreve('i')" class="btn btn-outline-primary w-100">I</button>
 					</div>
 					<div class="col">
-						<button type="button" name="letra Q" onclick="escreve('Q')" class="btn btn-outline-primary w-100">Q</button>
+						<button type="button" name="letra J" onclick="escreve('j')" class="btn btn-outline-primary w-100">J</button>
 					</div>
 					<div class="col">
-						<button type="button" name="letra R" onclick="escreve('R')" class="btn btn-outline-primary w-100">R</button>
+						<button type="button" name="letra K" onclick="escreve('k')" class="btn btn-outline-primary w-100">K</button>
 					</div>
 					<div class="col">
-						<button type="button" name="letra S" onclick="escreve('S')" class="btn btn-outline-primary w-100">S</button>
+						<button type="button" name="letra L" onclick="escreve('l')" class="btn btn-outline-primary w-100">L</button>
 					</div>
 					<div class="col">
-						<button type="button" name="letra T" onclick="escreve('T')" class="btn btn-outline-primary w-100">T</button>
+						<button type="button" name="letra M" onclick="escreve('m')" class="btn btn-outline-primary w-100">M</button>
 					</div>
 					<div class="col">
-						<button type="button" name="letra U" onclick="escreve('U')" class="btn btn-outline-primary w-100">U</button>
+						<button type="button" name="letra N" onclick="escreve('n')" class="btn btn-outline-primary w-100">N</button>
 					</div>
 				</div>
 				<div class="row mt-4">
 					<div class="col">
-						<button type="button" name="letra V" onclick="escreve('V')" class="btn btn-outline-primary w-100">V</button>
+						<button type="button" name="letra O" onclick="escreve('o')" class="btn btn-outline-primary w-100">O</button>
 					</div>
 					<div class="col">
-						<button type="button" name="letra W" onclick="escreve('W')" class="btn btn-outline-primary w-100">W</button>
+						<button type="button" name="letra P" onclick="escreve('p')" class="btn btn-outline-primary w-100">P</button>
 					</div>
 					<div class="col">
-						<button type="button" name="letra X" onclick="escreve('X')" class="btn btn-outline-primary w-100">X</button>
+						<button type="button" name="letra Q" onclick="escreve('q')" class="btn btn-outline-primary w-100">Q</button>
 					</div>
 					<div class="col">
-						<button type="button" name="letra Y" onclick="escreve('Y')" class="btn btn-outline-primary w-100">Y</button>
+						<button type="button" name="letra R" onclick="escreve('r')" class="btn btn-outline-primary w-100">R</button>
 					</div>
 					<div class="col">
-						<button type="button" name="letra Z" onclick="escreve('Z')" class="btn btn-outline-primary w-100">Z</button>
+						<button type="button" name="letra S" onclick="escreve('s')" class="btn btn-outline-primary w-100">S</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra T" onclick="escreve('t')" class="btn btn-outline-primary w-100">T</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra U" onclick="escreve('u')" class="btn btn-outline-primary w-100">U</button>
+					</div>
+				</div>
+				<div class="row mt-4">
+					<div class="col">
+						<button type="button" name="letra V" onclick="escreve('v')" class="btn btn-outline-primary w-100">V</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra W" onclick="escreve('w')" class="btn btn-outline-primary w-100">W</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra X" onclick="escreve('x')" class="btn btn-outline-primary w-100">X</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra Y" onclick="escreve('y')" class="btn btn-outline-primary w-100">Y</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra Z" onclick="escreve('z')" class="btn btn-outline-primary w-100">Z</button>
 					</div>
 					<div class="col">
 						<button type="button" name="espaco" onclick="escreve('&nbsp;')" class="btn btn-outline-primary espaco w-100">_</button>

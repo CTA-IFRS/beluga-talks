@@ -1,10 +1,311 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<title>Teclado para CAA</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<!-- Manifesto Json -->
+	<link rel="manifest" href="./manifest.json">
+
+	<script src="./index.js"></script>
+
+	<!-- Cor tema -->
+	<meta name="theme-color" content="#007bff">
+
+	<!-- Descrição -->
+	<meta name="description" content="Teclado para Comuicação Aumentativa e Alternativa, desenvolvido por CTA Bento Gonçalves">
+
+	<link rel="icon" size="192x192" href="imagens/Icon10.png">
+	<link rel="apple-touch-icon" href="imagens/Icon10.png">
+
+	
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+	<!-- Font Awesome -->
+	<script src="https://kit.fontawesome.com/9f8ae42967.js" crossorigin="anonymous"></script>
+	
+	<link rel="stylesheet" type="text/css" href="estilo.css"/>
+
+	
+	
+	<!-- Bootstrap -->
+	<!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="https://code.responsivevoice.org/responsivevoice.js?key=ekVh6Ano"></script>
+
+	
+	
+	
+	
+	<script>
+
+		var lingua = "Brazilian Portuguese Female";
+
+
+		function escreve(val) {
+			 document.getElementById("text").value += val.toUpperCase();
+            var fala = new SpeechSynthesisUtterance(val);
+            window.speechSynthesis.speak(fala);
+		};
+
+		$(document).ready(function(){
+			$('#backspace').on('click', function (){
+				var fala = new SpeechSynthesisUtterance("Apagar");
+            	window.speechSynthesis.speak(fala);
+
+				var input = $('#text')[0];
+				input.value = input.value.replace(/.$/, '');
+			});
+
+			$('#erase').on('click', function (){
+				var fala = new SpeechSynthesisUtterance("Limpar");
+            	window.speechSynthesis.speak(fala);
+
+				$("#text").val("");
+			});
+
+			$('.espaco').on('click', function (){
+				var fala = new SpeechSynthesisUtterance("Espaço");
+            	window.speechSynthesis.speak(fala);
+			});
+
+			$(".le").on('click', function(e){
+				//previne erro
+				e.preventDefault();
+				//recebe o valor do input, o que deseja ser escutado
+				var text = $("#text").val();
+
+				
+				var fala = new SpeechSynthesisUtterance(text);
+            	window.speechSynthesis.speak(fala);
+			});
+    	});
+
+    	function trocaTeclado(val) {
+
+    		var alfabetico = val;
+
+    		if (alfabetico) {
+				var fala = new SpeechSynthesisUtterance("Teclado numérico");
+            	window.speechSynthesis.speak(fala);
+
+    			document.getElementById("tecladoAlfabetico").className = "d-none";
+				document.getElementById("botaoTrocaTeclado").innerHTML = "ABC";
+    			var element = document.getElementById("tecladoNumerico");
+  				element.className = element.className.replace(/\bd-none\b/g, "row teclado");
+  				document.getElementById("botaoTrocaTeclado").onclick = function() {trocaTeclado(false);};
+
+    		}else{
+				
+				var fala = new SpeechSynthesisUtterance("Teclado alfabético");
+            	window.speechSynthesis.speak(fala);
+
+    			document.getElementById("tecladoNumerico").className = "d-none";
+				document.getElementById("botaoTrocaTeclado").innerHTML = "123";
+    			var element = document.getElementById("tecladoAlfabetico");
+  				element.className = element.className.replace(/\bd-none\b/g, "row teclado");
+  				document.getElementById("botaoTrocaTeclado").onclick = function() {trocaTeclado(true);};
+    		}
+    	};
+	</script>
+
 </head>
 <body>
-    <p>voce esta offline</p>
+	<div class="container-fluid">
+		<div class="row mt-4">
+			
+			<label for="text"></label>
+			<form class="col-8">
+				<textarea id="text" name="Campo de texto" class="form-control"></textarea>
+			</form>
+			<div class="col-2">
+				<button type="button" name="apagar" id="backspace" class="btn btn-outline-primary w-100">←</button>
+			</div>
+			<div class="col-2">
+				<button type="button" aria-label="Botão limpar textarea" id="erase" class="btn btn-outline-primary w-100">Limpar</button>
+			</div>
+			<div class="col-2">
+				<button type="button" name="troca teclado" id="botaoTrocaTeclado" onclick="trocaTeclado(true)" class="btn btn-outline-primary w-100"> 123</button>
+			</div>
+		</div>
+
+		<div class="row teclado" id="tecladoAlfabetico">
+			
+			<div class="col-10">
+				<div class="row mt-4">
+					<div class="col">
+						<button type="button" name="letra A" onclick="escreve('a')" class="btn btn-outline-primary w-100">A</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra B" onclick="escreve('b')" class="btn btn-outline-primary w-100">B</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra C" onclick="escreve('c')" class="btn btn-outline-primary w-100">C</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra D" onclick="escreve('d')" class="btn btn-outline-primary w-100">D</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra E" onclick="escreve('e')" class="btn btn-outline-primary w-100">E</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra F" onclick="escreve('f')" class="btn btn-outline-primary w-100">F</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra G" onclick="escreve('g')" class="btn btn-outline-primary w-100">G</button>
+					</div>
+				</div>
+				<div class="row mt-4">
+					<div class="col">
+						<button type="button" name="letra H" onclick="escreve('h')" class="btn btn-outline-primary w-100">H</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra I" onclick="escreve('i')" class="btn btn-outline-primary w-100">I</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra J" onclick="escreve('j')" class="btn btn-outline-primary w-100">J</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra K" onclick="escreve('k')" class="btn btn-outline-primary w-100">K</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra L" onclick="escreve('l')" class="btn btn-outline-primary w-100">L</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra M" onclick="escreve('m')" class="btn btn-outline-primary w-100">M</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra N" onclick="escreve('n')" class="btn btn-outline-primary w-100">N</button>
+					</div>
+				</div>
+				<div class="row mt-4">
+					<div class="col">
+						<button type="button" name="letra O" onclick="escreve('o')" class="btn btn-outline-primary w-100">O</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra P" onclick="escreve('p')" class="btn btn-outline-primary w-100">P</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra Q" onclick="escreve('q')" class="btn btn-outline-primary w-100">Q</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra R" onclick="escreve('r')" class="btn btn-outline-primary w-100">R</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra S" onclick="escreve('s')" class="btn btn-outline-primary w-100">S</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra T" onclick="escreve('t')" class="btn btn-outline-primary w-100">T</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra U" onclick="escreve('u')" class="btn btn-outline-primary w-100">U</button>
+					</div>
+				</div>
+				<div class="row mt-4">
+					<div class="col">
+						<button type="button" name="letra V" onclick="escreve('v')" class="btn btn-outline-primary w-100">V</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra W" onclick="escreve('w')" class="btn btn-outline-primary w-100">W</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra X" onclick="escreve('x')" class="btn btn-outline-primary w-100">X</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra Y" onclick="escreve('y')" class="btn btn-outline-primary w-100">Y</button>
+					</div>
+					<div class="col">
+						<button type="button" name="letra Z" onclick="escreve('z')" class="btn btn-outline-primary w-100">Z</button>
+					</div>
+					<div class="col">
+						<button type="button" name="espaco" onclick="escreve('&nbsp;')" class="btn btn-outline-primary espaco w-100">_</button>
+					</div>
+					<div class="col">
+						<button type="button" aria-label="Botão lê campo de texto" class="btn btn-outline-primary w-100 le">Ler</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-2 simnao">
+				<div class="row mt-4">
+					<div class="col S">
+						<button type="button"  name="sim" onclick="escreve('Sim')" class="btn btn-outline-primary w-100 SN">Sim</button>
+					</div>
+				</div>
+				<div class="row mt-4">
+					<div class="col">
+						<button type="button"  name=" nao" onclick="escreve('Não')" class="btn btn-outline-primary w-100 SN">Não</button>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+		<div class="row teclado d-none" id="tecladoNumerico">
+			
+			<div class="col-10">
+				<div class="row mt-4">
+					<div class="col">
+						<button type="button" name="numero 0" onclick="escreve('0')" class="btn btn-outline-primary w-100">0</button>
+					</div>
+					<div class="col">
+						<button type="button" name="numero 1" onclick="escreve('1')" class="btn btn-outline-primary w-100">1</button>
+					</div>
+					<div class="col">
+						<button type="button" name="numero 2" onclick="escreve('2')" class="btn btn-outline-primary w-100">2</button>
+					</div>
+					<div class="col">
+						<button type="button" name="numero 3" onclick="escreve('3')" class="btn btn-outline-primary w-100">3</button>
+					</div>
+					<div class="col">
+						<button type="button" name="numero 4" onclick="escreve('4')" class="btn btn-outline-primary w-100">4</button>
+					</div>
+					<div class="col">
+						<button type="button" name="numero 5" onclick="escreve('5')" class="btn btn-outline-primary w-100">5</button>
+					</div>
+				</div>
+				<div class="row mt-4">
+					<div class="col">
+						<button type="button" name="numero 6" onclick="escreve('6')" class="btn btn-outline-primary w-100">6</button>
+					</div>
+					<div class="col">
+						<button type="button" name="numero 7" onclick="escreve('7')" class="btn btn-outline-primary w-100">7</button>
+					</div>
+					<div class="col">
+						<button type="button" name="numero 8" onclick="escreve('8')" class="btn btn-outline-primary w-100">8</button>
+					</div>
+					<div class="col">
+						<button type="button" name="numero 9" onclick="escreve('9')" class="btn btn-outline-primary w-100">9</button>
+					</div>
+					<div class="col">
+						<button type="button" name="espaco" onclick="escreve('&nbsp;')" class="btn btn-outline-primary espaco w-100">_</button>
+					</div>
+					<div class="col">
+						<button type="button" aria-label="Botão lê campo de texto" class="btn btn-outline-primary w-100 le">Ler</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-2 simnao">
+				<div class="row mt-4">
+					<div class="col SS">
+						<button type="button" name="sim" onclick="escreve('Sim')" class="btn btn-outline-primary w-100 SNN">Sim</button>
+					</div>
+				</div> 
+				<div class="row mt-4">
+					<div class="col">
+						<button type="button" name="nao" onclick="escreve('Não')" class="btn btn-outline-primary w-100 SNN">Não</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
 </body>
 </html>
