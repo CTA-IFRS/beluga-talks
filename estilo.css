@@ -406,13 +406,13 @@ textarea{
 }
 
 /*telas de celulares menores que 600px*/
-@media (max-width: 600px) {
+@media (max-width: 600px) and (min-width:490px) and (min-height:320px) {
     .container-fluid {
         width: 100% !important;
     }
 
     textarea{
-        font-size: 40px !important;
+        font-size: 14px !important;
         margin-right:-2% !important;
     }
     .form-control{
@@ -420,24 +420,21 @@ textarea{
     }
 
     .teclado button{
-        font-size: 5.7rem !important;
+        font-size: 2rem !important;
         padding:0.4% !important;
         width:100% !important;
     }
-    .SNN{
-        height: 11.29rem !important;
-    }
 
     #botaoTrocaTeclado, #backspace, #erase{
-        height:	8.4rem !important;
-        font-size: 4.7rem !important;
+        height:	3.5rem !important;
+        font-size: 1.5rem !important;
     }
     #backspace, #erase, #botaoTrocaTeclado{
-        width:	112% !important;
-        margin-left:-12% !important;
+        width:	130% !important;
+        margin-left:-30% !important;
     } 
     .mr-1{
-        margin-right:-1.8% !important;
+        margin-right:-4% !important;
     }
 
     html, body{
