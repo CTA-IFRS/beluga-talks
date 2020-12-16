@@ -63,9 +63,6 @@ textarea{
         padding:1% !important;
         width:100% !important;
     }
-    .SNN{
-        height: 11.29rem !important;
-    }
 
     #botaoTrocaTeclado, #backspace, #erase{
         height:	10rem !important;
@@ -103,9 +100,6 @@ textarea{
         padding:1% !important;
         width:100% !important;
     }
-    .SNN{
-        height: 11.29rem !important;
-    }
 
     #botaoTrocaTeclado, #backspace, #erase{
         height:	7.4rem !important;
@@ -121,6 +115,16 @@ textarea{
 
     html, body{
         overflow: hidden !important;
+    }
+
+    .SNN{
+        font-size: 4.6rem !important;
+        height: 8.7rem !important;
+        margin-left:-8% !important;
+    }
+
+    #SN, #SNN{
+        width: 19.6rem !important;
     }
 }
 
@@ -143,9 +147,6 @@ textarea{
         padding:1% !important;
         width:100% !important;
     }
-    .SNN{
-        height: 11.29rem !important;
-    }
 
     #botaoTrocaTeclado, #backspace, #erase{
         height:	8.5rem !important;
@@ -161,6 +162,16 @@ textarea{
 
     html, body{
         overflow: hidden !important;
+    }
+
+    .SNN{
+        font-size: 4.6rem !important;
+        height: 11rem !important;
+        margin-left:-7% !important;
+    }
+
+    #SN, #SNN{
+        width: 19rem !important;
     }
 }
 
@@ -199,6 +210,16 @@ textarea{
     html, body{
         overflow: hidden !important;
     }
+
+    .SNN{
+        height: 8.7rem !important;
+        margin-left:-10% !important;
+    }
+
+    #SN, #SNN{
+        font-size: 5rem !important;
+        width: 14rem !important;
+    }
 }
 
 /*telas de tablets/ipads/celulares até 1300px de largura e 850px de altura*/
@@ -236,6 +257,16 @@ textarea{
     html, body{
         overflow: hidden !important;
     }
+
+    .SNN{
+        height: 9.5rem !important;
+        margin-left:-11% !important;
+    }
+
+    #SN, #SNN{
+        font-size: 5rem !important;
+        width: 12.5rem !important;
+    }
 }
 
 /*telas de tablets/ipads/celulares até 1200px de largura*/
@@ -253,12 +284,9 @@ textarea{
     }
 
     .teclado button{
-        font-size: 5.7rem !important;
+        font-size: 5.5rem !important;
         padding:0.4% !important;
         width:100% !important;
-    }
-    .SNN{
-        height: 11.29rem !important;
     }
 
     #botaoTrocaTeclado, #backspace, #erase{
@@ -276,7 +304,64 @@ textarea{
     html, body{
         overflow: hidden !important;
     }
+
+    .SNN{
+        font-size: 5rem !important;
+        height: 8.5rem !important;
+        margin-left:-11% !important;
+    }
+
+    #SN, #SNN{
+        width: 11.5rem !important;
+    }
 }
+
+/*telas de tablets/ipads/celulares até 1200px de largura*/
+@media (max-width: 1120px) {
+    .container-fluid {
+        width: 100% !important;
+    }
+
+    textarea{
+        font-size: 40px !important;
+        margin-right:-2% !important;
+    }
+    .form-control{
+        width:98% !important;
+    }
+
+    .teclado button{
+        font-size: 5.5rem !important;
+        padding:0.4% !important;
+        width:100% !important;
+    }
+
+    #botaoTrocaTeclado, #backspace, #erase{
+        height:	8.4rem !important;
+        font-size: 4.7rem !important;
+    }
+    #backspace, #erase, #botaoTrocaTeclado{
+        width:	112% !important;
+        margin-left:-12% !important;
+    } 
+    .mr-1{
+        margin-right:-1.8% !important;
+    }
+
+    html, body{
+        overflow: hidden !important;
+    }
+
+    .SNN{
+        height: 8.5rem !important;
+        margin-left:-11% !important;
+    }
+
+    #SN, #SNN{
+        font-size: 4.7rem !important;
+        width: 10rem !important;
+    }
+} 
 
 /*telas de celulares menores que 900px*/
 @media (max-width: 900px) {
@@ -297,9 +382,6 @@ textarea{
         padding:0.4% !important;
         width:100% !important;
     }
-    .SNN{
-        height: 11.29rem !important;
-    }
 
     #botaoTrocaTeclado, #backspace, #erase{
         height:	3.7rem !important;
@@ -315,6 +397,16 @@ textarea{
 
     html, body{
         overflow: hidden !important;
+    }
+
+    .SNN{
+        height: 4.2rem !important;
+        margin-left:-20% !important;
+    }
+
+    #SN, #SNN{
+        font-size: 2.1rem !important;
+        width: 8.3rem !important;
     }
 }
 
@@ -337,9 +429,6 @@ textarea{
         padding:0.4% !important;
         width:100% !important;
     }
-    .SNN{
-        height: 11.29rem !important;
-    }
 
     #botaoTrocaTeclado, #backspace, #erase{
         height:	4rem !important;
@@ -355,6 +444,16 @@ textarea{
 
     html, body{
         overflow: hidden !important;
+    }
+
+    .SNN{
+        font-size: 1.9rem !important;
+        height: 4.7rem !important;
+        margin-left:-20% !important;
+    }
+
+    #SN, #SNN{
+        width: 7rem !important;
     }
 }
 
@@ -378,9 +477,6 @@ textarea{
         width:100% !important;
         margin-top: -1%;
     }
-    .SNN{
-        height: 11.29rem !important;
-    }
 
     #botaoTrocaTeclado, #backspace, #erase{
         height:	4rem !important;
@@ -396,6 +492,16 @@ textarea{
 
     html, body{
         overflow: hidden !important;
+    }
+
+    .SNN{
+        font-size: 1.9rem !important;
+        height: 4.2rem !important;
+        margin-left:-30% !important;
+    }
+
+    #SN, #SNN{
+        width: 6.2rem !important;
     }
 
 }
@@ -420,9 +526,6 @@ textarea{
         width:100% !important;
         margin-top: -1%;
     }
-    .SNN{
-        height: 11.29rem !important;
-    }
 
     #botaoTrocaTeclado, #backspace, #erase{
         height:	2.7rem !important;
@@ -438,6 +541,16 @@ textarea{
 
     html, body{
         overflow: hidden !important;
+    }
+
+    .SNN{
+        font-size: 1.9rem !important;
+        height: 3rem !important;
+        margin-left:-30% !important;
+    }
+
+    #SN, #SNN{
+        width: 6.2rem !important;
     }
 
 }
@@ -473,7 +586,10 @@ textarea{
     .mr-1{
         margin-right:-4% !important;
     }
-
+    .SNN{
+        height: 3.4rem !important;
+        margin-left:-20% !important;
+    }
     html, body{
         overflow: hidden !important;
     }
