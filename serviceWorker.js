@@ -1,5 +1,5 @@
 // Criando um nome para o arquivo de cache
-var staticCache = "prancha_alfanumerica_2020_03_13_11_20"; //ano_mes_dia_hora_min
+var staticCache = "prancha_alfanumerica_2020_12_16_16_06"; //ano_mes_dia_hora_min
 
 console.log("Inicio do cache");
 
