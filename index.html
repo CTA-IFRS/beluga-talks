@@ -124,10 +124,24 @@
 			}
 		}
 
+		
+		function mostrarToast(msg) {
+			var toast = document.getElementById("toast-speed");
+			var toastMsg = toast.getElementsByClassName("toast-msg")[0];
+			toastMsg.innerHTML = msg;
+			toast.style.display = "block";
+			setTimeout(function () {
+				toast.style.display = "none";
+				toastMsg.innerHTML = "";
+			}, 2500);
+		}
+
 		function mudarVelocidade(interval) {
 			scan.changeIntervalTime(interval);
 			localStorage.setItem(storageSpeedKey, interval);
-			falar("Velocidade em " + speedRatio() + "%");
+			var msg = "Velocidade em " + speedRatio() + "%";
+			falar(msg);
+			mostrarToast(msg);
 		}
 
 		function aumentarVelocidade() {
@@ -378,7 +392,10 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
+	<div id="toast-speed" class="toast-box">
+		<p class="toast-msg">
+		</p>
+	</div>	
 </body>
 </html>

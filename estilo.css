@@ -71,6 +71,26 @@ div[data-in-groups] button[data-in-groups].group-selected.controller {
     color: #fff !important;
 }
 
+div.toast-box {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 2em;
+    text-align: center;
+    z-index: 3000;
+}
+
+div.toast-box p.toast-msg {
+    font-size: 1.5em;
+    background: #004a99;
+    color: #fff;
+    margin: auto;
+    padding-top: 1em;
+    height: 3.5em;
+    width: 30%;
+}
+
 /*telas de tablets/ipads/celulares até 1300px de largura e 850px de altura*/
 @media (max-width: 2000px) and (min-width: 1900px) and (min-height:1000px){
     .container-fluid {
