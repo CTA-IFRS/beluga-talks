@@ -42,11 +42,16 @@ textarea{
 .mt-4 .col-8{
     margin-right: -19%;
 }
-#backspace, #alternar-scan, #erase{
+#backspace, #alternar-scan, #speed-up, #speed-down, #erase{
     width:	13rem !important;
 }
 #botaoTrocaTeclado{
     width:	12rem !important;
+}
+
+#alternar-scan, #speed-up, #speed-down {
+    color: #004a99;
+    border-color: #004a99;
 }
 
 div[data-in-groups].group-selected-parent button{
@@ -58,6 +63,12 @@ div[data-in-groups].group-selected button,
 div[data-in-groups] button[data-in-groups].group-selected {
     background: #006FE6;
     color: #fff;
+}
+
+div[data-in-groups].group-selected button.controller,  
+div[data-in-groups] button[data-in-groups].group-selected.controller {
+    background: #004a99;
+    color: #fff !important;
 }
 
 /*telas de tablets/ipads/celulares até 1300px de largura e 850px de altura*/
@@ -80,11 +91,11 @@ div[data-in-groups] button[data-in-groups].group-selected {
         width:100% !important;
     }
 
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #erase{
+    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
         height:	10rem !important;
         font-size: 5rem !important;
     }
-    #backspace, #alternar-scan, #erase, #botaoTrocaTeclado{
+    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
         width:	107% !important;
         margin-left:-9% !important;
     } 
@@ -117,11 +128,11 @@ div[data-in-groups] button[data-in-groups].group-selected {
         width:100% !important;
     }
 
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #erase{
+    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
         height:	7.4rem !important;
         font-size: 3.4rem !important;
     }
-    #backspace, #alternar-scan, #erase, #botaoTrocaTeclado{
+    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
         width:	107% !important;
         margin-left:-9% !important;
     } 
@@ -164,11 +175,11 @@ div[data-in-groups] button[data-in-groups].group-selected {
         width:100% !important;
     }
 
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #erase{
+    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
         height:	8.5rem !important;
         font-size: 4rem !important;
     }
-    #backspace, #alternar-scan, #erase, #botaoTrocaTeclado{
+    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
         width:	107% !important;
         margin-left:-9% !important;
     } 
@@ -211,11 +222,11 @@ div[data-in-groups] button[data-in-groups].group-selected {
         width:100% !important;
     }
 
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #erase{
+    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
         height:	7.5rem !important;
         font-size: 3.5rem !important;
     }
-    #backspace, #alternar-scan, #erase, #botaoTrocaTeclado{
+    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
         width:	109% !important;
         margin-left:-10% !important;
     } 
@@ -258,11 +269,11 @@ div[data-in-groups] button[data-in-groups].group-selected {
         width:100% !important;
     }
 
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #erase{
+    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
         height:	8.4rem !important;
         font-size: 4.7rem !important;
     }
-    #backspace, #alternar-scan, #erase, #botaoTrocaTeclado{
+    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
         width:	109% !important;
         margin-left:-10% !important;
     } 
@@ -305,11 +316,11 @@ div[data-in-groups] button[data-in-groups].group-selected {
         width:100% !important;
     }
 
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #erase{
+    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
         height:	8.4rem !important;
         font-size: 4.7rem !important;
     }
-    #backspace, #alternar-scan, #erase, #botaoTrocaTeclado{
+    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
         width:	112% !important;
         margin-left:-12% !important;
     } 
@@ -352,11 +363,11 @@ div[data-in-groups] button[data-in-groups].group-selected {
         width:100% !important;
     }
 
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #erase{
+    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
         height:	8.4rem !important;
         font-size: 4.7rem !important;
     }
-    #backspace, #alternar-scan, #erase, #botaoTrocaTeclado{
+    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
         width:	112% !important;
         margin-left:-12% !important;
     } 
@@ -399,11 +410,11 @@ div[data-in-groups] button[data-in-groups].group-selected {
         width:100% !important;
     }
 
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #erase{
+    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
         height:	3.7rem !important;
         font-size: 1.7rem !important;
     }
-    #backspace, #alternar-scan, #erase, #botaoTrocaTeclado{
+    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
         width:	120% !important;
         margin-left:-20% !important;
     } 
@@ -446,11 +457,11 @@ div[data-in-groups] button[data-in-groups].group-selected {
         width:100% !important;
     }
 
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #erase{
+    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
         height:	4rem !important;
         font-size: 2rem !important;
     }
-    #backspace, #alternar-scan, #erase, #botaoTrocaTeclado{
+    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
         width:	112% !important;
         margin-left:-12% !important;
     } 
@@ -494,11 +505,11 @@ div[data-in-groups] button[data-in-groups].group-selected {
         margin-top: -1%;
     }
 
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #erase{
+    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
         height:	4rem !important;
         font-size: 2rem !important;
     }
-    #backspace, #alternar-scan, #erase, #botaoTrocaTeclado{
+    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
         width:	127% !important;
         margin-left:-28% !important;
     } 
@@ -543,11 +554,11 @@ div[data-in-groups] button[data-in-groups].group-selected {
         margin-top: -1%;
     }
 
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #erase{
+    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
         height:	2.7rem !important;
         font-size: 1rem !important;
     }
-    #backspace, #alternar-scan, #erase, #botaoTrocaTeclado{
+    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
         width:	129% !important;
         margin-left:-29% !important;
     } 
@@ -591,11 +602,11 @@ div[data-in-groups] button[data-in-groups].group-selected {
         width:100% !important;
     }
 
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #erase{
+    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
         height:	3.5rem !important;
         font-size: 1.5rem !important;
     }
-    #backspace, #alternar-scan, #erase, #botaoTrocaTeclado{
+    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
         width:	130% !important;
         margin-left:-30% !important;
     } 
@@ -610,3 +621,4 @@ div[data-in-groups] button[data-in-groups].group-selected {
         overflow: hidden !important;
     }
 }
+

@@ -46,12 +46,21 @@
 
 		var lingua = "Brazilian Portuguese Female";
 		var scan = null;
+		var storageSpeedKey = "scan_interval";
+		var interval = Number.parseInt(localStorage.getItem(storageSpeedKey)) || 1250; // milissegundos
+		var minInterval = 500; 
+		var maxInterval = 5000;
 
 		function escreve(val) {
 			 document.getElementById("text").value += val.toUpperCase();
             var fala = new SpeechSynthesisUtterance(val);
             window.speechSynthesis.speak(fala);
 		};
+
+		function falar(texto) {
+			var fala = new SpeechSynthesisUtterance(texto);
+            window.speechSynthesis.speak(fala);
+		}
 
 		$(document).ready(function(){
 			$('#backspace').on('click', function (){
@@ -86,15 +95,14 @@
 			});
 
 			scan = createScan({
-				interval: 1000,
+				interval: interval,
 				goBack: 3
 			});
 
 			$(document).on("keydown", function (ev) {
 				if (ev.keyCode == 27) { //esc
 					if (scan.isScanning()) {
-						var fala = new SpeechSynthesisUtterance("Varredura desabilitada");
-            			window.speechSynthesis.speak(fala);
+						falar("Varredura desabilitada");
 						scan.stop();
 					}
 				}
@@ -102,16 +110,36 @@
 			
     	});
 
+		function speedRatio () {
+			return Math.trunc((1 - (interval - minInterval) / (maxInterval - minInterval)) * 100);
+		}
+
 		function alternarScan(grupo) {
 			if (scan.isScanning()){
-				var fala = new SpeechSynthesisUtterance("Varredura desabilitada");
-            	window.speechSynthesis.speak(fala);
+				falar("Varredura desabilitada");
 				scan.stop();
 			} else {
-				var fala = new SpeechSynthesisUtterance("Varredura habilitada");
-            	window.speechSynthesis.speak(fala);
+				falar("Varredura habilitada");
 				scan.start(grupo);
 			}
+		}
+
+		function mudarVelocidade(interval) {
+			scan.changeIntervalTime(interval);
+			localStorage.setItem(storageSpeedKey, interval);
+			falar("Velocidade em " + speedRatio() + "%");
+		}
+
+		function aumentarVelocidade() {
+			interval = interval - 250;
+			if (interval <= 500) interval = 500;
+			mudarVelocidade(interval);
+		}
+
+		function diminuirVelocidade() {
+			interval = interval + 250;
+			if (interval >= 5000) interval = 5000;
+			mudarVelocidade(interval);
 		}
 
     	function trocaTeclado(val) {
@@ -157,8 +185,18 @@
 			</form>
 			<div data-in-groups="group-01 group-02" data-next-group="controls" class="col row">
 				<div class="col">
-					<button type="button" data-in-groups="controls" data-next-group="group-01" onclick="alternarScan('group-01')" id="alternar-scan" name="alternar-scan" class="btn btn-outline-primary w-100">
+					<button type="button" data-in-groups="controls" data-next-group="group-01" onclick="alternarScan('group-01')" id="alternar-scan" name="alternar-scan" class="btn btn-outline-primary w-100 controller">
 						<i class="fas fa-keyboard"></i>
+					</button>
+				</div>
+				<div class="col">
+					<button type="button" data-in-groups="controls" data-next-group="group-01" onclick="diminuirVelocidade()" id="speed-down"  class="btn btn-outline-primary w-100 controller">
+						<i class="fas fa-angle-left"></i><i class="fas fa-angle-left"></i>
+					</button>
+				</div>
+				<div class="col">
+					<button type="button" data-in-groups="controls" data-next-group="group-01" onclick="aumentarVelocidade()" id="speed-up"  class="btn btn-outline-primary w-100 controller">
+						<i class="fas fa-angle-right"></i><i class="fas fa-angle-right"></i>
 					</button>
 				</div>
 				<div class="col">

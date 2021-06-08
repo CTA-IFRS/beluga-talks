@@ -156,6 +156,14 @@ function createScan(options = {}) {
       launchScanLoop();
     },
 
+    changeIntervalTime: function (millisec) {
+      options.interval = millisec;
+      if (_isScanning) {
+        clearInterval(_intervalId);
+        launchScanLoop();
+      }
+    },
+
     isScanning: function () {
       return _isScanning;
     },
