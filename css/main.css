@@ -1,3 +1,9 @@
 body {
     font-family: 'Montserrat' !important;
 }
+#main{
+    padding-bottom: 10rem !important;
+}
+p.text-height-2{
+    line-height: 1.7rem !important;
+}
