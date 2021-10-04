@@ -1,4 +1,93 @@
-button:focus{
+* {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+#toast-speed {
+    position: absolute;
+    display: none;
+}
+
+div.container-fluid {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+div.container-fluid div.main {
+    height: 95%;
+}
+div.container-fluid div.menu {
+    height: 5%;
+}
+div.main div.main-col {
+    height: 100%;
+}
+div.main div.main-col .sc-row button {
+    padding: 0;
+}
+
+div[data-in-groups].group-selected-parent button{
+    border-color: black;
+    border-style: solid;
+}
+div[data-in-groups].group-selected button,  
+div[data-in-groups] button[data-in-groups].group-selected {
+    background: #006FE6;
+    color: #fff;
+}
+/* div[data-in-groups].group-selected button.controller,  
+div[data-in-groups] button[data-in-groups].group-selected.controller {
+    background: #004a99;
+    color: #fff !important;
+} */
+
+@media (orientation:portrait) {
+    div.main .main-col .sc-row form ,
+    div.main .main-col .sc-row form textarea {
+        height: 100%;
+    }
+    div.main .main-col .sc-row {
+        height: calc(85%/9);
+    }
+    div.main .main-col .text {
+        height: 15%;
+    }
+    div.main .main-col .row{
+        padding-top: 0.2em;
+        padding-bottom: 0.2em;
+    }
+}
+
+@media (orientation:landscape) {  
+    div.main .main-col .sc-row form ,
+    div.main .main-col .sc-row form textarea {
+        height: 100%;
+    }
+    div.main .main-col .sc-row {
+        height: calc(100%/4);
+    }
+    div.main form,
+    div.main div.alpha .col,
+    div.main div.control .col {
+        padding-right: 0;
+    }
+    div.main .main-col .row {
+        padding-top: 0.2em;
+        padding-bottom: 0.2em;
+    }
+    div.main div.specials button span{
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+    }
+    
+}
+
+
+/* button:focus{
     background: #006FE6;
     color: #fff;
 }
@@ -89,10 +178,10 @@ div.toast-box p.toast-msg {
     padding-top: 1em;
     height: 3.5em;
     width: 15em;
-}
+} */
 
 /*telas de tablets/ipads/celulares até 1300px de largura e 850px de altura*/
-@media (max-width: 2000px) and (min-width: 1900px) and (min-height:1000px){
+/* @media (max-width: 2000px) and (min-width: 1900px) and (min-height:1000px){
     .container-fluid {
         width: 100% !important;
     }
@@ -126,10 +215,10 @@ div.toast-box p.toast-msg {
     html, body{
         overflow: hidden !important;
     }
-}
+} */
 
 /*telas de tablets/ipads/celulares até 1300px de largura e 850px de altura*/
-@media (max-width: 2000px) and (min-width: 1900px) and (min-height:700px) and (max-height:850px){
+/* @media (max-width: 2000px) and (min-width: 1900px) and (min-height:700px) and (max-height:850px){
     .container-fluid {
         width: 100% !important;
     }
@@ -173,10 +262,10 @@ div.toast-box p.toast-msg {
     #SN, #SNN{
         width: 19.6rem !important;
     }
-}
+} */
 
 /*telas de tablets/ipads/celulares até 1300px de largura e 850px de altura*/
-@media (max-width: 2000px) and (min-width: 1900px) and (min-height:850px) and (max-height:1000px){
+/* @media (max-width: 2000px) and (min-width: 1900px) and (min-height:850px) and (max-height:1000px){
     .container-fluid {
         width: 100% !important;
     }
@@ -220,10 +309,10 @@ div.toast-box p.toast-msg {
     #SN, #SNN{
         width: 19rem !important;
     }
-}
+} */
 
 /*telas de tablets/ipads/celulares até 1300px de largura e 850px de altura*/
-@media (max-width: 1600px) and (min-width: 1400px) and (min-height:750px) and (max-height:800px){
+/* @media (max-width: 1600px) and (min-width: 1400px) and (min-height:750px) and (max-height:800px){
     .container-fluid {
         width: 100% !important;
     }
@@ -267,10 +356,10 @@ div.toast-box p.toast-msg {
         font-size: 5rem !important;
         width: 14rem !important;
     }
-}
+} */
 
 /*telas de tablets/ipads/celulares até 1300px de largura e 850px de altura*/
-@media (max-width: 1300px) and (max-height: 850px) {
+/* @media (max-width: 1300px) and (max-height: 850px) {
     .container-fluid {
         width: 100% !important;
     }
@@ -314,10 +403,10 @@ div.toast-box p.toast-msg {
         font-size: 5rem !important;
         width: 12.5rem !important;
     }
-}
+} */
 
 /*telas de tablets/ipads/celulares até 1200px de largura*/
-@media (max-width: 1200px) {
+/* @media (max-width: 1200px) {
     .container-fluid {
         width: 100% !important;
     }
@@ -361,10 +450,10 @@ div.toast-box p.toast-msg {
     #SN, #SNN{
         width: 11.5rem !important;
     }
-}
+} */
 
 /*telas de tablets/ipads/celulares até 1200px de largura*/
-@media (max-width: 1120px) {
+/* @media (max-width: 1120px) {
     .container-fluid {
         width: 100% !important;
     }
@@ -408,10 +497,10 @@ div.toast-box p.toast-msg {
         font-size: 4.7rem !important;
         width: 10rem !important;
     }
-} 
+}  */
 
 /*telas de celulares menores que 900px*/
-@media (max-width: 900px) {
+/* @media (max-width: 900px) {
     .container-fluid {
         width: 100% !important;
     }
@@ -455,10 +544,10 @@ div.toast-box p.toast-msg {
         font-size: 2.1rem !important;
         width: 8.3rem !important;
     }
-}
+} */
 
 /*telas de celulares menores que 800px*/
-@media (max-width: 800px) {
+/* @media (max-width: 800px) {
     .container-fluid {
         width: 100% !important;
     }
@@ -502,10 +591,10 @@ div.toast-box p.toast-msg {
     #SN, #SNN{
         width: 7rem !important;
     }
-}
+} */
 
 /*telas de celulares menores que 700px*/
-@media (max-width: 700px) and (min-height: 370px) {
+/* @media (max-width: 700px) and (min-height: 370px) {
     .container-fluid {
         width: 100% !important;
     }
@@ -551,10 +640,10 @@ div.toast-box p.toast-msg {
         width: 6.2rem !important;
     }
 
-}
+} */
 
 /*telas de celulares menores que 700px e menores que 370px*/
-@media (max-width: 700px) and (max-height: 370px) {
+/* @media (max-width: 700px) and (max-height: 370px) {
     .container-fluid {
         width: 100% !important;
     }
@@ -600,10 +689,10 @@ div.toast-box p.toast-msg {
         width: 6.2rem !important;
     }
 
-}
+} */
 
 /*telas de celulares menores que 600px*/
-@media (max-width: 600px) and (min-width:490px) and (min-height:320px) {
+/* @media (max-width: 600px) and (min-width:490px) and (min-height:320px) {
     .container-fluid {
         width: 100% !important;
     }
@@ -640,5 +729,6 @@ div.toast-box p.toast-msg {
     html, body{
         overflow: hidden !important;
     }
-}
+} */
+
 

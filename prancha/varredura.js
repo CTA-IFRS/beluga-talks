@@ -67,7 +67,7 @@ function createScan(options = {}) {
     if (ev.target == _clickShield) {
       if (hasNextGroup(_currSelection)){
         _currSelection.click();
-        goToNextGroup();
+        if (_currSelection != null) goToNextGroup();
       } else {
         _currSelection.click();
       }
@@ -80,7 +80,7 @@ function createScan(options = {}) {
     if (ev.keyCode == 32 || ev.keyCode == 13) { // Space or enter
       if (hasNextGroup(_currSelection)){
         _currSelection.click();
-        goToNextGroup();
+        if (_currSelection != null) goToNextGroup();
       } else {
         _currSelection.click();
       }
