@@ -14,10 +14,10 @@ function Layout() {
                 </div>';
     }
 
-    obj.buildToggleKeyboardButton = function (label, isDigit) {
+    obj.buildToggleKeyboardButton = function (label) {
         return '<div class="col w-100 h-100">\
                 <button type="button" data-in-groups="specials" id="botaoTrocaTeclado" \
-                    onclick="trocaTeclado(' + isDigit + ')" class="btn btn-outline-primary w-100 h-100"><span>' 
+                    onclick="trocaTeclado()" class="btn btn-outline-primary w-100 h-100"><span>' 
                     + label + 
                 '</span></button>\
             </div>';
@@ -60,36 +60,53 @@ function Layout() {
 
     obj.buildLayoutForSmallScreen = function (dest) {
         var tags = "";
+
         tags += '<div class="row text sc-row">';
         tags += this.buildTextArea(3);
         tags += '</div>';
-        tags += '<div class="row controls sc-row" data-in-groups="group-1" data-next-group="controls">';
+        tags += '<div class="row controls sc-row" data-in-groups="group-1 group-2" data-next-group="controls">';
         tags += this.buildToggleScanButton('group-1');
         tags += this.buildEraseButton();
         tags += this.buildClearButton();
         tags += '</div>';
         
+        // letters
         for (var i = 0; i < 24; i += 4) {
-            tags += '<div class="row sc-row" data-in-groups="group-1"\
+            tags += '<div class="row sc-row alpha-row" data-in-groups="group-1"\
                      data-next-group="' + 'alpha-' + Math.trunc(i/4) + '">';
             for (var l = i; l < i+4; l++) {
                 tags += this.buildStringButton(this.letters[l], 'alpha-' + Math.trunc(i/4), 'group-1');
             }
             tags += '</div>';
         }
-        tags += '<div class="row sc-row" data-in-groups="group-1" data-next-group="alpha-6">';
+        tags += '<div class="row sc-row alpha-row" data-in-groups="group-1" data-next-group="alpha-6">';
         tags += '<div class="col w-100 h-100"></div>'
                 + this.buildStringButton("Y", "alpha-6", "group-1")
                 + this.buildStringButton("Z", "alpha-6", "group-1")
                 + '<div class="col w-100 h-100"></div>';
         tags += '</div>';
 
+        //digits
+        for (var i = 0; i < 9; i += 3) {
+            tags += '<div class="row sc-row digit-row" data-in-groups="group-2"\
+                     data-next-group="' + 'digit-' + Math.trunc(i/4) + '">';
+            for (var l = i; l < i+3; l++) {
+                tags += this.buildStringButton(l.toString(), 'digit-' + Math.trunc(i/3), 'group-2');
+            }
+            tags += '</div>';
+        }
+        tags += '<div class="row sc-row digit-row" data-in-groups="group-2" data-next-group="digit-3">';
+        tags += '<div class="col w-100 h-100"></div>'
+                + this.buildStringButton("9", "digit-3", "group-2")
+                + '<div class="col w-100 h-100"></div>';
+        tags += '</div>';
 
-        tags += '<div class="row sc-row" data-in-groups="group-1" data-next-group="specials">'
+
+        tags += '<div class="row sc-row" data-in-groups="group-1 group-2" data-next-group="specials">'
                 + this.buildStringButton('__', 'specials', 'group-1')
                 + this.buildStringButton('SIM', 'specials', 'group-1')
                 + this.buildStringButton('NÃO', 'specials', 'group-1')
-                + this.buildToggleKeyboardButton('123', true)
+                + this.buildToggleKeyboardButton('123')
                 + '</div>';
 
         document.querySelector(dest).innerHTML = tags;
@@ -138,7 +155,7 @@ function Layout() {
                 + this.buildStringButton('NÃO', 'specials', 'group-1')
                 + '</div>'
                 + '<div class="row sc-row">'
-                + this.buildToggleKeyboardButton('123', true)
+                + this.buildToggleKeyboardButton('123')
                 + '</div>'
                 + '</div>';
         tags += '</div>';

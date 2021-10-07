@@ -82,9 +82,6 @@
 			} else {
 				layout.buildLayoutForBigScreen(".main-col");
 			}
-				
-
-
 
 			$('#backspace').on('click', function (){
 				var fala = new SpeechSynthesisUtterance("Apagar");
@@ -179,36 +176,53 @@
 			mudarVelocidade(interval);
 		}
 
-    	function trocaTeclado(val) {
-
-    		var alfabetico = val;
-
-    		if (alfabetico) {
+    	function trocaTeclado() {
+			var mainCol = $("div.main-col");
+			if ($("div.main-col").hasClass("set-letters")) {
 				var fala = new SpeechSynthesisUtterance("Teclado numérico");
-            	window.speechSynthesis.speak(fala);
-
-    			document.getElementById("tecladoAlfabetico").className = "d-none";
-				document.getElementById("botaoTrocaTeclado").innerHTML = "ABC";
-    			var element = document.getElementById("tecladoNumerico");
-  				element.className = element.className.replace(/\bd-none\b/g, "row teclado");
-  				document.getElementById("botaoTrocaTeclado").onclick = function() {trocaTeclado(false);};
+             	window.speechSynthesis.speak(fala);
+				$("div.main-col").removeClass("set-letters").addClass("set-digits");
 				$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-2");
-				document.getElementById("alternar-scan").onclick = function () { alternarScan("group-2") };
-				scan.reset("group-2");
-    		}else{
-				
+				$("#alternar-scan").onclick = function () { alternarScan("group-2") };
+				$("#botaoTrocaTeclado span")[0].innerHTML = "ABC";
+				if (scan.isScanning()) scan.reset("group-2");
+			} else {
 				var fala = new SpeechSynthesisUtterance("Teclado alfabético");
-            	window.speechSynthesis.speak(fala);
-
-    			document.getElementById("tecladoNumerico").className = "d-none";
-				document.getElementById("botaoTrocaTeclado").innerHTML = "123";
-    			var element = document.getElementById("tecladoAlfabetico");
-  				element.className = element.className.replace(/\bd-none\b/g, "row teclado");
-  				document.getElementById("botaoTrocaTeclado").onclick = function() {trocaTeclado(true);};
+             	window.speechSynthesis.speak(fala);
+				$("div.main-col").removeClass("set-digits").addClass("set-letters");
 				$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-1");
-				document.getElementById("alternar-scan").onclick = function () { alternarScan("group-1") };
-				scan.reset("group-1");
-    		}
+				$("#alternar-scan").onclick = function () { alternarScan("group-1") };
+				$("#botaoTrocaTeclado span")[0].innerHTML = "123";
+				if (scan.isScanning()) scan.reset("group-1");
+			}
+    		// var alfabetico = val;
+
+    		// if (alfabetico) {
+			// 	var fala = new SpeechSynthesisUtterance("Teclado numérico");
+            // 	window.speechSynthesis.speak(fala);
+
+    		// 	document.getElementById("tecladoAlfabetico").className = "d-none";
+			// 	document.getElementById("botaoTrocaTeclado").innerHTML = "ABC";
+    		// 	var element = document.getElementById("tecladoNumerico");
+  			// 	element.className = element.className.replace(/\bd-none\b/g, "row teclado");
+  			// 	document.getElementById("botaoTrocaTeclado").onclick = function() {trocaTeclado(false);};
+			// 	$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-2");
+			// 	document.getElementById("alternar-scan").onclick = function () { alternarScan("group-2") };
+			// 	scan.reset("group-2");
+    		// }else{
+				
+			// 	var fala = new SpeechSynthesisUtterance("Teclado alfabético");
+            // 	window.speechSynthesis.speak(fala);
+
+    		// 	document.getElementById("tecladoNumerico").className = "d-none";
+			// 	document.getElementById("botaoTrocaTeclado").innerHTML = "123";
+    		// 	var element = document.getElementById("tecladoAlfabetico");
+  			// 	element.className = element.className.replace(/\bd-none\b/g, "row teclado");
+  			// 	document.getElementById("botaoTrocaTeclado").onclick = function() {trocaTeclado(true);};
+			// 	$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-1");
+			// 	document.getElementById("alternar-scan").onclick = function () { alternarScan("group-1") };
+			// 	scan.reset("group-1");
+    		// }
     	};
 	</script>
 
@@ -221,7 +235,7 @@
 			</div>
 		</div>
 		<div class="main row">
-			<div class="main-col col-12"></div>
+			<div class="main-col set-letters col-12"></div>
 		</div>
 
 	</div>

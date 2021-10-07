@@ -46,7 +46,8 @@ function createScan(options = {}) {
   }
 
   function disableClickShield() {
-    document.body.removeChild(_clickShield);
+    if (_clickShield.parentElement == document.body)
+      document.body.removeChild(_clickShield);
   }
 
   function hasNextGroup(element) {
@@ -126,7 +127,7 @@ function createScan(options = {}) {
   _self = {
     stop: function () {
       clearInterval(_intervalId);
-      _currSelection.classList.remove(_cssGroup);
+      if (_currSelection != null) _currSelection.classList.remove(_cssGroup);
       _currSelection = null;
       if (_parentSelection) { 
         _parentSelection.classList.remove(_cssParentGroup);

@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     font-weight: bold;
+    font-size: 16px;
 }
 
 #toast-speed {
@@ -46,44 +47,76 @@ div[data-in-groups] button[data-in-groups].group-selected.controller {
 } */
 
 @media (orientation:portrait) {
-    div.main .main-col .sc-row form ,
-    div.main .main-col .sc-row form textarea {
+    /* Alpha */
+    div.main .main-col.set-letters .digit-row{
+        display: none;
+    }
+    div.main .main-col.set-letters .sc-row form ,
+    div.main .main-col.set-letters .sc-row form textarea {
         height: 100%;
     }
-    div.main .main-col .sc-row {
+    div.main .main-col.set-letters .sc-row {
         height: calc(85%/9);
     }
-    div.main .main-col .text {
+    div.main .main-col.set-letters .text {
         height: 15%;
     }
-    div.main .main-col .row{
-        padding-top: 0.2em;
-        padding-bottom: 0.2em;
+    div.main .main-col.set-letters .row{
+        padding-top: 1vmin;
+        padding-bottom: 1vmin;
+    }
+
+    /* Digits */
+    div.main .main-col.set-digits .alpha-row{
+        display: none;
+    }
+    div.main .main-col.set-digits .sc-row form ,
+    div.main .main-col.set-digits .sc-row form textarea {
+        height: 100%;
+    }
+    div.main .main-col.set-digits .sc-row {
+        height: calc(85%/6);
+    }
+    div.main .main-col.set-digits .text {
+        height: 15%;
+    }
+    div.main .main-col.set-digits .row{
+        padding-top: 1vmin;
+        padding-bottom: 1vmin;
     }
 }
 
 @media (orientation:landscape) {  
-    div.main .main-col .sc-row form ,
-    div.main .main-col .sc-row form textarea {
+    /* Alpha */
+    div.main .main-col.set-letters .digit-row{
+        display: none;
+    }
+    div.main .main-col.set-letters .sc-row form ,
+    div.main .main-col.set-letters .sc-row form textarea {
         height: 100%;
     }
-    div.main .main-col .sc-row {
+    div.main .main-col.set-letters .sc-row {
         height: calc(100%/4);
     }
-    div.main form,
-    div.main div.alpha .col,
-    div.main div.control .col {
+    div.main .main-col.set-letters form,
+    div.main .main-col.set-letters div.alpha .col,
+    div.main .main-col.set-letters div.control .col {
         padding-right: 0;
     }
-    div.main .main-col .row {
-        padding-top: 0.2em;
-        padding-bottom: 0.2em;
+    div.main .main-col.set-letters .row, 
+    div.main .main-col.set-letters div.specials .col {
+        padding-top: 0.5vmin;
+        padding-bottom: 0.5vmin;
     }
-    div.main div.specials button span{
-        writing-mode: vertical-rl;
-        text-orientation: upright;
+    div.main .main-col.set-letters div.specials {
+        flex: 0 0 11%;
+        max-width: 11%;
     }
-    
+
+    /* Digits */
+    div.main .main-col.set-digits .alpha-row{
+        display: none;
+    }
 }
 
 
