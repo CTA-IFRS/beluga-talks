@@ -14,6 +14,14 @@ function Layout() {
                 </div>';
     }
 
+    obj.buildSpaceButton = function (label, groups, nextGroup) {
+        return '<div class="col w-100 h-100"> \
+                    <button type="button" onclick="space()" '
+                    + 'data-in-groups="'+ groups + '" data-next-group="'+ nextGroup + '"'
+                    + 'class="btn btn-outline-primary w-100 h-100"><span>' + label + '</span></button>\
+                </div>';
+    }
+
     obj.buildToggleKeyboardButton = function (label) {
         return '<div class="col w-100 h-100">\
                 <button type="button" data-in-groups="specials" id="botaoTrocaTeclado" \
@@ -36,6 +44,7 @@ function Layout() {
     obj.buildEraseButton = function () {
         return '<div class="col  w-100 h-100">\
                 <button type="button" data-in-groups="controls" data-next-group="group-1" \
+                    onclick="erase()"\
                     id="backspace" class="btn btn-outline-primary  w-100 h-100">\
                     ←\
                 </button>\
@@ -45,8 +54,19 @@ function Layout() {
     obj.buildClearButton = function () {
         return '<div class="col  w-100 h-100">\
                     <button type="button" data-in-groups="controls" data-next-group="group-1" \
-                        aria-label="Botão limpar textarea" id="erase" class="btn btn-outline-primary w-100 h-100">\
+                        onclick="clearText()" \
+                        class="btn btn-outline-primary w-100 h-100">\
                         <i class="fas fa-trash"></i>\
+                    </button>\
+                </div>';
+    }
+
+    obj.buildSpeakButton = function () {
+        return '<div class="col  w-100 h-100">\
+                    <button type="button" data-in-groups="controls" data-next-group="group-1" \
+                        onclick="speakLoud()"\
+                        class="btn btn-outline-primary w-100 h-100">\
+                        <i class="fas fa-volume-up"></i>\
                     </button>\
                 </div>';
     }
@@ -103,7 +123,7 @@ function Layout() {
 
 
         tags += '<div class="row sc-row" data-in-groups="group-1 group-2" data-next-group="specials">'
-                + this.buildStringButton('__', 'specials', 'group-1')
+                + this.buildSpaceButton('__', 'specials', 'group-1')
                 + this.buildStringButton('SIM', 'specials', 'group-1')
                 + this.buildStringButton('NÃO', 'specials', 'group-1')
                 + this.buildToggleKeyboardButton('123')
@@ -119,14 +139,15 @@ function Layout() {
         tags += '<div class="col-8 h-100"><div class="sc-row row h-100">'
         tags += this.buildTextArea(2);
         tags += '</div></div>';
-        tags += '<div class="col"><div data-in-groups="group-1" data-next-group="controls" class="sc-row control row h-100">'
+        tags += '<div class="col"><div data-in-groups="group-1 group-2" data-next-group="controls" class="sc-row control row h-100">'
         tags += this.buildToggleScanButton('group-1');
         tags += this.buildEraseButton();
         tags += this.buildClearButton();    
         tags += '</div></div>';
         tags += '</div>';
+        // letters
         for (var i = 0; i < 26; i += 9) {
-            tags += '<div class="row sc-row">';
+            tags += '<div class="row alpha-row sc-row">';
             for (var l = i; l < i+9; l++) {
                 if (l % 3 == 0) {
                     tags += '<div class="col h-100"><div data-in-groups="group-1"\
@@ -142,21 +163,30 @@ function Layout() {
             }
             tags += '</div>';
         }
+        //digits
+        for (var i = 0; i < 8; i += 4) {
+            tags += '<div class="row sc-row digit-row" data-in-groups="group-2"\
+                     data-next-group="' + 'digit-' + Math.trunc(i/4) + '">';
+            for (var l = i; l < i+4; l++) {
+                tags += this.buildStringButton(l.toString(), 'digit-' + Math.trunc(i/4), 'group-2');
+            }
+            tags += '</div>';
+        }
+        tags += '<div class="row sc-row digit-row" data-in-groups="group-2" data-next-group="digit-2">';
+        tags += '<div class="col w-100 h-100"></div>'
+                + this.buildStringButton("8", "digit-2", "group-2")
+                + this.buildStringButton("9", "digit-2", "group-2")
+                + '<div class="col w-100 h-100"></div>';
+        tags += '</div>';
+
         tags += '</div>';
         
-        tags += '<div class="col-1 h-100 specials" data-in-groups="group-1" data-next-group="specials">';
-        tags += '<div class="row sc-row">'
-                + this.buildStringButton('_', 'specials', 'group-1')
-                + '</div>'
-                + '<div class="row sc-row">' 
+        tags += '<div class="col-1 h-100 specials" data-in-groups="group-1 group-2" data-next-group="specials">';
+        tags += '<div class="row h-100 sc-row">'
+                + this.buildSpaceButton('__', 'specials', 'group-1')
                 + this.buildStringButton('SIM', 'specials', 'group-1')
-                + '</div>'
-                + '<div class="row sc-row">'
                 + this.buildStringButton('NÃO', 'specials', 'group-1')
-                + '</div>'
-                + '<div class="row sc-row">'
                 + this.buildToggleKeyboardButton('123')
-                + '</div>'
                 + '</div>';
         tags += '</div>';
 

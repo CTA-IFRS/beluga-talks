@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 100%;
 }
 
 #toast-speed {
@@ -44,6 +44,34 @@ div[data-in-groups] button[data-in-groups].group-selected {
 div[data-in-groups] button[data-in-groups].group-selected.controller {
     background: #004a99;
     color: #fff !important;
+} */
+
+div.toast-box {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 2em;
+    text-align: center;
+    z-index: 3000;
+}
+div.toast-box p.toast-msg {
+    font-size: 1.5em;
+    background: #004a99;
+    color: #fff;
+    margin: auto;
+    padding-top: 1em;
+    height: 3.5em;
+    width: 15em;
+}
+
+/* div.main .main-col button,
+div.main .main-col button span {
+    font-size: calc(16px + 60 * ((100vmin - 320px) / 680));
+}
+
+div.main .main-col div.specials button span {
+    font-size: calc(16px + 30 * ((100vmin - 320px) / 680));
 } */
 
 @media (orientation:portrait) {
@@ -111,657 +139,55 @@ div[data-in-groups] button[data-in-groups].group-selected.controller {
     div.main .main-col.set-letters div.specials {
         flex: 0 0 11%;
         max-width: 11%;
+        max-height: calc(100%/4);
+    }
+    div.main .main-col.set-letters div.specials > .row:first-child {
+        display: block;
+        margin-left: 0;
+    }
+    div.main .main-col.set-letters div.specials > .row:first-child .col {
+        padding-left: 0;
+        margin-bottom: 1vmin;
     }
 
     /* Digits */
     div.main .main-col.set-digits .alpha-row{
         display: none;
     }
+    div.main .main-col.set-digits .sc-row form ,
+    div.main .main-col.set-digits .sc-row form textarea {
+        height: 100%;
+    }
+    div.main .main-col.set-digits .sc-row {
+        height: calc(100%/4);
+    }
+    div.main .main-col.set-digits form,
+    div.main .main-col.set-digits div.alpha .col,
+    div.main .main-col.set-digits div.control .col {
+        padding-right: 0;
+    }
+    div.main .main-col.set-digits .row, 
+    div.main .main-col.set-digits div.specials .col {
+        padding-top: 0.5vmin;
+        padding-bottom: 0.5vmin;
+    }
+    div.main .main-col.set-digits > .row:first-child {
+        flex-direction: column;
+    }
+    div.main .main-col.set-digits > .row:first-child > .col {
+        height: 25% !important;
+    }
+    div.main .main-col.set-digits > .row:first-child > .col:first-child {
+        height: 75% !important;
+    }
+    div.main .main-col.set-digits div.specials {
+        flex: 1 0 1%;
+        max-width: 100%;
+        max-height: calc(100%/5);
+    }
+    div.main .main-col.set-digits div.control {
+        margin-right: 0;
+    }
+    
 }
-
-
-/* button:focus{
-    background: #006FE6;
-    color: #fff;
-}
-button{
-    font-size: 4rem !important;
-}
-
-button.btn.btn-outline-primary {
-    color: #006FE6;
-    background-color: #fff;
-}
-
-#label{
-    height:0;
-    width:0;
-    font-size:0;
-    display: block;
-    text-indent: -20000px;
-    margin: 0;
-    padding: 0;
-}
-
-.teclado button{
-    font-size: 6rem !important;
-    padding:0.5% !important;
-}
-
-.mr-1{
-    margin-right:-1.5% !important;
-}
-
-.teclado .simnao button{
-    font-size: 6rem !important;
-}
-textarea{
-    font-size: 2rem !important;
-}
-.form-control{
-    width:41rem !important;
-}	
-.mt-4 .col-8{
-    margin-right: -19%;
-}
-#backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-    width:	13rem !important;
-}
-#botaoTrocaTeclado{
-    width:	12rem !important;
-}
-
-#alternar-scan, #speed-up, #speed-down {
-    color: #004a99;
-    border-color: #004a99;
-}
-
-div[data-in-groups].group-selected-parent button{
-    border-color: black;
-    border-style: solid;
-}
-
-div[data-in-groups].group-selected button,  
-div[data-in-groups] button[data-in-groups].group-selected {
-    background: #006FE6;
-    color: #fff;
-}
-
-div[data-in-groups].group-selected button.controller,  
-div[data-in-groups] button[data-in-groups].group-selected.controller {
-    background: #004a99;
-    color: #fff !important;
-}
-
-div.toast-box {
-    display: none;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 2em;
-    text-align: center;
-    z-index: 3000;
-}
-
-div.toast-box p.toast-msg {
-    font-size: 1.5em;
-    background: #004a99;
-    color: #fff;
-    margin: auto;
-    padding-top: 1em;
-    height: 3.5em;
-    width: 15em;
-} */
-
-/*telas de tablets/ipads/celulares até 1300px de largura e 850px de altura*/
-/* @media (max-width: 2000px) and (min-width: 1900px) and (min-height:1000px){
-    .container-fluid {
-        width: 100% !important;
-    }
-
-    textarea{
-        font-size: 50px !important;
-        margin-right:-2% !important;
-    }
-    .form-control{
-        width:98% !important;
-    }
-
-    .teclado button{
-        font-size: 7.7rem !important;
-        padding:1% !important;
-        width:100% !important;
-    }
-
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-        height:	10rem !important;
-        font-size: 5rem !important;
-    }
-    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
-        width:	107% !important;
-        margin-left:-9% !important;
-    } 
-    .mr-1{
-        margin-right:-1% !important;
-    }
-
-    html, body{
-        overflow: hidden !important;
-    }
-} */
-
-/*telas de tablets/ipads/celulares até 1300px de largura e 850px de altura*/
-/* @media (max-width: 2000px) and (min-width: 1900px) and (min-height:700px) and (max-height:850px){
-    .container-fluid {
-        width: 100% !important;
-    }
-
-    textarea{
-        font-size: 35px !important;
-        margin-right:-2% !important;
-    }
-    .form-control{
-        width:98% !important;
-    }
-
-    .teclado button{
-        font-size: 5.6rem !important;
-        padding:1% !important;
-        width:100% !important;
-    }
-
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-        height:	7.4rem !important;
-        font-size: 3.4rem !important;
-    }
-    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
-        width:	107% !important;
-        margin-left:-9% !important;
-    } 
-    .mr-1{
-        margin-right:-0.7% !important;
-    }
-
-    html, body{
-        overflow: hidden !important;
-    }
-
-    .SNN{
-        font-size: 4.6rem !important;
-        height: 8.7rem !important;
-        margin-left:-8% !important;
-    }
-
-    #SN, #SNN{
-        width: 19.6rem !important;
-    }
-} */
-
-/*telas de tablets/ipads/celulares até 1300px de largura e 850px de altura*/
-/* @media (max-width: 2000px) and (min-width: 1900px) and (min-height:850px) and (max-height:1000px){
-    .container-fluid {
-        width: 100% !important;
-    }
-
-    textarea{
-        font-size: 40px !important;
-        margin-right:-2% !important;
-    }
-    .form-control{
-        width:98% !important;
-    }
-
-    .teclado button{
-        font-size: 7rem !important;
-        padding:1% !important;
-        width:100% !important;
-    }
-
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-        height:	8.5rem !important;
-        font-size: 4rem !important;
-    }
-    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
-        width:	107% !important;
-        margin-left:-9% !important;
-    } 
-    .mr-1{
-        margin-right:-0.7% !important;
-    }
-
-    html, body{
-        overflow: hidden !important;
-    }
-
-    .SNN{
-        font-size: 4.6rem !important;
-        height: 11rem !important;
-        margin-left:-7% !important;
-    }
-
-    #SN, #SNN{
-        width: 19rem !important;
-    }
-} */
-
-/*telas de tablets/ipads/celulares até 1300px de largura e 850px de altura*/
-/* @media (max-width: 1600px) and (min-width: 1400px) and (min-height:750px) and (max-height:800px){
-    .container-fluid {
-        width: 100% !important;
-    }
-
-    textarea{
-        font-size: 35px !important;
-        margin-right:-2% !important;
-    }
-    .form-control{
-        width:98% !important;
-    }
-
-    .teclado button{
-        font-size: 5.7rem !important;
-        padding:0.4% !important;
-        width:100% !important;
-    }
-
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-        height:	7.5rem !important;
-        font-size: 3.5rem !important;
-    }
-    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
-        width:	109% !important;
-        margin-left:-10% !important;
-    } 
-    .mr-1{
-        margin-right:-1.5% !important;
-    }
-
-    html, body{
-        overflow: hidden !important;
-    }
-
-    .SNN{
-        height: 8.7rem !important;
-        margin-left:-10% !important;
-    }
-
-    #SN, #SNN{
-        font-size: 5rem !important;
-        width: 14rem !important;
-    }
-} */
-
-/*telas de tablets/ipads/celulares até 1300px de largura e 850px de altura*/
-/* @media (max-width: 1300px) and (max-height: 850px) {
-    .container-fluid {
-        width: 100% !important;
-    }
-
-    textarea{
-        font-size: 40px !important;
-        margin-right:-2% !important;
-    }
-    .form-control{
-        width:98% !important;
-    }
-
-    .teclado button{
-        font-size: 6.2rem !important;
-        padding:0.4% !important;
-        width:100% !important;
-    }
-
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-        height:	8.4rem !important;
-        font-size: 4.7rem !important;
-    }
-    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
-        width:	109% !important;
-        margin-left:-10% !important;
-    } 
-    .mr-1{
-        margin-right:-1.5% !important;
-    }
-
-    html, body{
-        overflow: hidden !important;
-    }
-
-    .SNN{
-        height: 9.5rem !important;
-        margin-left:-11% !important;
-    }
-
-    #SN, #SNN{
-        font-size: 5rem !important;
-        width: 12.5rem !important;
-    }
-} */
-
-/*telas de tablets/ipads/celulares até 1200px de largura*/
-/* @media (max-width: 1200px) {
-    .container-fluid {
-        width: 100% !important;
-    }
-
-    textarea{
-        font-size: 40px !important;
-        margin-right:-2% !important;
-    }
-    .form-control{
-        width:98% !important;
-    }
-
-    .teclado button{
-        font-size: 5.5rem !important;
-        padding:0.4% !important;
-        width:100% !important;
-    }
-
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-        height:	8.4rem !important;
-        font-size: 4.7rem !important;
-    }
-    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
-        width:	112% !important;
-        margin-left:-12% !important;
-    } 
-    .mr-1{
-        margin-right:-1.8% !important;
-    }
-
-    html, body{
-        overflow: hidden !important;
-    }
-
-    .SNN{
-        font-size: 5rem !important;
-        height: 8.5rem !important;
-        margin-left:-11% !important;
-    }
-
-    #SN, #SNN{
-        width: 11.5rem !important;
-    }
-} */
-
-/*telas de tablets/ipads/celulares até 1200px de largura*/
-/* @media (max-width: 1120px) {
-    .container-fluid {
-        width: 100% !important;
-    }
-
-    textarea{
-        font-size: 40px !important;
-        margin-right:-2% !important;
-    }
-    .form-control{
-        width:98% !important;
-    }
-
-    .teclado button{
-        font-size: 5.5rem !important;
-        padding:0.4% !important;
-        width:100% !important;
-    }
-
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-        height:	8.4rem !important;
-        font-size: 4.7rem !important;
-    }
-    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
-        width:	112% !important;
-        margin-left:-12% !important;
-    } 
-    .mr-1{
-        margin-right:-1.8% !important;
-    }
-
-    html, body{
-        overflow: hidden !important;
-    }
-
-    .SNN{
-        height: 8.5rem !important;
-        margin-left:-11% !important;
-    }
-
-    #SN, #SNN{
-        font-size: 4.7rem !important;
-        width: 10rem !important;
-    }
-}  */
-
-/*telas de celulares menores que 900px*/
-/* @media (max-width: 900px) {
-    .container-fluid {
-        width: 100% !important;
-    }
-
-    textarea{
-        font-size: 15px !important;
-        margin-right:-2% !important;
-    }
-    .form-control{
-        width:98% !important;
-    }
-
-    .teclado button{
-        font-size: 2.7rem !important;
-        padding:0.4% !important;
-        width:100% !important;
-    }
-
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-        height:	3.7rem !important;
-        font-size: 1.7rem !important;
-    }
-    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
-        width:	120% !important;
-        margin-left:-20% !important;
-    } 
-    .mr-1{
-        margin-right:-3% !important;
-    }
-
-    html, body{
-        overflow: hidden !important;
-    }
-
-    .SNN{
-        height: 4.2rem !important;
-        margin-left:-20% !important;
-    }
-
-    #SN, #SNN{
-        font-size: 2.1rem !important;
-        width: 8.3rem !important;
-    }
-} */
-
-/*telas de celulares menores que 800px*/
-/* @media (max-width: 800px) {
-    .container-fluid {
-        width: 100% !important;
-    }
-
-    textarea{
-        font-size: 16px !important;
-        margin-right:-2% !important;
-    }
-    .form-control{
-        width:98% !important;
-    }
-
-    .teclado button{
-        font-size: 3rem !important;
-        padding:0.4% !important;
-        width:100% !important;
-    }
-
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-        height:	4rem !important;
-        font-size: 2rem !important;
-    }
-    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
-        width:	112% !important;
-        margin-left:-12% !important;
-    } 
-    .mr-1{
-        margin-right:-1.8% !important;
-    }
-
-    html, body{
-        overflow: hidden !important;
-    }
-
-    .SNN{
-        font-size: 1.9rem !important;
-        height: 4.7rem !important;
-        margin-left:-20% !important;
-    }
-
-    #SN, #SNN{
-        width: 7rem !important;
-    }
-} */
-
-/*telas de celulares menores que 700px*/
-/* @media (max-width: 700px) and (min-height: 370px) {
-    .container-fluid {
-        width: 100% !important;
-    }
-
-    textarea{
-        font-size: 17px !important;
-        margin-right:-2% !important;
-    }
-    .form-control{
-        width:98% !important;
-    }
-
-    .teclado button{
-        font-size: 2.7rem !important;
-        padding:0.5% !important;
-        width:100% !important;
-        margin-top: -1%;
-    }
-
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-        height:	4rem !important;
-        font-size: 2rem !important;
-    }
-    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
-        width:	127% !important;
-        margin-left:-28% !important;
-    } 
-    .mr-1{
-        margin-right:-3.5% !important;
-    }
-
-    html, body{
-        overflow: hidden !important;
-    }
-
-    .SNN{
-        font-size: 1.9rem !important;
-        height: 4.2rem !important;
-        margin-left:-30% !important;
-    }
-
-    #SN, #SNN{
-        width: 6.2rem !important;
-    }
-
-} */
-
-/*telas de celulares menores que 700px e menores que 370px*/
-/* @media (max-width: 700px) and (max-height: 370px) {
-    .container-fluid {
-        width: 100% !important;
-    }
-
-    textarea{
-        font-size: 10px !important;
-        margin-right:-2% !important;
-    }
-    .form-control{
-        width:98% !important;
-    }
-
-    .teclado button{
-        font-size: 1.9rem !important;
-        padding:0.5% !important;
-        width:100% !important;
-        margin-top: -1%;
-    }
-
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-        height:	2.7rem !important;
-        font-size: 1rem !important;
-    }
-    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
-        width:	129% !important;
-        margin-left:-29% !important;
-    } 
-    .mr-1{
-        margin-right:-3% !important;
-    }
-
-    html, body{
-        overflow: hidden !important;
-    }
-
-    .SNN{
-        font-size: 1.9rem !important;
-        height: 3rem !important;
-        margin-left:-30% !important;
-    }
-
-    #SN, #SNN{
-        width: 6.2rem !important;
-    }
-
-} */
-
-/*telas de celulares menores que 600px*/
-/* @media (max-width: 600px) and (min-width:490px) and (min-height:320px) {
-    .container-fluid {
-        width: 100% !important;
-    }
-
-    textarea{
-        font-size: 14px !important;
-        margin-right:-2% !important;
-    }
-    .form-control{
-        width:98% !important;
-    }
-
-    .teclado button{
-        font-size: 2rem !important;
-        padding:0.4% !important;
-        width:100% !important;
-    }
-
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-        height:	3.5rem !important;
-        font-size: 1.5rem !important;
-    }
-    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
-        width:	130% !important;
-        margin-left:-30% !important;
-    } 
-    .mr-1{
-        margin-right:-4% !important;
-    }
-    .SNN{
-        height: 3.4rem !important;
-        margin-left:-20% !important;
-    }
-    html, body{
-        overflow: hidden !important;
-    }
-} */
-
 
