@@ -3,6 +3,7 @@
     padding: 0;
     font-weight: bold;
     font-size: 100%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #toast-speed {
@@ -65,14 +66,13 @@ div.toast-box p.toast-msg {
     width: 15em;
 }
 
-/* div.main .main-col button,
-div.main .main-col button span {
-    font-size: calc(16px + 60 * ((100vmin - 320px) / 680));
+div.main .main-col button,
+div.main .main-col button span,
+div.main .main-col div.specials button span  {
+    font-size: calc(1rem + 3.3vmin);
+    vertical-align: middle;
+    line-height: 0.5rem;
 }
-
-div.main .main-col div.specials button span {
-    font-size: calc(16px + 30 * ((100vmin - 320px) / 680));
-} */
 
 @media (orientation:portrait) {
     /* Alpha */
@@ -90,8 +90,11 @@ div.main .main-col div.specials button span {
         height: 15%;
     }
     div.main .main-col.set-letters .row{
-        padding-top: 1vmin;
-        padding-bottom: 1vmin;
+        padding: 0.8vmin;
+    }
+    div.main .main-col.set-letters .col {
+        padding-left: 0.8vmin;
+        padding-right: 0.8vmin;
     }
 
     /* Digits */
@@ -109,8 +112,11 @@ div.main .main-col div.specials button span {
         height: 15%;
     }
     div.main .main-col.set-digits .row{
-        padding-top: 1vmin;
-        padding-bottom: 1vmin;
+        padding: 0.5vmin;
+    }
+    div.main .main-col.set-digits .col {
+        padding-left: 0.5vmin;
+        padding-right: 0.5vmin;
     }
 }
 
@@ -175,10 +181,10 @@ div.main .main-col div.specials button span {
         flex-direction: column;
     }
     div.main .main-col.set-digits > .row:first-child > .col {
-        height: 25% !important;
+        height: 20% !important;
     }
     div.main .main-col.set-digits > .row:first-child > .col:first-child {
-        height: 75% !important;
+        height: 80% !important;
     }
     div.main .main-col.set-digits div.specials {
         flex: 1 0 1%;
