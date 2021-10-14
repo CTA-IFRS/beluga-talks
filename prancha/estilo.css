@@ -20,10 +20,10 @@ div.container-fluid {
 }
 
 div.container-fluid div.main {
-    height: 95%;
+    height: 92%;
 }
 div.container-fluid div.menu {
-    height: 5%;
+    height: 8%;
 }
 div.main div.main-col {
     height: 100%;
@@ -66,15 +66,16 @@ div.toast-box p.toast-msg {
     width: 15em;
 }
 
-div.main .main-col button,
-div.main .main-col button span,
-div.main .main-col div.specials button span  {
-    font-size: calc(1rem + 3.3vmin);
-    vertical-align: middle;
-    line-height: 0.5rem;
-}
 
 @media (orientation:portrait) {
+    div.main .main-col button,
+    div.main .main-col button span,
+    div.main .main-col div.specials button span  {
+        font-size: calc(1rem + 2.5vh);
+        vertical-align: middle;
+        line-height: 0.5rem;
+    } 
+
     /* Alpha */
     div.main .main-col.set-letters .digit-row{
         display: none;
@@ -121,6 +122,14 @@ div.main .main-col div.specials button span  {
 }
 
 @media (orientation:landscape) {  
+    div.main .main-col button,
+    div.main .main-col button span,
+    div.main .main-col div.specials button span  {
+        font-size: calc(1rem + 2.5vw);
+        vertical-align: middle;
+        line-height: 0.5rem;
+    } 
+
     /* Alpha */
     div.main .main-col.set-letters .digit-row{
         display: none;
@@ -155,6 +164,13 @@ div.main .main-col div.specials button span  {
         padding-left: 0;
         margin-bottom: 1vmin;
     }
+    /* div.main .main-col.set-letters .row{
+        padding: 0.5vmin;
+    }
+    div.main .main-col.set-letters .col {
+        padding-left: 1vmin;
+        padding-right: 0.8vmin;
+    } */
 
     /* Digits */
     div.main .main-col.set-digits .alpha-row{
@@ -196,4 +212,33 @@ div.main .main-col div.specials button span  {
     }
     
 }
+
+/* Alpha: When text will break */
+@media (orientation:landscape) and (max-width: 1200px) {
+    div.main .main-col.set-letters > .row:first-child {
+        flex-direction: column;
+    }
+    div.main .main-col.set-letters > .row:first-child > .col {
+        height: 20% !important;
+    }
+    div.main .main-col.set-letters > .row:first-child > .col:first-child {
+        height: 80% !important;
+    }
+    div.main .main-col.set-letters div.specials {
+        flex: 1 1 1%;
+        max-width: 100%;
+        max-height: 20%;
+    }
+    div.main .main-col.set-letters div.specials > .row:first-child .col {
+        display: inline-block;
+        width: calc(100%/4) !important;
+        margin-left: 0;
+    }
+    div.main .main-col.set-letters div.control,
+    div.main .main-col.set-letters div.alpha-row {
+        margin-right: 0;
+    }
+
+}
+
 

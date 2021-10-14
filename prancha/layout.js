@@ -80,7 +80,6 @@ function Layout() {
 
     obj.buildLayoutForSmallScreen = function (dest) {
         var tags = "";
-
         tags += '<div class="row text sc-row">';
         tags += this.buildTextArea(3);
         tags += '</div>';
@@ -132,6 +131,7 @@ function Layout() {
         document.querySelector(dest).innerHTML = tags;
     }	
 
+    
     obj.buildLayoutForBigScreen = function (dest) {
         var tags = '<div class="row h-100">';
         tags += '<div class="col h-100">';
