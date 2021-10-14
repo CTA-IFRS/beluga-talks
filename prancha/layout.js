@@ -108,7 +108,7 @@ function Layout() {
         //digits
         for (var i = 0; i < 9; i += 3) {
             tags += '<div class="row sc-row digit-row" data-in-groups="group-2"\
-                     data-next-group="' + 'digit-' + Math.trunc(i/4) + '">';
+                     data-next-group="' + 'digit-' + Math.trunc(i/3) + '">';
             for (var l = i; l < i+3; l++) {
                 tags += this.buildStringButton(l.toString(), 'digit-' + Math.trunc(i/3), 'group-2');
             }
