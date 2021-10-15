@@ -83,7 +83,7 @@ function Layout() {
         tags += '<div class="row text sc-row">';
         tags += this.buildTextArea(3);
         tags += '</div>';
-        tags += '<div class="row controls sc-row" data-in-groups="group-1 group-2" data-next-group="controls">';
+        tags += '<div class="row control sc-row" data-in-groups="group-1 group-2" data-next-group="controls">';
         tags += this.buildToggleScanButton('group-1');
         tags += this.buildEraseButton();
         tags += this.buildClearButton();
@@ -91,14 +91,14 @@ function Layout() {
         
         // letters
         for (var i = 0; i < 24; i += 4) {
-            tags += '<div class="row sc-row alpha-row" data-in-groups="group-1"\
+            tags += '<div class="row sc-row alpha-row alpha" data-in-groups="group-1"\
                      data-next-group="' + 'alpha-' + Math.trunc(i/4) + '">';
             for (var l = i; l < i+4; l++) {
                 tags += this.buildStringButton(this.letters[l], 'alpha-' + Math.trunc(i/4), 'group-1');
             }
             tags += '</div>';
         }
-        tags += '<div class="row sc-row alpha-row" data-in-groups="group-1" data-next-group="alpha-6">';
+        tags += '<div class="row sc-row alpha-row alpha" data-in-groups="group-1" data-next-group="alpha-6">';
         tags += '<div class="col w-100 h-100"></div>'
                 + this.buildStringButton("Y", "alpha-6", "group-1")
                 + this.buildStringButton("Z", "alpha-6", "group-1")
@@ -121,7 +121,7 @@ function Layout() {
         tags += '</div>';
 
 
-        tags += '<div class="row sc-row" data-in-groups="group-1 group-2" data-next-group="specials">'
+        tags += '<div class="row sc-row specials" data-in-groups="group-1 group-2" data-next-group="specials">'
                 + this.buildSpaceButton('__', 'specials', 'group-1')
                 + this.buildStringButton('SIM', 'specials', 'group-1')
                 + this.buildStringButton('NÃO', 'specials', 'group-1')
@@ -136,7 +136,7 @@ function Layout() {
         var tags = '<div class="row h-100">';
         tags += '<div class="col h-100">';
         tags += '<div class="row sc-row">';
-        tags += '<div class="col-8 h-100"><div class="sc-row row h-100">'
+        tags += '<div class="col-8 h-100 text"><div class="sc-row row h-100">'
         tags += this.buildTextArea(2);
         tags += '</div></div>';
         tags += '<div class="col"><div data-in-groups="group-1 group-2" data-next-group="controls" class="sc-row control row h-100">'

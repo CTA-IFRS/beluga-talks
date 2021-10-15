@@ -28,18 +28,30 @@ div.container-fluid div.menu {
 div.main div.main-col {
     height: 100%;
 }
-div.main div.main-col .sc-row button {
-    padding: 0;
-}
 
-div[data-in-groups].group-selected-parent button{
-    border-color: black;
-    border-style: solid;
+div.main .main-col textarea {
+    border-color: rgb(61, 61, 61);
 }
-div[data-in-groups].group-selected button,  
-div[data-in-groups] button[data-in-groups].group-selected {
-    background: #006FE6;
-    color: #fff;
+div.main .main-col button {
+    border-color: rgb(61, 61, 61) !important;
+    color: rgb(54, 54, 54) !important;
+}
+div.main .main-col button:hover {
+    background-color: rgb(255,255,89) !important;
+}
+div.main .main-col button:focus,
+div.main .main-col button:active {
+    background-color: white !important;
+}
+div[data-in-groups].group-selected-parent button{
+    /* border-color: black; */
+    border-style: dashed;
+    border-width: 2px;
+}
+div.main .main-col div[data-in-groups].group-selected button,  
+div.main .main-col div[data-in-groups] button[data-in-groups].group-selected {
+    background-color: rgb(54, 54, 54) !important;
+    color: rgb(255,255,89) !important;
 }
 /* div[data-in-groups].group-selected button.controller,  
 div[data-in-groups] button[data-in-groups].group-selected.controller {
@@ -66,6 +78,33 @@ div.toast-box p.toast-msg {
     width: 15em;
 }
 
+div.main .main-col,
+div.main .main-col .row:first-child .col:first-child,
+div.main .main-col div.text,
+div.main .main-col form,
+div.main .main-col div.alpha .col,
+div.main .main-col div.digit-row,
+div.main .main-col div.control .col,
+div.main .main-col .row,
+div.main .main-col div.specials,
+div.main .main-col div.specials .row,
+div.main .main-col div.specials .col,
+div.main .main-col div.sc-row .col {
+    padding: 0;
+    margin: 0;
+}
+div.main .main-col {
+    padding-left: 1.5vmin !important;
+    padding-right: 1.5vmin !important;
+    padding-bottom: 1.5vmin !important;
+}
+div.main .main-col form,
+div.main .main-col div.digit-row .col,
+div.main .main-col div.control .col,
+div.main .main-col div.specials .col,
+div.main .main-col .alpha .col {
+    padding: 0.5vmin 0.5vmin !important;
+}
 
 @media (orientation:portrait) {
     div.main .main-col button,
@@ -90,14 +129,7 @@ div.toast-box p.toast-msg {
     div.main .main-col.set-letters .text {
         height: 15%;
     }
-    div.main .main-col.set-letters .row{
-        padding: 0.8vmin;
-    }
-    div.main .main-col.set-letters .col {
-        padding-left: 0.8vmin;
-        padding-right: 0.8vmin;
-    }
-
+    
     /* Digits */
     div.main .main-col.set-digits .alpha-row{
         display: none;
@@ -112,13 +144,6 @@ div.toast-box p.toast-msg {
     div.main .main-col.set-digits .text {
         height: 15%;
     }
-    div.main .main-col.set-digits .row{
-        padding: 0.5vmin;
-    }
-    div.main .main-col.set-digits .col {
-        padding-left: 0.5vmin;
-        padding-right: 0.5vmin;
-    }
 }
 
 @media (orientation:landscape) {  
@@ -128,7 +153,7 @@ div.toast-box p.toast-msg {
         font-size: calc(1rem + 2.5vw);
         vertical-align: middle;
         line-height: 0.5rem;
-    } 
+    }
 
     /* Alpha */
     div.main .main-col.set-letters .digit-row{
@@ -141,36 +166,15 @@ div.toast-box p.toast-msg {
     div.main .main-col.set-letters .sc-row {
         height: calc(100%/4);
     }
-    div.main .main-col.set-letters form,
-    div.main .main-col.set-letters div.alpha .col,
-    div.main .main-col.set-letters div.control .col {
-        padding-right: 0;
-    }
-    div.main .main-col.set-letters .row, 
-    div.main .main-col.set-letters div.specials .col {
-        padding-top: 0.5vmin;
-        padding-bottom: 0.5vmin;
-    }
     div.main .main-col.set-letters div.specials {
         flex: 0 0 11%;
         max-width: 11%;
         max-height: calc(100%/4);
     }
     div.main .main-col.set-letters div.specials > .row:first-child {
-        display: block;
-        margin-left: 0;
+        display: block;    
     }
-    div.main .main-col.set-letters div.specials > .row:first-child .col {
-        padding-left: 0;
-        margin-bottom: 1vmin;
-    }
-    /* div.main .main-col.set-letters .row{
-        padding: 0.5vmin;
-    }
-    div.main .main-col.set-letters .col {
-        padding-left: 1vmin;
-        padding-right: 0.8vmin;
-    } */
+
 
     /* Digits */
     div.main .main-col.set-digits .alpha-row{
@@ -182,16 +186,6 @@ div.toast-box p.toast-msg {
     }
     div.main .main-col.set-digits .sc-row {
         height: calc(100%/4);
-    }
-    div.main .main-col.set-digits form,
-    div.main .main-col.set-digits div.alpha .col,
-    div.main .main-col.set-digits div.control .col {
-        padding-right: 0;
-    }
-    div.main .main-col.set-digits .row, 
-    div.main .main-col.set-digits div.specials .col {
-        padding-top: 0.5vmin;
-        padding-bottom: 0.5vmin;
     }
     div.main .main-col.set-digits > .row:first-child {
         flex-direction: column;
@@ -207,14 +201,10 @@ div.toast-box p.toast-msg {
         max-width: 100%;
         max-height: calc(100%/5);
     }
-    div.main .main-col.set-digits div.control {
-        margin-right: 0;
-    }
-    
 }
 
 /* Alpha: When text will break */
-@media (orientation:landscape) and (max-width: 1200px) {
+@media (orientation:landscape) and (max-width: 1050px) {
     div.main .main-col.set-letters > .row:first-child {
         flex-direction: column;
     }
@@ -232,13 +222,7 @@ div.toast-box p.toast-msg {
     div.main .main-col.set-letters div.specials > .row:first-child .col {
         display: inline-block;
         width: calc(100%/4) !important;
-        margin-left: 0;
     }
-    div.main .main-col.set-letters div.control,
-    div.main .main-col.set-letters div.alpha-row {
-        margin-right: 0;
-    }
-
 }
 
 
