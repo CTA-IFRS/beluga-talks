@@ -74,7 +74,7 @@ function Layout() {
     obj.buildTextArea = function (numRows) {
         return '<form class="col">\
                     <label for="text" class="sr-only" id="label">Campo de texto</label>\
-                    <textarea id="text" class="form-control" rows="' + numRows + '"></textarea>\
+                    <textarea id="text" class="form-control" rows="' + numRows + '" readonly></textarea>\
                 </form>';
     }
 

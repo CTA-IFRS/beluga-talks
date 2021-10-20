@@ -191,18 +191,54 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<div class="menu row" >
-			<div class="col-12 w-100 h-100">
-				Nav Menu
+		<div class="menu">
+			<div class="brand">	
+				<span>Beluga</span>
+			</div>
+			<nav class="menu-options collapse" id="navbarToggleExternalContent">
+				<h1 class="navbar-brand">Beluga</h1>
+				<ul class="navbar-nav">
+					<li class="custom-control custom-switch nav-item">
+						<div class="form-inline">
+							<input type="checkbox" class="custom-control-input" id="modo-contraste">
+							<label class="custom-control-label" for="modo-contraste">Modo escuro</label>
+						</div>
+					</li>			
+					<li class="custom-control custom-switch nav-item">
+						<div class="form-inline">
+							<input type="checkbox" class="custom-control-input" id="varredura">
+							<label class="custom-control-label" for="varredura">Varredura</label>
+						</div>
+					</li>			
+					<li class="nav-item">
+						<div class="form-inline">
+							<label for="velocidade">Velocidade: </label>
+							<input type="range" class="form-control-range" id="velocidade">
+						</div>
+					</li>
+				</ul>
+			</nav>
+			<div class="cog">
+				<nav class="navbar">
+					<button class="navbar-toggler h-100" type="button" data-toggle="collapse" 
+							data-target="#navbarToggleExternalContent" 
+							aria-controls="navbarToggleExternalContent" 
+							aria-expanded="false" aria-label="Abrir menu de configuração">
+							<span class="fas fa-cog"></span>
+					</button>
+				  </nav>
 			</div>
 		</div>
 		<div class="main row">
 			<div class="main-col set-letters col-12"></div>
 		</div>
 	</div>
+
 	<div id="toast-speed" class="toast-box">
 		<p class="toast-msg">
 		</p>
 	</div>	
+
+	
 </body>
 </html>

@@ -6,29 +6,143 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#toast-speed {
-    position: absolute;
-    display: none;
-}
-
 div.container-fluid {
     position: fixed;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
+    padding: 0;
 }
 
 div.container-fluid div.main {
-    height: 92%;
+    height: 90%;
 }
 div.container-fluid div.menu {
-    height: 8%;
+    height: 10%;
+}
+div.main {
+    margin: 0;
+    padding: 0;
 }
 div.main div.main-col {
     height: 100%;
 }
 
+/* Horizontal Menu */
+.collapsing {
+    -webkit-transition: none;
+    transition: none;
+    display: none;
+}
+div.menu {
+    padding: 0;
+    display: flex;  
+    justify-content: space-between;
+    align-items: center;
+    border: 0;
+    border-bottom: 4px;
+    border-color: rgb(190, 184, 184);
+    border-style: solid;
+    background-color: rgb(235, 235, 235);
+}
+div.menu ul.navbar-nav {
+    flex-direction: row;
+    align-items: center;    
+    height: 100%;
+}
+div.menu ul.navbar-nav li {
+    flex: 1 1 33%;
+    height: 100%;
+}
+div.menu ul.navbar-nav li .form-inline{
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+div.menu ul.navbar-nav > li:first-child {
+    border-color: rgb(104, 104, 104);
+    border-width: 1px;
+    border-style: solid;
+    border-left: 0;
+    border-top: 0;
+    border-bottom: 0;
+}
+div.brand {
+    flex: 1 1 auto;
+    width: 20%;
+    max-width: 20%;
+    padding-top: 0.5vmin;
+    padding-bottom: 0.5vmin;
+}
+div.cog {
+    flex: 1 1 auto;
+    width: 10%; 
+    height: 100%;
+    max-width: 10%;
+    background-color: rgb(168, 166, 166);
+    padding-top: 0.5vmin;
+    padding-bottom: 0.5vmin;
+}
+div.cog .navbar {
+    justify-content: flex-end;
+    padding: 0;
+    height: 100%;
+}
+div.cog .navbar button {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+nav.menu-options {
+    flex: 1 1 auto;
+    padding-top: 0.5vmin;
+    padding-bottom: 0.5vmin;
+    width: 70%;
+    height: 100%;
+    z-index: 10000;
+    background-color: rgb(204, 204, 204);
+}
+nav.menu-options .navbar-brand {
+    display: none;
+}
+nav.menu-options .form-control-range {
+    display: inline;
+    width: auto;
+}
+
+/* When there is little space for the horizontal menu, vertical take place */
+@media (max-width: 980px) {
+    div.menu ul.navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        height: fit-content;
+    }
+    div.menu ul.navbar-nav > li:first-child {
+        border: 0;
+    }
+    nav.menu-options {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 75vw;
+        background-color: rgb(168, 166, 166);
+        border-color: black;
+        border-style: solid;
+        border-width: 1px;
+        border-left: 0;
+        border-top: 0;
+        border-bottom: 0;
+        padding-left: 1.5vmin;
+    }
+    nav.menu-options .navbar-brand {
+        display: block;
+    }
+}
+
+/* Buttons, textarea, form */
 div.main .main-col textarea {
     border-color: rgb(61, 61, 61);
 }
@@ -58,6 +172,11 @@ div[data-in-groups] button[data-in-groups].group-selected.controller {
     background: #004a99;
     color: #fff !important;
 } */
+
+#toast-speed {
+    position: absolute;
+    display: none;
+}   
 
 div.toast-box {
     display: none;
@@ -94,13 +213,13 @@ div.main .main-col div.sc-row .col {
     margin: 0;
 }
 div.main .main-col {
-    padding-left: 1.5vmin !important;
-    padding-right: 1.5vmin !important;
-    padding-bottom: 1.5vmin !important;
+    padding-bottom: 0.5vmin !important;
+    padding-left: 0.5vmin;
+    padding-right: 0.5vmin;
 }
 div.main .main-col form,
-div.main .main-col div.digit-row .col,
 div.main .main-col div.control .col,
+div.main .main-col div.digit-row .col,
 div.main .main-col div.specials .col,
 div.main .main-col .alpha .col {
     padding: 0.5vmin 0.5vmin !important;
@@ -110,7 +229,7 @@ div.main .main-col .alpha .col {
     div.main .main-col button,
     div.main .main-col button span,
     div.main .main-col div.specials button span  {
-        font-size: calc(1rem + 2.5vh);
+        font-size: calc(1rem + 2vh);
         vertical-align: middle;
         line-height: 0.5rem;
     } 
@@ -150,7 +269,7 @@ div.main .main-col .alpha .col {
     div.main .main-col button,
     div.main .main-col button span,
     div.main .main-col div.specials button span  {
-        font-size: calc(1rem + 2.5vw);
+        font-size: calc(1rem + 1.9vw);
         vertical-align: middle;
         line-height: 0.5rem;
     }
@@ -204,7 +323,7 @@ div.main .main-col .alpha .col {
 }
 
 /* Alpha: When text will break */
-@media (orientation:landscape) and (max-width: 1050px) {
+@media (orientation:landscape) and (max-width: 1200px) {
     div.main .main-col.set-letters > .row:first-child {
         flex-direction: column;
     }
