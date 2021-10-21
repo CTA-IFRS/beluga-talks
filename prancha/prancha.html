@@ -198,21 +198,39 @@
 			<nav class="menu-options collapse" id="navbarToggleExternalContent">
 				<h1 class="navbar-brand">Beluga</h1>
 				<ul class="navbar-nav">
-					<li class="custom-control custom-switch nav-item">
-						<div class="form-inline">
-							<input type="checkbox" class="custom-control-input" id="modo-contraste">
-							<label class="custom-control-label" for="modo-contraste">Modo escuro</label>
+					<li class="nav-item">
+						<div class="text-center">
+							<span class="bs-text">Modo escuro</span>
+							<span class="ss-icon fas fa-adjust"></span>
 						</div>
-					</li>			
-					<li class="custom-control custom-switch nav-item">
-						<div class="form-inline">
-							<input type="checkbox" class="custom-control-input" id="varredura">
-							<label class="custom-control-label" for="varredura">Varredura</label>
+						<div class="custom-control custom-switch text-center">
+							<input type="checkbox" class="custom-control-input" id="modo-contraste">
+							<label class="custom-control-label" for="modo-contraste">
+								<span class="sr-only">Modo escuro</span>
+							</label>
 						</div>
 					</li>			
 					<li class="nav-item">
-						<div class="form-inline">
-							<label for="velocidade">Velocidade: </label>
+						<div class="text-center">
+							<span class="bs-text">Varredura</span>
+							<span class="ss-icon fas fa-keyboard"></span>
+						</div>
+						<div class="custom-control custom-switch text-center">
+							<input type="checkbox" class="custom-control-input" id="varredura">
+							<label class="custom-control-label" for="varredura">
+								<span class="sr-only">Varredura</span>
+							</label>
+						</div>
+					</li>			
+					<li class="nav-item">
+						<div class="text-center">
+							<span class="bs-text">Velocidade</span>
+							<span class="ss-icon fas fa-tachometer-alt"></span>
+						</div>
+						<div class="text-center">
+							<label for="velocidade" class="sr-only">
+								<span>Velocidade</span>
+							</label>
 							<input type="range" class="form-control-range" id="velocidade">
 						</div>
 					</li>
