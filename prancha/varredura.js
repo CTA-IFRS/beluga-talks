@@ -11,7 +11,7 @@ function createScan(options = {}) {
   var _cssParentGroup = "group-selected-parent";
   var _clickShield = document.createElement("div");
   _clickShield.setAttribute("tabindex", "-1");
-  _clickShield.style.position = "fixed";
+  _clickShield.style.position = "absolute";
   _clickShield.style.left = 0;
   _clickShield.style.right = 0;
   _clickShield.style.top = 0;
@@ -42,12 +42,15 @@ function createScan(options = {}) {
   }
 
   function enableClickShield() {
-    document.body.appendChild(_clickShield);
+    var parent = options.clickRegion || document.body;
+    parent.appendChild(_clickShield);
+    //document.body.appendChild(_clickShield);
   }
 
   function disableClickShield() {
-    if (_clickShield.parentElement == document.body)
-      document.body.removeChild(_clickShield);
+    var parent = options.clickRegion || document.body;
+    if (_clickShield.parentElement == parent)
+      parent.removeChild(_clickShield);
   }
 
   function hasNextGroup(element) {

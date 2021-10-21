@@ -173,7 +173,8 @@
 
 			scan = createScan({
 				interval: interval,
-				goBack: 3
+				goBack: 3,
+				clickRegion: document.querySelector("div.main-col")
 			});
 
 			$(document).on("keydown", function (ev) {
@@ -181,7 +182,23 @@
 					if (scan.isScanning()) {
 						falar("Varredura desabilitada");
 						scan.stop();
+						$("#varredura").prop("checked", false);
 					}
+				}
+			});
+
+			$("#varredura").on("change", function (ev, state) {
+				if (this.checked) {
+					if ($("div.main-col").hasClass("set-letters")){
+						alternarScan("group-1");
+					} else {
+						alternarScan("group-2");
+					}
+				} else {
+					if (scan.isScanning()) {
+						falar("Varredura desabilitada");
+						scan.stop();
+					}		
 				}
 			});
 			
