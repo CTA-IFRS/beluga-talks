@@ -46,7 +46,7 @@ function Layout() {
                 <button type="button" data-in-groups="controls" data-next-group="group-1" \
                     onclick="erase()"\
                     id="backspace" class="btn btn-outline-primary  w-100 h-100">\
-                    ←\
+                    <i class="fas fa-backspace"></i>\
                 </button>\
             </div>';
     }
@@ -56,7 +56,7 @@ function Layout() {
                     <button type="button" data-in-groups="controls" data-next-group="group-1" \
                         onclick="clearText()" \
                         class="btn btn-outline-primary w-100 h-100">\
-                        <i class="fas fa-trash"></i>\
+                        <i class="fas fa-sync-alt"></i>\
                     </button>\
                 </div>';
     }
@@ -84,7 +84,7 @@ function Layout() {
         tags += this.buildTextArea(3);
         tags += '</div>';
         tags += '<div class="row control sc-row" data-in-groups="group-1 group-2" data-next-group="controls">';
-        tags += this.buildToggleScanButton('group-1');
+        tags += this.buildSpeakButton();
         tags += this.buildEraseButton();
         tags += this.buildClearButton();
         tags += '</div>';
@@ -140,7 +140,7 @@ function Layout() {
         tags += this.buildTextArea(2);
         tags += '</div></div>';
         tags += '<div class="col"><div data-in-groups="group-1 group-2" data-next-group="controls" class="sc-row control row h-100">'
-        tags += this.buildToggleScanButton('group-1');
+        tags += this.buildSpeakButton();
         tags += this.buildEraseButton();
         tags += this.buildClearButton();    
         tags += '</div></div>';
