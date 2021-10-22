@@ -48,7 +48,6 @@
 		var lingua = "Brazilian Portuguese Female";
 		var scan = null;
 		var storageSpeedKey = "scan_interval";
-		var interval = Number.parseInt(localStorage.getItem(storageSpeedKey)) || 1250; // milissegundos
 		var minInterval = 500; 
 		var maxInterval = 5000;
 
@@ -83,10 +82,6 @@
 			falar($("#text").val());
 		}
 
-		function speedRatio () {
-			return Math.trunc((1 - (interval - minInterval) / (maxInterval - minInterval)) * 100);
-		}
-
 		function alternarScan(grupo) {
 			if (scan.isScanning()){
 				falar("Varredura desabilitada");
@@ -108,24 +103,16 @@
 			}, 2500);
 		}
 
-		function mudarVelocidade(interval) {
-			scan.changeIntervalTime(interval);
-			localStorage.setItem(storageSpeedKey, interval);
-			var msg = "Velocidade em " + speedRatio() + "%";
+		function changeSpeed(idx) {
+			if (idx < 10) idx = 10;
+			if (idx > 100) idx = 100;
+
+			var currInterval = minInterval + (maxInterval - minInterval) * (1 - idx / 100);
+			scan.changeIntervalTime(currInterval);
+			localStorage.setItem(storageSpeedKey, idx);
+			var msg = "Velocidade em " + idx + "%";
 			falar(msg);
 			mostrarToast(msg);
-		}
-
-		function aumentarVelocidade() {
-			interval = interval - 250;
-			if (interval <= 500) interval = 500;
-			mudarVelocidade(interval);
-		}
-
-		function diminuirVelocidade() {
-			interval = interval + 250;
-			if (interval >= 5000) interval = 5000;
-			mudarVelocidade(interval);
 		}
 
     	function trocaTeclado() {
@@ -171,8 +158,10 @@
 				layout.buildLayoutForBigScreen(".main-col");
 			}
 
+			var idx = Number.parseInt(localStorage.getItem(storageSpeedKey)) || 70; // %
+			$("#velocidade").val(idx);
 			scan = createScan({
-				interval: interval,
+				interval: minInterval + (maxInterval - minInterval) * (1 - idx/100),
 				goBack: 3,
 				clickRegion: document.querySelector("div.main-col")
 			});
@@ -187,7 +176,7 @@
 				}
 			});
 
-			$("#varredura").on("change", function (ev, state) {
+			$("#varredura").on("change", function (ev) {
 				if (this.checked) {
 					if ($("div.main-col").hasClass("set-letters")){
 						alternarScan("group-1");
@@ -200,6 +189,10 @@
 						scan.stop();
 					}		
 				}
+			});
+
+			$("#velocidade").on("change", function (ev) {
+				changeSpeed(this.value);
 			});
 			
     	});
@@ -248,7 +241,7 @@
 							<label for="velocidade" class="sr-only">
 								<span>Velocidade</span>
 							</label>
-							<input type="range" class="form-control-range" id="velocidade">
+							<input type="range" class="form-control-range" min="10" max="100" step="5" id="velocidade">
 						</div>
 					</li>
 				</ul>
