@@ -203,6 +203,14 @@ div[data-in-groups].group-selected-parent button{
     border-style: dashed;
     border-width: 2px;
 }
+div.main .main-col.set-letters span.to-alpha,
+div.main .main-col.set-digits span.to-digit {
+    display: none;
+}
+div.main .main-col.set-digits span.to-alpha,
+div.main .main-col.set-letters span.to-digit {
+    display: inline;
+}
 div.main .main-col div[data-in-groups].group-selected button,  
 div.main .main-col div[data-in-groups] button[data-in-groups].group-selected {
     background-color: rgb(54, 54, 54) !important;

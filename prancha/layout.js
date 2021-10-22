@@ -22,12 +22,13 @@ function Layout() {
                 </div>';
     }
 
-    obj.buildToggleKeyboardButton = function (label) {
+    obj.buildToggleKeyboardButton = function () {
         return '<div class="col w-100 h-100">\
                 <button type="button" data-in-groups="specials" id="botaoTrocaTeclado" \
-                    onclick="trocaTeclado()" class="btn btn-outline-primary w-100 h-100"><span>' 
-                    + label + 
-                '</span></button>\
+                    onclick="trocaTeclado()" class="btn btn-outline-primary w-100 h-100"><span>\
+                    <span class="to-digit">123</span>\
+                    <span class="to-alpha">ABC</span>\
+                </span></button>\
             </div>';
     }
 
@@ -125,7 +126,7 @@ function Layout() {
                 + this.buildSpaceButton('__', 'specials', 'group-1')
                 + this.buildStringButton('SIM', 'specials', 'group-1')
                 + this.buildStringButton('NÃO', 'specials', 'group-1')
-                + this.buildToggleKeyboardButton('123')
+                + this.buildToggleKeyboardButton()
                 + '</div>';
 
         document.querySelector(dest).innerHTML = tags;
@@ -186,7 +187,7 @@ function Layout() {
                 + this.buildSpaceButton('__', 'specials', 'group-1')
                 + this.buildStringButton('SIM', 'specials', 'group-1')
                 + this.buildStringButton('NÃO', 'specials', 'group-1')
-                + this.buildToggleKeyboardButton('123')
+                + this.buildToggleKeyboardButton()
                 + '</div>';
         tags += '</div>';
 

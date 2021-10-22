@@ -123,8 +123,6 @@
 				$("div.main-col").removeClass("set-letters").addClass("set-digits");
 				$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-2");
 				$('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-2");
-				$("#alternar-scan")[0].onclick = function () { alternarScan("group-2") };
-				$("#botaoTrocaTeclado span")[0].innerHTML = "ABC";
 				if (scan.isScanning()) scan.reset("group-2");
 			} else {
 				var fala = new SpeechSynthesisUtterance("Teclado alfabético");
@@ -132,32 +130,11 @@
 				$("div.main-col").removeClass("set-digits").addClass("set-letters");
 				$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-1");
 				$('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-1");
-				$("#alternar-scan")[0].onclick =function () { alternarScan("group-1") };
-				$("#botaoTrocaTeclado span")[0].innerHTML = "123";
 				if (scan.isScanning()) scan.reset("group-1");
 			}
     	};
 
 		$(document).ready(function(){			
-			var layout = Layout();
-			var mediaPortrait = window.matchMedia("(orientation:portrait)");
-			var mediaLandscape = window.matchMedia("(orientation:landscape)");
-			mediaPortrait.addListener(function (m) {
-				if (m.matches) {
-					layout.buildLayoutForSmallScreen(".main-col");
-				} 
-			});
-			mediaLandscape.addListener(function (m) {
-				if (m.matches) {
-					layout.buildLayoutForBigScreen(".main-col");
-				} 
-			});
-			if (mediaPortrait.matches) {
-				layout.buildLayoutForSmallScreen(".main-col");
-			} else {
-				layout.buildLayoutForBigScreen(".main-col");
-			}
-
 			var idx = Number.parseInt(localStorage.getItem(storageSpeedKey)) || 70; // %
 			$("#velocidade").val(idx);
 			scan = createScan({
@@ -165,6 +142,51 @@
 				goBack: 3,
 				clickRegion: document.querySelector("div.main-col")
 			});
+
+			var layout = Layout();
+			var mediaPortrait = window.matchMedia("(orientation:portrait)");
+			var mediaLandscape = window.matchMedia("(orientation:landscape)");
+			mediaPortrait.addListener(function (m) {
+				if (m.matches) {
+					var currText = $("#text").val();
+					layout.buildLayoutForSmallScreen(".main-col");
+					$("#text").val(currText);
+					if (scan.isScanning()) {
+						if ($("div.main-col").hasClass("set-letters")) {
+							$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-1");
+							$('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-1");
+							scan.reset("group-1");
+						} else {
+							$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-2");
+							$('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-2");
+							scan.reset("group-2");
+						}
+					}
+				} 
+			});
+			mediaLandscape.addListener(function (m) {
+				if (m.matches) {
+					var currText = $("#text").val();
+					layout.buildLayoutForBigScreen(".main-col");
+					$("#text").val(currText);
+					if (scan.isScanning()) {
+						if ($("div.main-col").hasClass("set-letters")) {
+							$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-1");
+							$('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-1");
+							scan.reset("group-1");
+						} else {
+							$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-2");
+							$('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-2");
+							scan.reset("group-2");
+						}
+					}
+				} 
+			});
+			if (mediaPortrait.matches) {
+				layout.buildLayoutForSmallScreen(".main-col");
+			} else {
+				layout.buildLayoutForBigScreen(".main-col");
+			}
 
 			$(document).on("keydown", function (ev) {
 				if (ev.keyCode == 27) { //esc
@@ -179,10 +201,11 @@
 			$("#varredura").on("change", function (ev) {
 				if (this.checked) {
 					if ($("div.main-col").hasClass("set-letters")){
-						alternarScan("group-1");
+						scan.start("group-1");
 					} else {
-						alternarScan("group-2");
+						scan.start("group-2");
 					}
+					falar("Varredura habilitada");
 				} else {
 					if (scan.isScanning()) {
 						falar("Varredura desabilitada");
