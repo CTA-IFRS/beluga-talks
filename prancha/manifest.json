@@ -4,8 +4,8 @@
   "theme_color": "#007bff",
   "background_color": "#007bff",
   "display": "fullscreen",
-  "scope": "/",
-  "start_url": "./index.html?home",
+  "scope": "/prancha",
+  "start_url": "/prancha/index.html",
   "lang": "pt-BR",
   "orientation": "landscape",
   "icons": [{

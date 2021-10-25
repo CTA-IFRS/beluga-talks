@@ -6,17 +6,16 @@ console.log("Inicio do cache");
 //Install
 // Lista de arquivos que devem ser cacheados
 var files = [
-    './',
-    './index.html',
-    './index.js',
-    './estilo.css',
-    './manifest.json',
-    './imagens/Icon10.png'
+    '/prancha/index.html',
+    '/prancha/index.js',
+    '/prancha/estilo.css',
+    '/prancha/manifest.json',
+    '/prancha/imagens/Icon10.png'
   ];
 
 // Faz cache dos arquivos ao instalar 
 this.addEventListener("install", event => {
-  console.log("Install");
+  //console.log("Install");
     this.skipWaiting();
   
     event.waitUntil(
@@ -32,7 +31,7 @@ this.addEventListener("install", event => {
 //Activate
 // Limpa o cache antigo 
 this.addEventListener('activate', event => {
-  console.log("Activate");
+  //console.log("Activate");
 
     event.waitUntil(
       caches.keys().then(cacheNames => {
@@ -49,7 +48,7 @@ this.addEventListener('activate', event => {
  //Fetch
  // Reponde o request direto do cache
 this.addEventListener("fetch", event => {
-  console.log("Fetch");
+  //console.log("Fetch");
   
     event.respondWith(
       caches.match(event.request)
@@ -63,7 +62,7 @@ this.addEventListener("fetch", event => {
         })
         .catch(() => {
           // Mostra uma página de offline
-          return caches.match('./index.html');
+          return caches.match('./prancha.html');
         })
     )
   }); 
