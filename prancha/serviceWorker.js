@@ -62,7 +62,7 @@ this.addEventListener("fetch", event => {
         })
         .catch(() => {
           // Mostra uma página de offline
-          return caches.match('./prancha.html');
+          return caches.match('/prancha/index.html');
         })
     )
   }); 
