@@ -217,6 +217,14 @@
 			$("#velocidade").on("change", function (ev) {
 				changeSpeed(this.value);
 			});
+
+			$("#modo-contraste").on("change", function (ev) {
+				if($("body").hasClass("contrast")) {
+					$("body").removeClass("contrast");
+				} else {
+					$("body").addClass("contrast");
+				}
+			});
 			
     	});
 	</script>

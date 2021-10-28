@@ -393,4 +393,53 @@ div.main .main-col .alpha .col {
     }
 }
 
+/* Dark-mode */
+body.contrast div.main {
+    background-color: black;
+}
+body.contrast div.main textarea {
+    background-color: black !important;
+    border-color: rgb(200,200,200) !important;
+    color: white !important;
+}
+body.contrast div.main button {
+    background-color: rgb(54, 54, 54);
+    color: rgb(200,200,200) !important;
+    border-color: none !important;
+}
+body.contrast div.main .main-col button:hover,
+body.contrast div.main .main-col button:focus,
+body.contrast div.main .main-col button:active {
+    background-color: rgb(200,200,200) !important;
+    color: rgb(54, 54, 54) !important;
+}
+body.contrast div.main .main-col div[data-in-groups].group-selected button,  
+body.contrast div.main .main-col div[data-in-groups] button[data-in-groups].group-selected {
+    background-color: rgb(200,200,200) !important;
+    color: rgb(54, 54, 54) !important;
+}
+body.contrast div[data-in-groups].group-selected-parent button{
+    border-color: rgb(200,200,200) !important;
+    border-style: dashed !important;
+    border-width: 2px !important;
+}
+
+body.contrast div.menu {
+    background-color: rgb(74, 74, 74);
+    color: rgb(240,240,240);
+    border-color: black;
+}
+body.contrast div.cog,
+body.contrast nav.menu-options,
+body.contrast nav.menu-options ul.navbar-nav {
+    background-color: rgb(54, 54, 54) !important;
+}
+body.contrast div.cog button{
+    color: rgb(240,240,240) !important;
+}
+body.contrast div.menu ul.navbar-nav > li:first-child {
+    border-color: rgb(50,50,50);
+}
+
+
 
