@@ -282,6 +282,9 @@ div.main .main-col .alpha .col {
         vertical-align: middle;
         line-height: 0.5rem;
     } 
+    div.main .main-col textarea {
+        font-size: calc(1rem + 1.1vh) !important;
+    }
 
     /* Alpha */
     div.main .main-col.set-letters .digit-row{
@@ -321,6 +324,9 @@ div.main .main-col .alpha .col {
         font-size: calc(1rem + 1.5vw) !important;
         vertical-align: middle;
         line-height: 0.5rem;
+    }
+    div.main .main-col textarea {
+        font-size: calc(1rem + 1.1vw) !important;
     }
 
     /* Alpha */

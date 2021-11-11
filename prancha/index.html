@@ -52,8 +52,14 @@
 		var minInterval = 500; 
 		var maxInterval = 5000;
 
+		function updateTextAreaScroll() {
+			var textArea = document.getElementById("text");
+			textArea.scrollTop = textArea.scrollHeight;
+		}
+
 		function escreve(val) {
 			document.getElementById("text").value += val.toUpperCase();
+			updateTextAreaScroll();
             var fala = new SpeechSynthesisUtterance(val);
             window.speechSynthesis.speak(fala);
 		};
@@ -158,6 +164,7 @@
 					var currText = $("#text").val();
 					layout.buildLayoutForSmallScreen(".main-col");
 					$("#text").val(currText);
+					updateTextAreaScroll();
 					if (scan.isScanning()) {
 						if ($("div.main-col").hasClass("set-letters")) {
 							$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-1");
@@ -176,6 +183,7 @@
 					var currText = $("#text").val();
 					layout.buildLayoutForBigScreen(".main-col");
 					$("#text").val(currText);
+					updateTextAreaScroll();
 					if (scan.isScanning()) {
 						if ($("div.main-col").hasClass("set-letters")) {
 							$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-1");
