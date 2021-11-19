@@ -6,11 +6,11 @@ console.log("Inicio do cache");
 //Install
 // Lista de arquivos que devem ser cacheados
 var files = [
-    '/Prancha-alfanumerica-CAA/prancha/index.html',
-    '/Prancha-alfanumerica-CAA/prancha/index.js',
-    '/Prancha-alfanumerica-CAA/prancha/estilo.css',
-    '/Prancha-alfanumerica-CAA/prancha/manifest.json',
-    '/Prancha-alfanumerica-CAA/prancha/imagens/Icon10.png'
+    'index.html',
+    'index.js',
+    'estilo.css',
+    'manifest.json',
+    'imagens/Icon10.png'
   ];
 
 // Faz cache dos arquivos ao instalar 
@@ -62,7 +62,7 @@ this.addEventListener("fetch", event => {
         })
         .catch(() => {
           // Mostra uma página de offline
-          return caches.match('/Prancha-alfanumerica-CAA/prancha/index.html');
+          return caches.match('index.html');
         })
     )
   }); 
