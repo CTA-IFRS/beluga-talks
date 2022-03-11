@@ -9,9 +9,8 @@
 	<meta name="description" content="Prancha para Comunicação Aumentativa e Alternativa desenvolvida pelo Centro Tecnológico de Acessibilidade do IFRS">
 	
 	<!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
 	<!-- Custom CSS -->
     <link rel="stylesheet" href="css/main.css">
@@ -24,7 +23,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container py-5">
-            <a class="navbar-brand" href="#"><img src="img/beluga_icon_nav.png" height="25px" class="mr-1"> Beluga Talks</a>
+            <a class="navbar-brand" id="beluga" href=""><img src="img/beluga_icon_nav.png" height="25px" class="mr-1"> Beluga Talks</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -227,6 +226,11 @@
         <p class="font-weight-bold p-0 m-0"><small>Desenvolvido por CTA - IFRS. Aplicativo sob a licença GPLv3 e Creative Commons NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)</small></p>
     </div>
 
+    <a id="btn-back-to-top" href="" class="btn btn-primary btn-lg" role="button">
+        <i class="bi bi-arrow-up-short"></i>
+        <span class="sr-only">Voltar para o início do site</span>
+    </a>
+
 	<!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
@@ -235,7 +239,7 @@
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.0/dist/js.cookie.min.js"></script>
 
     <!-- Custom JS -->
-    <script src="js/custom.js"></script>
+    <script src="js/main.js"></script>
     <script src="js/high_contrast.js"></script>
 
 </body>
