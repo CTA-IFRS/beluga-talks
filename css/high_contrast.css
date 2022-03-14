@@ -1,0 +1,56 @@
+/* ------------------ */
+/*   ALTO CONTRASTE   */
+/* ------------------ */
+
+.alto-contraste, 
+.alto-contraste a,
+.alto-contraste button,
+.alto-contraste footer,
+.alto-contraste nav,
+.alto-contraste p
+{
+	color: #ffffff !important;
+	background-color: #000000 !important;
+}
+
+.alto-contraste #manuals,
+.alto-contraste #manuals p,
+.alto-contraste #contribute,
+.alto-contraste #contribute p,
+.alto-contraste #footer,
+.alto-contraste #footer p{
+    color: #ffffff !important;
+    background-color: #111111 !important;
+}
+
+.alto-contraste nav{
+    border-bottom: 1px solid #ffffff;
+}
+
+.alto-contraste .barra-acessibilidade a:hover,
+.alto-contraste .barra-acessibilidade a:focus{
+    color: #ffffff !important;
+}
+
+.alto-contraste footer{
+    border-top: 1px solid #ffffff;
+}
+
+.alto-contraste nav a{
+    border-color: #ffffff;
+    margin: 0 2px;
+}
+
+.alto-contraste .btn-primary,
+.alto-contraste .btn-dark,
+.alto-contraste span.badge{
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+.alto-contraste .btn-dark:focus,
+.alto-contraste .btn-dark:hover,
+.alto-contraste .btn-primary:focus,
+.alto-contraste .btn-primary:hover{
+    box-shadow: 0 0 1em #1069D9;
+}
