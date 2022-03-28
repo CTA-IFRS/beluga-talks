@@ -30,3 +30,9 @@ nav.barra-acessibilidade{
 nav.barra-acessibilidade a:hover{
     text-decoration: underline;
 }
+
+@media (max-width: 400px) {
+    #main h1 {
+        font-size: 2.5rem;
+    }
+}

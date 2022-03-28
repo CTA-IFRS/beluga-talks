@@ -18,7 +18,8 @@
 .alto-contraste #contribute,
 .alto-contraste #contribute p,
 .alto-contraste #footer,
-.alto-contraste #footer p{
+.alto-contraste #footer p,
+.alto-contraste #developed-by {
     color: #ffffff !important;
     background-color: #111111 !important;
 }
@@ -43,10 +44,12 @@
 
 .alto-contraste .btn-primary,
 .alto-contraste .btn-dark,
-.alto-contraste span.badge{
+.alto-contraste span.badge,
+.alto-contraste .menu-principal .navbar-toggler{
     background-color: #ffffff !important;
     color: #000000 !important;
 }
+
 
 .alto-contraste .btn-dark:focus,
 .alto-contraste .btn-dark:hover,
