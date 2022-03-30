@@ -36,3 +36,30 @@ nav.barra-acessibilidade a:hover{
         font-size: 2.5rem;
     }
 }
+
+@media (orientation: portrait) and (max-width: 400px) {
+    #contribute,
+    #manuals,
+    #main,
+    #feedback,
+    #about,
+    #contact
+    {
+        text-align: justify !important;
+    }
+
+    #contribute h2,
+    #manuals h2,
+    #main h1,
+    #feedback h2,
+    #about h2,
+    #contact h2
+    {
+        text-align: center !important;
+    }
+
+    #contribute .gh-button{
+        text-align: center !important;
+    }
+
+}
