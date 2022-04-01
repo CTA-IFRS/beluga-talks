@@ -25,6 +25,9 @@ div.container-fluid div.menu {
 div.brand {
     font-size: calc(1.1rem + (15 * (100vw - 1000px) / 1000));
 }
+div.menu ul.navbar-nav {
+    font-size: 100%;
+}
 
 @media (max-height: 500px) {
     div.container-fluid div.main {
@@ -138,6 +141,41 @@ nav.menu-options .ss-icon  {
     display: none;
 }
 
+nav.menu-options .nav-item .velocidade-group {
+    font-size: 130%;
+}
+nav.menu-options .nav-item label.btn.btn-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border:none;
+    font-size: 130%;
+}
+nav.menu-options .nav-item label.btn.btn-secondary {
+    background-color: rgb(168, 166, 166);
+    color: black;
+}
+nav.menu-options .nav-item label.btn.btn-secondary.active {
+    background-color: rgb(9, 4, 78);
+    color: white;
+}
+nav.menu-options .nav-item:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+nav.menu-options .nav-item:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+nav.menu-options .nav-item:last-child .velocidade-group {
+    width: 100%;
+}
+
 
 @media (max-width: 980px) {
     /* When there is little space for text in menu, change to icons */
@@ -160,6 +198,14 @@ nav.menu-options .ss-icon  {
         width:1%;
         height:1%;
     }
+
+    nav.menu-options .nav-item .velocidade-group {
+        font-size: 140%;
+    }
+    nav.menu-options .nav-item label.btn.btn-secondary{
+        font-size: 180%;
+    }
+    
     /* When there is little space for the horizontal menu, vertical take place */
     /* div.menu ul.navbar-nav {
         flex-direction: column;
@@ -452,6 +498,15 @@ body.contrast div.cog button{
 }
 body.contrast div.menu ul.navbar-nav > li:first-child {
     border-color: rgb(50,50,50);
+}
+
+body.contrast nav.menu-options .nav-item label.btn.btn-secondary {
+    background-color: rgb(54, 54, 54);
+    color: white;
+}
+body.contrast nav.menu-options .nav-item label.btn.btn-secondary.active {
+    background-color: rgb(9, 4, 78);
+    color: white;
 }
 
 
