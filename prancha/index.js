@@ -1,7 +1,7 @@
 // verifica se o navegador suporta service workers
   if ('serviceWorker' in navigator) {
     // Registre o service worker
-     navigator.serviceWorker.register ('/Prancha-alfanumerica-CAA/prancha/serviceWorker.js')
+     navigator.serviceWorker.register ('/beluga-talks/prancha/serviceWorker.js')
       .then (function (registration) {
       console.info ("Registro do Service Worker bem-sucedido com escopo:", registration.scope);
       })
