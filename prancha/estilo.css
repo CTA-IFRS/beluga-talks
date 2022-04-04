@@ -25,6 +25,9 @@ div.container-fluid div.menu {
 div.brand {
     font-size: calc(1.1rem + (15 * (100vw - 1000px) / 1000));
 }
+div.brand a {
+    color: black !important;
+}
 div.menu ul.navbar-nav {
     font-size: 100%;
 }
@@ -456,6 +459,9 @@ div.main .main-col .alpha .col {
 /* Dark-mode */
 body.contrast div.main {
     background-color: black;
+}
+body.contrast div.brand a {
+    color: white !important;
 }
 body.contrast div.main textarea {
     background-color: black !important;
