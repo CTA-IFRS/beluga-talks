@@ -250,10 +250,7 @@ div.main .main-col button {
 /* div.main .main-col button:hover {
     background-color: rgb(255,255,89) !important;
 } */
-div.main .main-col button:focus,
-div.main .main-col button:active {
-    background-color: white !important;
-}
+
 div[data-in-groups].group-selected-parent button{
     /* border-color: black; */
     border-style: dashed;
@@ -267,6 +264,8 @@ div.main .main-col.set-digits span.to-alpha,
 div.main .main-col.set-letters span.to-digit {
     display: inline;
 }
+div.main .main-col button:focus,
+div.main .main-col button:active,
 div.main .main-col button:hover,
 div.main .main-col div[data-in-groups].group-selected button,  
 div.main .main-col div[data-in-groups] button[data-in-groups].group-selected {
