@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<title>Teclado para CAA</title>
+	<title>Beluga Talks</title>
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -238,9 +238,11 @@
 				if($("body").hasClass("contrast")) {
 					$("body").removeClass("contrast");
 					localStorage.setItem(storageContrast, "normal");
+					falar("Modo escuro desabilitado");
 				} else {
 					$("body").addClass("contrast");
 					localStorage.setItem(storageContrast, "contrast");
+					falar("Modo escuro habilitado");
 				}
 			});
 			
