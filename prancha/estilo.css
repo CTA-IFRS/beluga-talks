@@ -72,7 +72,7 @@ div.menu ul.navbar-nav {
     height: 100%;
 }
 div.menu ul.navbar-nav li {
-    padding: 0.5vmin;
+    padding: 0 0.5vmin;
 }
 div.menu ul.navbar-nav li:nth-child(1),
 div.menu ul.navbar-nav li:nth-child(2) {
@@ -88,14 +88,14 @@ div.menu ul.navbar-nav li:nth-child(3) {
     align-items: center;
     height: 100%;
 } */
-div.menu ul.navbar-nav > li:first-child {
+/* div.menu ul.navbar-nav > li:first-child {
     border-color: rgb(104, 104, 104);
     border-width: 1px;
     border-style: solid;
     border-left: 0;
     border-top: 0;
     border-bottom: 0;
-}
+} */
 div.brand {
     flex: 1 1 auto;
     width: 20%;
@@ -154,6 +154,10 @@ nav.menu-options .nav-item label.btn.btn-secondary {
     flex-direction: column;
     border:none;
     font-size: 130%;
+}
+nav.menu-options .nav-item label.btn.btn-secondary {
+    outline: 1px solid rgb(131, 129, 129);
+    cursor: pointer;
 }
 nav.menu-options .nav-item label.btn.btn-secondary {
     background-color: rgb(168, 166, 166);
