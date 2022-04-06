@@ -245,6 +245,14 @@
 					falar("Modo escuro habilitado");
 				}
 			});
+
+			$('#navbarToggleExternalContent').on('shown.bs.collapse', function () {
+				$('#menu-toggler-cog').attr("aria-label", "Fechar menu de configuração");
+				$('#menu-config').focus();
+			});
+			$('#navbarToggleExternalContent').on('hide.bs.collapse', function () {
+				$('#menu-toggler-cog').attr("aria-label", "Abrir menu de configuração");
+			});
 			
     	});
 	</script>
@@ -264,7 +272,8 @@
 					Beluga Talks
 				</h1>
 				<ul class="navbar-nav">
-					<li class="nav-item">						
+					<li class="nav-item">			
+						<a href="#menu-config" id="menu-config" class="sr-only">Início do menu de configuração</a>			
 						<div class="btn-group-toggle w-100 h-100 modo-contraste-group" data-toggle="buttons">
 							<label class="btn btn-secondary w-100 h-100">
 								<input type="checkbox" autocomplete="off" id="modo-contraste">
@@ -308,6 +317,7 @@
 			<div class="cog">
 				<nav class="navbar">
 					<button class="navbar-toggler h-100" type="button" data-toggle="collapse" 
+							id="menu-toggler-cog"
 							data-target="#navbarToggleExternalContent" 
 							aria-controls="navbarToggleExternalContent" 
 							aria-expanded="false" aria-label="Abrir menu de configuração">
