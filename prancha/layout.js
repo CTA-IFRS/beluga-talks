@@ -9,7 +9,7 @@ function Layout() {
     obj.buildStringButton = function (letter, groups, nextGroup) {
         return '<div class="col w-100 h-100"> \
                     <button type="button" onclick="escreve(\'' + letter.toLowerCase() + '\')" '
-                    + 'data-in-groups="'+ groups + '" data-next-group="'+ nextGroup + '"'
+                    + 'data-in-groups="'+ groups + '" data-next-group="'+ nextGroup + '" '
                     + 'class="btn btn-outline-primary w-100 h-100"><span>' + letter + '</span></button>\
                 </div>';
     }
@@ -17,7 +17,8 @@ function Layout() {
     obj.buildSpaceButton = function (label, groups, nextGroup) {
         return '<div class="col w-100 h-100"> \
                     <button type="button" onclick="space()" '
-                    + 'data-in-groups="'+ groups + '" data-next-group="'+ nextGroup + '"'
+                    + 'data-in-groups="'+ groups + '" data-next-group="'+ nextGroup + '" '
+                    + 'aria-label="Adicionar espaço" '
                     + 'class="btn btn-outline-primary w-100 h-100"><span>' + label + '</span></button>\
                 </div>';
     }
@@ -25,6 +26,7 @@ function Layout() {
     obj.buildToggleKeyboardButton = function () {
         return '<div class="col w-100 h-100">\
                 <button type="button" data-in-groups="specials" id="botaoTrocaTeclado" \
+                    aria-label="Trocar teclado" \
                     onclick="trocaTeclado()" class="btn btn-outline-primary w-100 h-100"><span>\
                     <span class="to-digit">123</span>\
                     <span class="to-alpha">ABC</span>\
@@ -45,7 +47,8 @@ function Layout() {
     obj.buildEraseButton = function () {
         return '<div class="col  w-100 h-100">\
                 <button type="button" data-in-groups="controls" data-next-group="group-1" \
-                    onclick="erase()"\
+                    onclick="erase()" \
+                    aria-label="Apagar último caractere adicionado" \
                     id="backspace" class="btn btn-outline-primary  w-100 h-100">\
                     <i class="fas fa-backspace"></i>\
                 </button>\
@@ -56,6 +59,7 @@ function Layout() {
         return '<div class="col  w-100 h-100">\
                     <button type="button" data-in-groups="controls" data-next-group="group-1" \
                         onclick="clearText()" \
+                        aria-label="Limpar caixa de texto" \
                         class="btn btn-outline-primary w-100 h-100">\
                         <i class="fas fa-sync-alt"></i>\
                     </button>\
@@ -65,7 +69,8 @@ function Layout() {
     obj.buildSpeakButton = function () {
         return '<div class="col  w-100 h-100">\
                     <button type="button" data-in-groups="controls" data-next-group="group-1" \
-                        onclick="speakLoud()"\
+                        onclick="speakLoud()" \
+                        aria-label="Ler o conteúdo da caixa de texto" \
                         class="btn btn-outline-primary w-100 h-100">\
                         <i class="fas fa-volume-up"></i>\
                     </button>\
