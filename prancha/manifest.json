@@ -6,7 +6,7 @@
   "display": "fullscreen",
   "start_url": "index.html",
   "lang": "pt-BR",
-  "orientation": "landscape",
+  "orientation": "any",
   "icons": [{
     "src": "imagens/Icon10.png",
     "sizes": "192x192 512x512",
