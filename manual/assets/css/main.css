@@ -1,0 +1,21 @@
+
+nav.barra-acessibilidade{
+    background-color: #D8D8D8;
+    padding: 0.5rem 1rem;
+}
+nav.barra-acessibilidade a:hover{
+    text-decoration: underline;
+}
+nav.barra-acessibilidade .badge.badge-dark {
+    background-color: black;
+    color: white;
+}
+nav.barra-acessibilidade small {
+    font-size: 80%;
+}
+nav.barra-acessibilidade .ml-auto {
+    margin-left: auto!important;
+}
+nav.barra-acessibilidade .btn-a11y {
+    box-shadow: none;
+}
