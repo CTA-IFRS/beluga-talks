@@ -16,18 +16,50 @@
     
     <!-- FontAwesome JS-->
     <script defer src="assets/fontawesome/js/all.min.js"></script>
-    
+
+    <link rel="stylesheet" href="assets/plugins/bootstrap/js/bootstrap.min.js">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
     <!-- Plugins CSS -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.2/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.2/styles/atom-one-dark.min.css">
     <link rel="stylesheet" href="assets/plugins/simplelightbox/simple-lightbox.min.css">
 
     <!-- Theme CSS -->  
     <link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
 
+    <link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="../css/high_contrast.css">
+
 </head> 
 
 <body class="docs-page">    
-    <header class="header fixed-top">	    
+    <header class="header fixed-top">
+		<!-- Barra de acessibilidade -->
+		<nav class="barra-acessibilidade navbar navbar-expand-sm navbar-dark" aria-label="Menu de acessibilidade">
+			<button type="button" class="navbar-toggler bg-dark btn-a11y" data-bs-toggle="collapse" data-bs-target="#menuAcessibilidade" aria-controls="menuAcessibilidade" aria-expanded="false" aria-label="Expandir menu">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div id="menuAcessibilidade" class="collapse navbar-collapse">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link text-dark py-0" href="#conteudo-principal" accesskey="1"><small>Ir para o conteúdo
+							<span class="badge badge-dark">1</span></small>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-dark py-0" href="#menu-principal" accesskey="2"><small>Ir para o menu
+							<span class="badge badge-dark">2</span></small>
+						</a>
+					</li>
+				</ul>
+				<ul class="navbar-nav navbar-right ml-auto">
+					<li class="nav-item my-2 my-md-0">
+						<a class="nav-link text-dark py-0" id="high_contrast" aria-checked="false" href="#"><small><i class="bi bi-circle-half">&nbsp;</i> Alto contraste</small></a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+			    
         <div class="branding docs-branding">
             <div class="container-fluid position-relative py-2">
                 <div class="docs-logo-wrapper">
@@ -35,12 +67,13 @@
 	                    <span></span>
 	                    <span></span>
 	                    <span></span>
+						<span class="sr-only">Expandir</span>
 	                </button>
 	                <div class="site-logo"><a class="navbar-brand" href="../"><img class="logo-icon me-2" src="../img/beluga_icon_nav.png" alt="logomarca do Beluga em formato de uma baleia"><span class="logo-text text-alt">Beluga Talks</span></a></div>    
                 </div><!--//docs-logo-wrapper-->
 	            <div class="docs-top-utilities d-flex justify-content-end align-items-center">
 					<!-- <a href="index.html" class="btn btn-secondary d-none d-lg-flex">Voltar para homepage</a> -->
-		            <a href="../prancha/" class="btn btn-secondary d-none d-lg-flex">Acessar o Beluga Talks</a>
+		            <a href="../prancha/" class="btn btn-secondary d-none d-lg-flex btn-goto-beluga">Acessar o Beluga Talks</a>
 	            </div><!--//docs-top-utilities-->
             </div><!--//container-->
         </div><!--//branding-->
@@ -175,9 +208,12 @@
    
        
     <!-- Javascript -->          
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="assets/plugins/popper.min.js"></script>
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
     
+	<!-- JS-Cookie -->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.0/dist/js.cookie.min.js"></script>
     
     <!-- Page Specific JS -->
     <script src="assets/plugins/smoothscroll.min.js"></script>
@@ -186,6 +222,8 @@
     <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>      
     <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script> 
     <script src="assets/js/docs.js"></script> 
+
+	<script src="../js/high_contrast.js"></script>
 
 </body>
 </html> 

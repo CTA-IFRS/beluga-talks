@@ -7,7 +7,9 @@
 .alto-contraste button,
 .alto-contraste footer,
 .alto-contraste nav,
-.alto-contraste p
+.alto-contraste p,
+.alto-contraste .branding.docs-branding,
+.alto-contraste .docs-sidebar
 {
 	color: #ffffff !important;
 	background-color: #000000 !important;
@@ -29,7 +31,11 @@
 }
 
 .alto-contraste .barra-acessibilidade a:hover,
-.alto-contraste .barra-acessibilidade a:focus{
+.alto-contraste .barra-acessibilidade a:focus,
+.alto-contraste .site-logo .navbar-brand .logo-text,
+.alto-contraste .docs-heading,
+.alto-contraste .section-heading,
+.alto-contraste strong {
     color: #ffffff !important;
 }
 
@@ -45,7 +51,9 @@
 .alto-contraste .btn-primary,
 .alto-contraste .btn-dark,
 .alto-contraste span.badge,
-.alto-contraste .menu-principal .navbar-toggler{
+.alto-contraste .menu-principal .navbar-toggler,
+.alto-contraste .btn-goto-beluga
+{
     background-color: #ffffff !important;
     color: #000000 !important;
 }
