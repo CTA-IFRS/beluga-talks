@@ -11,7 +11,7 @@ function createScan(options = {}) {
   var _cssParentGroup = "group-selected-parent";
   var _clickShield = document.createElement("div");
   _clickShield.setAttribute("tabindex", "-1");
-  _clickShield.style.position = "fixed";
+  _clickShield.style.position = "absolute";
   _clickShield.style.left = 0;
   _clickShield.style.right = 0;
   _clickShield.style.top = 0;
@@ -42,11 +42,15 @@ function createScan(options = {}) {
   }
 
   function enableClickShield() {
-    document.body.appendChild(_clickShield);
+    var parent = options.clickRegion || document.body;
+    parent.appendChild(_clickShield);
+    //document.body.appendChild(_clickShield);
   }
 
   function disableClickShield() {
-    document.body.removeChild(_clickShield);
+    var parent = options.clickRegion || document.body;
+    if (_clickShield.parentElement == parent)
+      parent.removeChild(_clickShield);
   }
 
   function hasNextGroup(element) {
@@ -67,7 +71,7 @@ function createScan(options = {}) {
     if (ev.target == _clickShield) {
       if (hasNextGroup(_currSelection)){
         _currSelection.click();
-        goToNextGroup();
+        if (_currSelection != null) goToNextGroup();
       } else {
         _currSelection.click();
       }
@@ -80,7 +84,7 @@ function createScan(options = {}) {
     if (ev.keyCode == 32 || ev.keyCode == 13) { // Space or enter
       if (hasNextGroup(_currSelection)){
         _currSelection.click();
-        goToNextGroup();
+        if (_currSelection != null) goToNextGroup();
       } else {
         _currSelection.click();
       }
@@ -126,7 +130,7 @@ function createScan(options = {}) {
   _self = {
     stop: function () {
       clearInterval(_intervalId);
-      _currSelection.classList.remove(_cssGroup);
+      if (_currSelection != null) _currSelection.classList.remove(_cssGroup);
       _currSelection = null;
       if (_parentSelection) { 
         _parentSelection.classList.remove(_cssParentGroup);

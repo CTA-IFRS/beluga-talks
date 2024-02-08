@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<title>Teclado para CAA</title>
+	<title>Beluga Talks</title>
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -29,30 +29,36 @@
 	<script defer src="./fontawesome/js/solid.js"></script>
 	<script defer src="./fontawesome/js/fontawesome.js"></script>
 
+	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 	<link rel="stylesheet" type="text/css" href="estilo.css"/>
-
-	
 	
 	<!-- Bootstrap -->
 	<!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-	<script src="https://code.responsivevoice.org/responsivevoice.js?key=ekVh6Ano"></script>
+
 
 	<script src="./varredura.js"></script>
+	<script src="./layout.js"></script>
 
 	<script>
 
 		var lingua = "Brazilian Portuguese Female";
 		var scan = null;
 		var storageSpeedKey = "scan_interval";
-		var interval = Number.parseInt(localStorage.getItem(storageSpeedKey)) || 1250; // milissegundos
+		var storageContrast = "contrast_opt";
 		var minInterval = 500; 
 		var maxInterval = 5000;
 
+		function updateTextAreaScroll() {
+			var textArea = document.getElementById("text");
+			textArea.scrollTop = textArea.scrollHeight;
+		}
+
 		function escreve(val) {
-			 document.getElementById("text").value += val.toUpperCase();
+			document.getElementById("text").value += val.toUpperCase();
+			updateTextAreaScroll();
             var fala = new SpeechSynthesisUtterance(val);
             window.speechSynthesis.speak(fala);
 		};
@@ -62,56 +68,24 @@
             window.speechSynthesis.speak(fala);
 		}
 
-		$(document).ready(function(){
-			$('#backspace').on('click', function (){
-				var fala = new SpeechSynthesisUtterance("Apagar");
-            	window.speechSynthesis.speak(fala);
+		function erase() {
+			falar("Apagar");
+			var input = $('#text')[0];
+			input.value = input.value.replace(/.$/, '');
+		}
 
-				var input = $('#text')[0];
-				input.value = input.value.replace(/.$/, '');
-			});
+		function clearText() {
+			falar("Limpar");
+			$("#text").val("");
+		}
 
-			$('#erase').on('click', function (){
-				var fala = new SpeechSynthesisUtterance("Limpar");
-            	window.speechSynthesis.speak(fala);
+		function space() {
+			falar("Espaço");
+			$("#text").val($("#text").val() + " ");
+		}
 
-				$("#text").val("");
-			});
-
-			$('.espaco').on('click', function (){
-				var fala = new SpeechSynthesisUtterance("Espaço");
-            	window.speechSynthesis.speak(fala);
-			});
-
-			$(".le").on('click', function(e){
-				//previne erro
-				e.preventDefault();
-				//recebe o valor do input, o que deseja ser escutado
-				var text = $("#text").val();
-
-				
-				var fala = new SpeechSynthesisUtterance(text);
-            	window.speechSynthesis.speak(fala);
-			});
-
-			scan = createScan({
-				interval: interval,
-				goBack: 3
-			});
-
-			$(document).on("keydown", function (ev) {
-				if (ev.keyCode == 27) { //esc
-					if (scan.isScanning()) {
-						falar("Varredura desabilitada");
-						scan.stop();
-					}
-				}
-			});
-			
-    	});
-
-		function speedRatio () {
-			return Math.trunc((1 - (interval - minInterval) / (maxInterval - minInterval)) * 100);
+		function speakLoud () {
+			falar($("#text").val());
 		}
 
 		function alternarScan(grupo) {
@@ -123,7 +97,6 @@
 				scan.start(grupo);
 			}
 		}
-
 		
 		function mostrarToast(msg) {
 			var toast = document.getElementById("toast-speed");
@@ -136,266 +109,233 @@
 			}, 2500);
 		}
 
-		function mudarVelocidade(interval) {
-			scan.changeIntervalTime(interval);
-			localStorage.setItem(storageSpeedKey, interval);
-			var msg = "Velocidade em " + speedRatio() + "%";
+		function changeSpeed(idx) {
+			if (idx < 10) idx = 10;
+			if (idx > 100) idx = 100;
+
+			var currInterval = minInterval + (maxInterval - minInterval) * (1 - idx / 100);
+			scan.changeIntervalTime(currInterval);
+			localStorage.setItem(storageSpeedKey, idx);
+			var msg = "Velocidade em " + idx + "%";
 			falar(msg);
 			mostrarToast(msg);
 		}
 
-		function aumentarVelocidade() {
-			interval = interval - 250;
-			if (interval <= 500) interval = 500;
-			mudarVelocidade(interval);
-		}
-
-		function diminuirVelocidade() {
-			interval = interval + 250;
-			if (interval >= 5000) interval = 5000;
-			mudarVelocidade(interval);
-		}
-
-    	function trocaTeclado(val) {
-
-    		var alfabetico = val;
-
-    		if (alfabetico) {
+    	function trocaTeclado() {
+			var mainCol = $("div.main-col");
+			if ($("div.main-col").hasClass("set-letters")) {
 				var fala = new SpeechSynthesisUtterance("Teclado numérico");
-            	window.speechSynthesis.speak(fala);
-
-    			document.getElementById("tecladoAlfabetico").className = "d-none";
-				document.getElementById("botaoTrocaTeclado").innerHTML = "ABC";
-    			var element = document.getElementById("tecladoNumerico");
-  				element.className = element.className.replace(/\bd-none\b/g, "row teclado");
-  				document.getElementById("botaoTrocaTeclado").onclick = function() {trocaTeclado(false);};
-				$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-02");
-				document.getElementById("alternar-scan").onclick = function () { alternarScan("group-02") };
-				scan.reset("group-02");
-    		}else{
-				
+             	window.speechSynthesis.speak(fala);
+				$("div.main-col").removeClass("set-letters").addClass("set-digits");
+				$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-2");
+				$('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-2");
+				if (scan.isScanning()) scan.reset("group-2");
+			} else {
 				var fala = new SpeechSynthesisUtterance("Teclado alfabético");
-            	window.speechSynthesis.speak(fala);
-
-    			document.getElementById("tecladoNumerico").className = "d-none";
-				document.getElementById("botaoTrocaTeclado").innerHTML = "123";
-    			var element = document.getElementById("tecladoAlfabetico");
-  				element.className = element.className.replace(/\bd-none\b/g, "row teclado");
-  				document.getElementById("botaoTrocaTeclado").onclick = function() {trocaTeclado(true);};
-				$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-01");
-				document.getElementById("alternar-scan").onclick = function () { alternarScan("group-01") };
-				scan.reset("group-01");
-    		}
+             	window.speechSynthesis.speak(fala);
+				$("div.main-col").removeClass("set-digits").addClass("set-letters");
+				$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-1");
+				$('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-1");
+				if (scan.isScanning()) scan.reset("group-1");
+			}
     	};
+
+		$(document).ready(function(){	
+			var contrastOpt = localStorage.getItem(storageContrast) || "normal";
+			if (contrastOpt == "contrast") {
+				$("#modo-contraste").prop("checked", true);
+				$(".modo-contraste-group label").addClass("active");
+			}
+			$("body").addClass(contrastOpt);
+			
+			var idx = Number.parseInt(localStorage.getItem(storageSpeedKey)) || 70; // %
+			$("#velocidade").val(idx);
+			scan = createScan({
+				interval: minInterval + (maxInterval - minInterval) * (1 - idx/100),
+				goBack: 3,
+				clickRegion: document.querySelector("div.main-col")
+			});
+
+			var layout = Layout();
+			var mediaPortrait = window.matchMedia("(orientation:portrait)");
+			var mediaLandscape = window.matchMedia("(orientation:landscape)");
+			mediaPortrait.addListener(function (m) {
+				if (m.matches) {
+					var currText = $("#text").val();
+					layout.buildLayoutForSmallScreen(".main-col");
+					$("#text").val(currText);
+					updateTextAreaScroll();
+					if (scan.isScanning()) {
+						if ($("div.main-col").hasClass("set-letters")) {
+							$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-1");
+							$('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-1");
+							scan.reset("group-1");
+						} else {
+							$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-2");
+							$('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-2");
+							scan.reset("group-2");
+						}
+					}
+				} 
+			});
+			mediaLandscape.addListener(function (m) {
+				if (m.matches) {
+					var currText = $("#text").val();
+					layout.buildLayoutForBigScreen(".main-col");
+					$("#text").val(currText);
+					updateTextAreaScroll();
+					if (scan.isScanning()) {
+						if ($("div.main-col").hasClass("set-letters")) {
+							$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-1");
+							$('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-1");
+							scan.reset("group-1");
+						} else {
+							$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-2");
+							$('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-2");
+							scan.reset("group-2");
+						}
+					}
+				} 
+			});
+			if (mediaPortrait.matches) {
+				layout.buildLayoutForSmallScreen(".main-col");
+			} else {
+				layout.buildLayoutForBigScreen(".main-col");
+			}
+
+			$(document).on("keydown", function (ev) {
+				if (ev.keyCode == 27) { //esc
+					if (scan.isScanning()) {
+						falar("Varredura desabilitada");
+						scan.stop();
+						$("#varredura").prop("checked", false);
+						$(".varredura-group label").removeClass("active");
+					}
+				}
+			});
+
+			$("#varredura").on("change", function (ev) {
+				if (this.checked) {
+					if ($("div.main-col").hasClass("set-letters")){
+						scan.start("group-1");
+					} else {
+						scan.start("group-2");
+					}
+					falar("Varredura habilitada");
+				} else {
+					if (scan.isScanning()) {
+						falar("Varredura desabilitada");
+						scan.stop();
+					}		
+				}
+			});
+
+			$("#velocidade").on("change", function (ev) {
+				changeSpeed(this.value);
+			});
+
+			$("#modo-contraste").on("change", function (ev) {
+				if($("body").hasClass("contrast")) {
+					$("body").removeClass("contrast");
+					localStorage.setItem(storageContrast, "normal");
+					falar("Modo escuro desabilitado");
+				} else {
+					$("body").addClass("contrast");
+					localStorage.setItem(storageContrast, "contrast");
+					falar("Modo escuro habilitado");
+				}
+			});
+
+			$('#navbarToggleExternalContent').on('shown.bs.collapse', function () {
+				$('#menu-toggler-cog').attr("aria-label", "Fechar menu de configuração");
+				$('#menu-config').focus();
+			});
+			$('#navbarToggleExternalContent').on('hide.bs.collapse', function () {
+				$('#menu-toggler-cog').attr("aria-label", "Abrir menu de configuração");
+			});
+			
+    	});
 	</script>
 
 </head>
 <body>
 	<div class="container-fluid">
-		<div class="row mt-2">
-			<form class="col-4">
-				<label for="text" id="label">Campo de texto</label>
-				<textarea id="text" name="Campo de texto" class="form-control"></textarea>
-			</form>
-			<div data-in-groups="group-01 group-02" data-next-group="controls" class="col row">
-				<div class="col">
-					<button type="button" data-in-groups="controls" data-next-group="group-01" onclick="alternarScan('group-01')" id="alternar-scan" name="alternar-scan" class="btn btn-outline-primary w-100 controller">
-						<i class="fas fa-keyboard"></i>
+		<div class="menu">
+			<div class="brand">	
+				<a href="/" class="text-decoration-none">
+					<img src="imagens/beluga_icon_nav.png" height="30px" class="mr-1">
+					<span class="brand-name">Beluga Talks</span>
+				</a>
+			</div>
+			<nav class="menu-options collapse" id="navbarToggleExternalContent">
+				<h1 class="navbar-brand">
+					Beluga Talks
+				</h1>
+				<ul class="navbar-nav">
+					<li class="nav-item">			
+						<a href="#menu-config" id="menu-config" class="sr-only">Início do menu de configuração</a>			
+						<div class="btn-group-toggle w-100 h-100 modo-contraste-group" data-toggle="buttons">
+							<label class="btn btn-secondary w-100 h-100">
+								<input type="checkbox" autocomplete="off" id="modo-contraste">
+								<div class="text-center">
+									<span class="bs-text">Modo escuro</span>
+								</div>
+								<div>
+									<span class="fas fa-adjust"></span>
+								</div>
+							</label>
+						</div>
+					</li>			
+					<li class="nav-item">
+						<div class="btn-group-toggle w-100 h-100 varredura-group" data-toggle="buttons">
+							<label class="btn btn-secondary w-100 h-100">
+								<input type="checkbox" autocomplete="off" id="varredura">
+								<div class="text-center">
+									<span class="bs-text">Varredura</span>
+								</div>
+								<div>
+									<span class="fas fa-keyboard"></span>
+								</div>
+							</label>
+						</div>
+					</li>			
+					<li class="nav-item">
+							<div class="text-center velocidade-group">
+								<span class="ss-icon fas fa-tachometer-alt"></span>
+								<span class="bs-text">Velocidade</span>
+							</div>
+							<div class="text-center velocidade-group">
+								<label for="velocidade" class="sr-only">
+									<span>Velocidade</span>
+								</label>
+								<input type="range" class="form-control-range" min="10" max="100" step="5" id="velocidade">
+							</div>
+						
+					</li>
+				</ul>
+			</nav>
+			<div class="cog">
+				<nav class="navbar">
+					<button class="navbar-toggler h-100" type="button" data-toggle="collapse" 
+							id="menu-toggler-cog"
+							data-target="#navbarToggleExternalContent" 
+							aria-controls="navbarToggleExternalContent" 
+							aria-expanded="false" aria-label="Abrir menu de configuração">
+							<span class="fa fa-bars"></span>
 					</button>
-				</div>
-				<div class="col">
-					<button type="button" data-in-groups="controls" data-next-group="group-01" onclick="diminuirVelocidade()" id="speed-down"  class="btn btn-outline-primary w-100 controller">
-						<i class="fas fa-angle-left"></i>
-					</button>
-				</div>
-				<div class="col">
-					<button type="button" data-in-groups="controls" data-next-group="group-01" onclick="aumentarVelocidade()" id="speed-up"  class="btn btn-outline-primary w-100 controller">
-						<i class="fas fa-angle-right"></i>
-					</button>
-				</div>
-				<div class="col">
-					<button type="button" data-in-groups="controls" data-next-group="group-01" name="apagar" id="backspace" class="btn btn-outline-primary w-100">←</button>
-				</div>
-				<div class="col">
-					<button type="button" data-in-groups="controls" data-next-group="group-01" aria-label="Botão limpar textarea" id="erase" class="btn btn-outline-primary w-100"><i class="fas fa-trash"></i></button>
-				</div>
-				<div class="col">
-					<button type="button" data-in-groups="controls" name="troca teclado" id="botaoTrocaTeclado" onclick="trocaTeclado(true)" class="btn btn-outline-primary w-100"> 123</button>
-				</div>
+				  </nav>
 			</div>
 		</div>
-
-		<div class="row teclado" id="tecladoAlfabetico">
-			
-			<div class="col-12">
-				<div class="row mt-2" data-in-groups="group-01" data-next-group="alfa-01">
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-01" data-next-group="group-01" name="letra A" onclick="escreve('a')" class="btn btn-outline-primary w-100">A</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-01" data-next-group="group-01" name="letra B" onclick="escreve('b')" class="btn btn-outline-primary w-100">B</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-01" data-next-group="group-01" name="letra C" onclick="escreve('c')" class="btn btn-outline-primary w-100">C</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-01" data-next-group="group-01" name="letra D" onclick="escreve('d')" class="btn btn-outline-primary w-100">D</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-01" data-next-group="group-01" name="letra E" onclick="escreve('e')" class="btn btn-outline-primary w-100">E</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-01" data-next-group="group-01" name="letra F" onclick="escreve('f')" class="btn btn-outline-primary w-100">F</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-01"  data-next-group="group-01" name="letra G" onclick="escreve('g')" class="btn btn-outline-primary w-100">G</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-01"  data-next-group="group-01" name="letra H" onclick="escreve('h')" class="btn btn-outline-primary w-100">H</button>
-					</div>
-					<div class="col">
-						<button type="button" data-in-groups="alfa-01"  data-next-group="group-01" name="letra I" onclick="escreve('i')" class="btn btn-outline-primary w-100">I</button>
-					</div>
-				</div>
-				<div class="row mt-2" data-in-groups="group-01" data-next-group="alfa-02">
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-02"  data-next-group="group-01" name="letra J" onclick="escreve('j')" class="btn btn-outline-primary w-100">J</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-02" data-next-group="group-01" name="letra K" onclick="escreve('k')" class="btn btn-outline-primary w-100">K</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-02" data-next-group="group-01" name="letra L" onclick="escreve('l')" class="btn btn-outline-primary w-100">L</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-02" data-next-group="group-01" name="letra M" onclick="escreve('m')" class="btn btn-outline-primary w-100">M</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-02" data-next-group="group-01" name="letra N" onclick="escreve('n')" class="btn btn-outline-primary w-100">N</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-02" data-next-group="group-01" name="letra O" onclick="escreve('o')" class="btn btn-outline-primary w-100">O</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-02" data-next-group="group-01" name="letra P" onclick="escreve('p')" class="btn btn-outline-primary w-100">P</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-02" data-next-group="group-01" name="letra Q" onclick="escreve('q')" class="btn btn-outline-primary w-100">Q</button>
-					</div>
-					<div class="col">
-						<button type="button" data-in-groups="alfa-02" data-next-group="group-01" name="letra R" onclick="escreve('r')" class="btn btn-outline-primary w-100">R</button>
-					</div>
-				</div>
-				<div class="row mt-2" data-in-groups="group-01" data-next-group="alfa-03">
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-03" data-next-group="group-01" name="letra S" onclick="escreve('s')" class="btn btn-outline-primary w-100">S</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-03" data-next-group="group-01" name="letra T" onclick="escreve('t')" class="btn btn-outline-primary w-100">T</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-03" data-next-group="group-01" name="letra U" onclick="escreve('u')" class="btn btn-outline-primary w-100">U</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-03" data-next-group="group-01" name="letra V" onclick="escreve('v')" class="btn btn-outline-primary w-100">V</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-03" data-next-group="group-01" name="letra W" onclick="escreve('w')" class="btn btn-outline-primary w-100">W</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-03" data-next-group="group-01" name="letra X" onclick="escreve('x')" class="btn btn-outline-primary w-100">X</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-03" data-next-group="group-01" name="letra Y" onclick="escreve('y')" class="btn btn-outline-primary w-100">Y</button>
-					</div>
-					<div class="col">
-						<button type="button" data-in-groups="alfa-03" data-next-group="group-01" name="letra Z" onclick="escreve('z')" class="btn btn-outline-primary w-100">Z</button>
-					</div>
-				</div>
-				<div class="row mt-2" data-in-groups="group-01" data-next-group="alfa-04">
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-04" data-next-group="group-01" name="espaco" onclick="escreve('&nbsp;')" class="btn btn-outline-primary espaco w-100">_</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="alfa-04" data-next-group="group-01" aria-label="Botão lê campo de texto" class="btn btn-outline-primary w-100 le"><i class="fas fa-volume-up"></i></button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" name="Sim" onclick="escreve('Sim')" class="btn btn-outline-primary w-100" data-in-groups="alfa-04" data-next-group="group-01">
-							Sim
-						</button>
-					</div>
-					<div class="col">
-						<button type="button" name="Não" onclick="escreve('Não')" class="btn btn-outline-primary w-100" data-in-groups="alfa-04" data-next-group="group-01">Não</button>
-					</div>
-				</div>
-			</div>
-
-
-		</div>
-
-
-		<div class="row teclado d-none" id="tecladoNumerico">
-			
-			<div class="col-10">
-				<div class="row mt-2" data-in-groups="group-02" data-next-group="num-01">
-					<div class="col mr-1">
-						<button type="button" data-in-groups="num-01" data-next-group="group-02"  name="numero 0" onclick="escreve('0')" class="btn btn-outline-primary w-100">0</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="num-01" data-next-group="group-02"  name="numero 1" onclick="escreve('1')" class="btn btn-outline-primary w-100">1</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="num-01" data-next-group="group-02"  name="numero 2" onclick="escreve('2')" class="btn btn-outline-primary w-100">2</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="num-01" data-next-group="group-02"  name="numero 3" onclick="escreve('3')" class="btn btn-outline-primary w-100">3</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="num-01" data-next-group="group-02"  name="numero 4" onclick="escreve('4')" class="btn btn-outline-primary w-100">4</button>
-					</div>
-					<div class="col">
-						<button type="button" data-in-groups="num-01" data-next-group="group-02"  name="numero 5" onclick="escreve('5')" class="btn btn-outline-primary w-100">5</button>
-					</div>
-				</div>
-				<div class="row mt-2" data-in-groups="group-02" data-next-group="num-02">
-					<div class="col mr-1">
-						<button type="button" data-in-groups="num-02" data-next-group="group-02"  name="numero 6" onclick="escreve('6')" class="btn btn-outline-primary w-100">6</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="num-02" data-next-group="group-02"  name="numero 7" onclick="escreve('7')" class="btn btn-outline-primary w-100">7</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="num-02" data-next-group="group-02"  name="numero 8" onclick="escreve('8')" class="btn btn-outline-primary w-100">8</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="num-02" data-next-group="group-02"  name="numero 9" onclick="escreve('9')" class="btn btn-outline-primary w-100">9</button>
-					</div>
-					<div class="col mr-1">
-						<button type="button" data-in-groups="num-02" data-next-group="group-02"  name="espaco" onclick="escreve('&nbsp;')" class="btn btn-outline-primary espaco w-100">_</button>
-					</div>
-					<div class="col">
-						<button type="button" data-in-groups="num-02" data-next-group="group-02"  aria-label="Botão lê campo de texto" class="btn btn-outline-primary w-100 le"><i class="fas fa-volume-up"></i></button>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-2" data-in-groups="group-02" data-next-group="num-03">
-				<div class="row mt-2">
-					<div class="col SS">
-						<button type="button" data-in-groups="num-03" data-next-group="group-02" name="sim" onclick="escreve('Sim')" id="SN" class="btn btn-outline-primary w-100 SNN">Sim</button>
-					</div>
-				</div> 
-				<div class="row mt-2">
-					<div class="col">
-						<button type="button" data-in-groups="num-03" data-next-group="group-02"  name="nao" onclick="escreve('Não')" id="SNN" class="btn btn-outline-primary w-100 SNN">Não</button>
-					</div>
-				</div>
-			</div>
+		<div class="main row">
+			<div class="main-col set-letters col-12"></div>
 		</div>
 	</div>
+
 	<div id="toast-speed" class="toast-box">
 		<p class="toast-msg">
 		</p>
 	</div>	
+
+	
 </body>
 </html>

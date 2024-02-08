@@ -1,20 +1,15 @@
 {
-  "name": "Prancha Alfanumérica",
-  "short_name": "Teclado-CAA",
+  "name": "Beluga Talks",
+  "short_name": "Beluga Talks",
   "theme_color": "#007bff",
   "background_color": "#007bff",
   "display": "fullscreen",
-  "scope": "/",
-  "start_url": "./index.html?home",
+  "start_url": "index.html",
   "lang": "pt-BR",
-  "orientation": "landscape",
+  "orientation": "any",
   "icons": [{
     "src": "imagens/Icon10.png",
-      "sizes": "192x192",
-      "type": "image/png"
-  },{
-    "src": "imagens/Icon10.png",
-    "sizes": "512x512",
+    "sizes": "192x192 512x512",
     "type": "image/png"
   }]
 }

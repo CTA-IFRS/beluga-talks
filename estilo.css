@@ -1,75 +1,295 @@
-button:focus{
-    background: #006FE6;
-    color: #fff;
-}
-button{
-    font-size: 4rem !important;
-}
-
-button.btn.btn-outline-primary {
-    color: #006FE6;
-    background-color: #fff;
-}
-
-#label{
-    height:0;
-    width:0;
-    font-size:0;
-    display: block;
-    text-indent: -20000px;
+* {
     margin: 0;
+    padding: 0;
+    font-weight: bold;
+    font-size: 100%;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+div.container-fluid {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
     padding: 0;
 }
 
-.teclado button{
-    font-size: 6rem !important;
-    padding:0.5% !important;
+div.container-fluid div.main {
+    height: 90%;
+}
+div.container-fluid div.menu {
+    height: 10%;
 }
 
-.mr-1{
-    margin-right:-1.5% !important;
+div.brand {
+    font-size: calc(1.1rem + (15 * (100vw - 1000px) / 1000));
+}
+div.brand a {
+    color: black !important;
+}
+div.brand a img {
+    float: left;
 }
 
-.teclado .simnao button{
-    font-size: 6rem !important;
-}
-textarea{
-    font-size: 2rem !important;
-}
-.form-control{
-    width:41rem !important;
-}	
-.mt-4 .col-8{
-    margin-right: -19%;
-}
-#backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-    width:	13rem !important;
-}
-#botaoTrocaTeclado{
-    width:	12rem !important;
+div.menu ul.navbar-nav {
+    font-size: 100%;
 }
 
-#alternar-scan, #speed-up, #speed-down {
-    color: #004a99;
-    border-color: #004a99;
+@media (max-height: 500px) {
+    div.container-fluid div.main {
+        height: 80%;
+    }
+    div.container-fluid div.menu {
+        height: 20%;
+    }    
 }
+
+div.main {
+    margin: 0;
+    padding: 0;
+}
+div.main div.main-col {
+    height: 100%;
+}
+
+/* Horizontal Menu */
+.collapsing {
+    -webkit-transition: none;
+    transition: none;
+    display: none;
+}
+div.menu {
+    padding: 0;
+    display: flex;  
+    justify-content: space-between;
+    align-items: center;
+    border: 0;
+    border-bottom: 4px;
+    border-color: rgb(190, 184, 184);
+    border-style: solid;
+    background-color: rgb(235, 235, 235);
+}
+div.menu ul.navbar-nav {
+    flex-direction: row;
+    align-items: center;    
+    height: 100%;
+}
+div.menu ul.navbar-nav li {
+    padding: 0 0.5vmin;
+}
+div.menu ul.navbar-nav li:nth-child(1),
+div.menu ul.navbar-nav li:nth-child(2) {
+    flex: 1 1 30%;
+    height: 100%;
+}
+div.menu ul.navbar-nav li:nth-child(3) {
+    flex: 1 1 40%;
+    height: 100%;
+}
+/* div.menu ul.navbar-nav li .form-inline{
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+} */
+/* div.menu ul.navbar-nav > li:first-child {
+    border-color: rgb(104, 104, 104);
+    border-width: 1px;
+    border-style: solid;
+    border-left: 0;
+    border-top: 0;
+    border-bottom: 0;
+} */
+div.brand {
+    flex: 1 1 auto;
+    width: 20%;
+    max-width: 20%;
+    padding-left: 1vmin;
+    padding-top: 0.5vmin;
+    padding-bottom: 0.5vmin;
+}
+div.cog {
+    flex: 1 1 auto;
+    width: 10%; 
+    height: 100%;
+    max-width: 10%;
+    background-color: rgb(168, 166, 166);
+    padding-top: 0.5vmin;
+    padding-bottom: 0.5vmin;
+}
+div.cog .navbar {
+    justify-content: flex-end;
+    padding: 0 0.3vw;
+    height: 100%;
+}
+div.cog .navbar button {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+nav.menu-options {
+    flex: 1 1 auto;
+    padding-top: 0.5vmin;
+    padding-bottom: 0.5vmin;
+    width: 70%;
+    height: 100%;
+    z-index: 10000;
+    background-color: rgb(168, 166, 166);
+}
+nav.menu-options .navbar-brand {
+    display: none;
+}
+/* nav.menu-options .form-control-range {
+    display: inline;
+    width: auto;
+}*/
+/* nav.menu-options .ss-icon  {
+    display: none;
+} */
+
+nav.menu-options .nav-item .velocidade-group {
+    font-size: 130%;
+}
+nav.menu-options .nav-item label.btn.btn-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border:none;
+    font-size: 130%;
+}
+nav.menu-options .nav-item label.btn.btn-secondary {
+    outline: 1px solid rgb(131, 129, 129);
+    cursor: pointer;
+}
+nav.menu-options .nav-item label.btn.btn-secondary {
+    background-color: rgb(168, 166, 166);
+    color: black;
+}
+nav.menu-options .nav-item label.btn.btn-secondary.active {
+    background-color: rgb(9, 4, 78);
+    color: white;
+}
+nav.menu-options .nav-item:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+nav.menu-options .nav-item:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+nav.menu-options .nav-item:last-child .velocidade-group {
+    width: 100%;
+}
+
+
+@media (max-width: 980px) {
+    /* When there is little space for text in menu, change to icons */
+    /* div.brand .brand-name{
+        display: none;
+    } */
+    nav.menu-options .ss-icon {
+        display: inline;
+        padding: 0 0.3vw;
+        width: 100%;
+    }
+    div.menu ul.navbar-nav li:nth-child(3) .form-inline {
+        padding-left: 1vw;
+    }
+    nav.menu-options .bs-text {
+        display: block;
+        position: fixed;
+        left: -100vw;
+        top: -100vh;
+        width:1%;
+        height:1%;
+    }
+
+    nav.menu-options .nav-item .velocidade-group {
+        font-size: 140%;
+    }
+    nav.menu-options .nav-item label.btn.btn-secondary{
+        font-size: 180%;
+    }
+    
+    /* When there is little space for the horizontal menu, vertical take place */
+    /* div.menu ul.navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        height: fit-content;
+    }
+    div.menu ul.navbar-nav > li:first-child {
+        border: 0;
+    }
+    nav.menu-options {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 75vw;
+        background-color: rgb(168, 166, 166);
+        border-color: black;
+        border-style: solid;
+        border-width: 1px;
+        border-left: 0;
+        border-top: 0;
+        border-bottom: 0;
+        padding-left: 1.5vmin;
+    }
+    nav.menu-options .navbar-brand {
+        display: block;
+    } */
+}
+
+/* Buttons, textarea, form */
+div.main .main-col textarea {
+    border-color: rgb(61, 61, 61);
+    background-color: white !important;
+}
+div.main .main-col button {
+    border-color: rgb(61, 61, 61) !important;
+    color: rgb(54, 54, 54) !important;
+}
+/* div.main .main-col button:hover {
+    background-color: rgb(255,255,89) !important;
+} */
 
 div[data-in-groups].group-selected-parent button{
-    border-color: black;
-    border-style: solid;
+    /* border-color: black; */
+    border-style: dashed;
+    border-width: 2px;
 }
-
-div[data-in-groups].group-selected button,  
-div[data-in-groups] button[data-in-groups].group-selected {
-    background: #006FE6;
-    color: #fff;
+div.main .main-col.set-letters span.to-alpha,
+div.main .main-col.set-digits span.to-digit {
+    display: none;
 }
-
-div[data-in-groups].group-selected button.controller,  
+div.main .main-col.set-digits span.to-alpha,
+div.main .main-col.set-letters span.to-digit {
+    display: inline;
+}
+div.main .main-col button:focus,
+div.main .main-col button:active,
+div.main .main-col button:hover,
+div.main .main-col div[data-in-groups].group-selected button,  
+div.main .main-col div[data-in-groups] button[data-in-groups].group-selected {
+    background-color: rgb(54, 54, 54) !important;
+    color: rgb(255,255,89) !important;
+}
+/* div[data-in-groups].group-selected button.controller,  
 div[data-in-groups] button[data-in-groups].group-selected.controller {
     background: #004a99;
     color: #fff !important;
-}
+} */
+
+#toast-speed {
+    position: absolute;
+    display: none;
+}   
 
 div.toast-box {
     display: none;
@@ -80,7 +300,6 @@ div.toast-box {
     text-align: center;
     z-index: 3000;
 }
-
 div.toast-box p.toast-msg {
     font-size: 1.5em;
     background: #004a99;
@@ -91,554 +310,218 @@ div.toast-box p.toast-msg {
     width: 15em;
 }
 
-/*telas de tablets/ipads/celulares até 1300px de largura e 850px de altura*/
-@media (max-width: 2000px) and (min-width: 1900px) and (min-height:1000px){
-    .container-fluid {
-        width: 100% !important;
-    }
+div.main .main-col,
+div.main .main-col .row:first-child .col:first-child,
+div.main .main-col div.text,
+div.main .main-col form,
+div.main .main-col div.alpha .col,
+div.main .main-col div.digit-row,
+div.main .main-col div.control .col,
+div.main .main-col .row,
+div.main .main-col div.specials,
+div.main .main-col div.specials .row,
+div.main .main-col div.specials .col,
+div.main .main-col div.sc-row .col {
+    padding: 0;
+    margin: 0;
+}
+div.main .main-col {
+    padding-bottom: 0.5vmin !important;
+    padding-left: 0.5vmin;
+    padding-right: 0.5vmin;
+}
+div.main .main-col form,
+div.main .main-col div.control .col,
+div.main .main-col div.digit-row .col,
+div.main .main-col div.specials .col,
+div.main .main-col .alpha .col {
+    padding: 0.5vmin 0.5vmin !important;
+}
 
-    textarea{
-        font-size: 50px !important;
-        margin-right:-2% !important;
-    }
-    .form-control{
-        width:98% !important;
-    }
-
-    .teclado button{
-        font-size: 7.7rem !important;
-        padding:1% !important;
-        width:100% !important;
-    }
-
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-        height:	10rem !important;
-        font-size: 5rem !important;
-    }
-    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
-        width:	107% !important;
-        margin-left:-9% !important;
+@media (orientation:portrait) {
+    div.main .main-col button,
+    div.main .main-col button span,
+    div.main .main-col div.specials button span  {
+        font-size: calc(1rem + 1.5vh) !important;
+        vertical-align: middle;
+        line-height: 0.5rem;
     } 
-    .mr-1{
-        margin-right:-1% !important;
+    div.main .main-col textarea {
+        font-size: calc(1rem + 1.1vh) !important;
     }
 
-    html, body{
-        overflow: hidden !important;
+    /* Alpha */
+    div.main .main-col.set-letters .digit-row{
+        display: none;
+    }
+    div.main .main-col.set-letters .sc-row form ,
+    div.main .main-col.set-letters .sc-row form textarea {
+        height: 100%;
+    }
+    div.main .main-col.set-letters .sc-row {
+        height: calc(85%/9);
+    }
+    div.main .main-col.set-letters .text {
+        height: 15%;
+    }
+    
+    /* Digits */
+    div.main .main-col.set-digits .alpha-row{
+        display: none;
+    }
+    div.main .main-col.set-digits .sc-row form ,
+    div.main .main-col.set-digits .sc-row form textarea {
+        height: 100%;
+    }
+    div.main .main-col.set-digits .sc-row {
+        height: calc(85%/6);
+    }
+    div.main .main-col.set-digits .text {
+        height: 15%;
     }
 }
 
-/*telas de tablets/ipads/celulares até 1300px de largura e 850px de altura*/
-@media (max-width: 2000px) and (min-width: 1900px) and (min-height:700px) and (max-height:850px){
-    .container-fluid {
-        width: 100% !important;
+@media (orientation:landscape) {  
+    div.main .main-col button,
+    div.main .main-col button span,
+    div.main .main-col div.specials button span  {
+        font-size: calc(1rem + 1.5vw) !important;
+        vertical-align: middle;
+        line-height: 0.5rem;
+    }
+    div.main .main-col textarea {
+        font-size: calc(1rem + 1.1vw) !important;
     }
 
-    textarea{
-        font-size: 35px !important;
-        margin-right:-2% !important;
+    /* Alpha */
+    div.main .main-col.set-letters .digit-row{
+        display: none;
     }
-    .form-control{
-        width:98% !important;
+    div.main .main-col.set-letters .sc-row form ,
+    div.main .main-col.set-letters .sc-row form textarea {
+        height: 100%;
     }
-
-    .teclado button{
-        font-size: 5.6rem !important;
-        padding:1% !important;
-        width:100% !important;
+    div.main .main-col.set-letters .sc-row {
+        height: calc(100%/4);
     }
-
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-        height:	7.4rem !important;
-        font-size: 3.4rem !important;
+    div.main .main-col.set-letters div.specials {
+        flex: 0 0 11%;
+        max-width: 11%;
+        max-height: calc(100%/4);
     }
-    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
-        width:	107% !important;
-        margin-left:-9% !important;
-    } 
-    .mr-1{
-        margin-right:-0.7% !important;
+    div.main .main-col.set-letters div.specials > .row:first-child {
+        display: block;    
     }
 
-    html, body{
-        overflow: hidden !important;
-    }
 
-    .SNN{
-        font-size: 4.6rem !important;
-        height: 8.7rem !important;
-        margin-left:-8% !important;
+    /* Digits */
+    div.main .main-col.set-digits .alpha-row{
+        display: none;
     }
-
-    #SN, #SNN{
-        width: 19.6rem !important;
+    div.main .main-col.set-digits .sc-row form ,
+    div.main .main-col.set-digits .sc-row form textarea {
+        height: 100%;
     }
-}
-
-/*telas de tablets/ipads/celulares até 1300px de largura e 850px de altura*/
-@media (max-width: 2000px) and (min-width: 1900px) and (min-height:850px) and (max-height:1000px){
-    .container-fluid {
-        width: 100% !important;
+    div.main .main-col.set-digits .sc-row {
+        height: calc(100%/4);
     }
-
-    textarea{
-        font-size: 40px !important;
-        margin-right:-2% !important;
+    div.main .main-col.set-digits > .row:first-child {
+        flex-direction: column;
     }
-    .form-control{
-        width:98% !important;
+    div.main .main-col.set-digits > .row:first-child > .col {
+        height: 20% !important;
     }
-
-    .teclado button{
-        font-size: 7rem !important;
-        padding:1% !important;
-        width:100% !important;
+    div.main .main-col.set-digits > .row:first-child > .col:first-child {
+        height: 80% !important;
     }
-
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-        height:	8.5rem !important;
-        font-size: 4rem !important;
-    }
-    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
-        width:	107% !important;
-        margin-left:-9% !important;
-    } 
-    .mr-1{
-        margin-right:-0.7% !important;
-    }
-
-    html, body{
-        overflow: hidden !important;
-    }
-
-    .SNN{
-        font-size: 4.6rem !important;
-        height: 11rem !important;
-        margin-left:-7% !important;
-    }
-
-    #SN, #SNN{
-        width: 19rem !important;
+    div.main .main-col.set-digits div.specials {
+        flex: 1 0 1%;
+        max-width: 100%;
+        max-height: calc(100%/5);
     }
 }
 
-/*telas de tablets/ipads/celulares até 1300px de largura e 850px de altura*/
-@media (max-width: 1600px) and (min-width: 1400px) and (min-height:750px) and (max-height:800px){
-    .container-fluid {
-        width: 100% !important;
+/* Alpha: When text will break */
+@media (orientation:landscape) and (max-width: 1200px) {
+    div.main .main-col.set-letters > .row:first-child {
+        flex-direction: column;
     }
-
-    textarea{
-        font-size: 35px !important;
-        margin-right:-2% !important;
+    div.main .main-col.set-letters > .row:first-child > .col {
+        height: 20% !important;
     }
-    .form-control{
-        width:98% !important;
+    div.main .main-col.set-letters > .row:first-child > .col:first-child {
+        height: 80% !important;
     }
-
-    .teclado button{
-        font-size: 5.7rem !important;
-        padding:0.4% !important;
-        width:100% !important;
+    div.main .main-col.set-letters div.specials {
+        flex: 1 1 1%;
+        max-width: 100%;
+        max-height: 20%;
     }
-
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-        height:	7.5rem !important;
-        font-size: 3.5rem !important;
-    }
-    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
-        width:	109% !important;
-        margin-left:-10% !important;
-    } 
-    .mr-1{
-        margin-right:-1.5% !important;
-    }
-
-    html, body{
-        overflow: hidden !important;
-    }
-
-    .SNN{
-        height: 8.7rem !important;
-        margin-left:-10% !important;
-    }
-
-    #SN, #SNN{
-        font-size: 5rem !important;
-        width: 14rem !important;
+    div.main .main-col.set-letters div.specials > .row:first-child .col {
+        display: inline-block;
+        width: calc(100%/4) !important;
     }
 }
 
-/*telas de tablets/ipads/celulares até 1300px de largura e 850px de altura*/
-@media (max-width: 1300px) and (max-height: 850px) {
-    .container-fluid {
-        width: 100% !important;
-    }
-
-    textarea{
-        font-size: 40px !important;
-        margin-right:-2% !important;
-    }
-    .form-control{
-        width:98% !important;
-    }
-
-    .teclado button{
-        font-size: 6.2rem !important;
-        padding:0.4% !important;
-        width:100% !important;
-    }
-
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-        height:	8.4rem !important;
-        font-size: 4.7rem !important;
-    }
-    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
-        width:	109% !important;
-        margin-left:-10% !important;
-    } 
-    .mr-1{
-        margin-right:-1.5% !important;
-    }
-
-    html, body{
-        overflow: hidden !important;
-    }
-
-    .SNN{
-        height: 9.5rem !important;
-        margin-left:-11% !important;
-    }
-
-    #SN, #SNN{
-        font-size: 5rem !important;
-        width: 12.5rem !important;
-    }
+/* Dark-mode */
+body.contrast div.main {
+    background-color: black;
+}
+body.contrast div.brand a {
+    color: white !important;
+}
+body.contrast div.main textarea {
+    background-color: black !important;
+    border-color: rgb(200,200,200) !important;
+    color: white !important;
+}
+body.contrast div.main button {
+    background-color: rgb(54, 54, 54);
+    color: rgb(200,200,200) !important;
+    border-color: none !important;
+}
+body.contrast div.main .main-col button:hover,
+body.contrast div.main .main-col button:focus,
+body.contrast div.main .main-col button:active {
+    background-color: rgb(200,200,200) !important;
+    color: rgb(54, 54, 54) !important;
+}
+body.contrast div.main .main-col div[data-in-groups].group-selected button,  
+body.contrast div.main .main-col div[data-in-groups] button[data-in-groups].group-selected {
+    background-color: rgb(200,200,200) !important;
+    color: rgb(54, 54, 54) !important;
+}
+body.contrast div[data-in-groups].group-selected-parent button{
+    border-color: rgb(200,200,200) !important;
+    border-style: dashed !important;
+    border-width: 2px !important;
 }
 
-/*telas de tablets/ipads/celulares até 1200px de largura*/
-@media (max-width: 1200px) {
-    .container-fluid {
-        width: 100% !important;
-    }
-
-    textarea{
-        font-size: 40px !important;
-        margin-right:-2% !important;
-    }
-    .form-control{
-        width:98% !important;
-    }
-
-    .teclado button{
-        font-size: 5.5rem !important;
-        padding:0.4% !important;
-        width:100% !important;
-    }
-
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-        height:	8.4rem !important;
-        font-size: 4.7rem !important;
-    }
-    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
-        width:	112% !important;
-        margin-left:-12% !important;
-    } 
-    .mr-1{
-        margin-right:-1.8% !important;
-    }
-
-    html, body{
-        overflow: hidden !important;
-    }
-
-    .SNN{
-        font-size: 5rem !important;
-        height: 8.5rem !important;
-        margin-left:-11% !important;
-    }
-
-    #SN, #SNN{
-        width: 11.5rem !important;
-    }
+body.contrast div.menu {
+    background-color: rgb(74, 74, 74);
+    color: rgb(240,240,240);
+    border-color: black;
+}
+body.contrast div.cog,
+body.contrast nav.menu-options,
+body.contrast nav.menu-options ul.navbar-nav {
+    background-color: rgb(54, 54, 54) !important;
+}
+body.contrast div.cog button{
+    color: rgb(240,240,240) !important;
+}
+body.contrast div.menu ul.navbar-nav > li:first-child {
+    border-color: rgb(50,50,50);
 }
 
-/*telas de tablets/ipads/celulares até 1200px de largura*/
-@media (max-width: 1120px) {
-    .container-fluid {
-        width: 100% !important;
-    }
-
-    textarea{
-        font-size: 40px !important;
-        margin-right:-2% !important;
-    }
-    .form-control{
-        width:98% !important;
-    }
-
-    .teclado button{
-        font-size: 5.5rem !important;
-        padding:0.4% !important;
-        width:100% !important;
-    }
-
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-        height:	8.4rem !important;
-        font-size: 4.7rem !important;
-    }
-    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
-        width:	112% !important;
-        margin-left:-12% !important;
-    } 
-    .mr-1{
-        margin-right:-1.8% !important;
-    }
-
-    html, body{
-        overflow: hidden !important;
-    }
-
-    .SNN{
-        height: 8.5rem !important;
-        margin-left:-11% !important;
-    }
-
-    #SN, #SNN{
-        font-size: 4.7rem !important;
-        width: 10rem !important;
-    }
-} 
-
-/*telas de celulares menores que 900px*/
-@media (max-width: 900px) {
-    .container-fluid {
-        width: 100% !important;
-    }
-
-    textarea{
-        font-size: 15px !important;
-        margin-right:-2% !important;
-    }
-    .form-control{
-        width:98% !important;
-    }
-
-    .teclado button{
-        font-size: 2.7rem !important;
-        padding:0.4% !important;
-        width:100% !important;
-    }
-
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-        height:	3.7rem !important;
-        font-size: 1.7rem !important;
-    }
-    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
-        width:	120% !important;
-        margin-left:-20% !important;
-    } 
-    .mr-1{
-        margin-right:-3% !important;
-    }
-
-    html, body{
-        overflow: hidden !important;
-    }
-
-    .SNN{
-        height: 4.2rem !important;
-        margin-left:-20% !important;
-    }
-
-    #SN, #SNN{
-        font-size: 2.1rem !important;
-        width: 8.3rem !important;
-    }
+body.contrast nav.menu-options .nav-item label.btn.btn-secondary {
+    background-color: rgb(54, 54, 54);
+    color: white;
+}
+body.contrast nav.menu-options .nav-item label.btn.btn-secondary.active {
+    background-color: rgb(9, 4, 78);
+    color: white;
 }
 
-/*telas de celulares menores que 800px*/
-@media (max-width: 800px) {
-    .container-fluid {
-        width: 100% !important;
-    }
 
-    textarea{
-        font-size: 16px !important;
-        margin-right:-2% !important;
-    }
-    .form-control{
-        width:98% !important;
-    }
-
-    .teclado button{
-        font-size: 3rem !important;
-        padding:0.4% !important;
-        width:100% !important;
-    }
-
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-        height:	4rem !important;
-        font-size: 2rem !important;
-    }
-    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
-        width:	112% !important;
-        margin-left:-12% !important;
-    } 
-    .mr-1{
-        margin-right:-1.8% !important;
-    }
-
-    html, body{
-        overflow: hidden !important;
-    }
-
-    .SNN{
-        font-size: 1.9rem !important;
-        height: 4.7rem !important;
-        margin-left:-20% !important;
-    }
-
-    #SN, #SNN{
-        width: 7rem !important;
-    }
-}
-
-/*telas de celulares menores que 700px*/
-@media (max-width: 700px) and (min-height: 370px) {
-    .container-fluid {
-        width: 100% !important;
-    }
-
-    textarea{
-        font-size: 17px !important;
-        margin-right:-2% !important;
-    }
-    .form-control{
-        width:98% !important;
-    }
-
-    .teclado button{
-        font-size: 2.7rem !important;
-        padding:0.5% !important;
-        width:100% !important;
-        margin-top: -1%;
-    }
-
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-        height:	4rem !important;
-        font-size: 2rem !important;
-    }
-    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
-        width:	127% !important;
-        margin-left:-28% !important;
-    } 
-    .mr-1{
-        margin-right:-3.5% !important;
-    }
-
-    html, body{
-        overflow: hidden !important;
-    }
-
-    .SNN{
-        font-size: 1.9rem !important;
-        height: 4.2rem !important;
-        margin-left:-30% !important;
-    }
-
-    #SN, #SNN{
-        width: 6.2rem !important;
-    }
-
-}
-
-/*telas de celulares menores que 700px e menores que 370px*/
-@media (max-width: 700px) and (max-height: 370px) {
-    .container-fluid {
-        width: 100% !important;
-    }
-
-    textarea{
-        font-size: 10px !important;
-        margin-right:-2% !important;
-    }
-    .form-control{
-        width:98% !important;
-    }
-
-    .teclado button{
-        font-size: 1.9rem !important;
-        padding:0.5% !important;
-        width:100% !important;
-        margin-top: -1%;
-    }
-
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-        height:	2.7rem !important;
-        font-size: 1rem !important;
-    }
-    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
-        width:	129% !important;
-        margin-left:-29% !important;
-    } 
-    .mr-1{
-        margin-right:-3% !important;
-    }
-
-    html, body{
-        overflow: hidden !important;
-    }
-
-    .SNN{
-        font-size: 1.9rem !important;
-        height: 3rem !important;
-        margin-left:-30% !important;
-    }
-
-    #SN, #SNN{
-        width: 6.2rem !important;
-    }
-
-}
-
-/*telas de celulares menores que 600px*/
-@media (max-width: 600px) and (min-width:490px) and (min-height:320px) {
-    .container-fluid {
-        width: 100% !important;
-    }
-
-    textarea{
-        font-size: 14px !important;
-        margin-right:-2% !important;
-    }
-    .form-control{
-        width:98% !important;
-    }
-
-    .teclado button{
-        font-size: 2rem !important;
-        padding:0.4% !important;
-        width:100% !important;
-    }
-
-    #botaoTrocaTeclado, #backspace, #alternar-scan, #speed-up, #speed-down, #erase{
-        height:	3.5rem !important;
-        font-size: 1.5rem !important;
-    }
-    #backspace, #alternar-scan, #speed-up, #speed-down, #erase, #botaoTrocaTeclado{
-        width:	130% !important;
-        margin-left:-30% !important;
-    } 
-    .mr-1{
-        margin-right:-4% !important;
-    }
-    .SNN{
-        height: 3.4rem !important;
-        margin-left:-20% !important;
-    }
-    html, body{
-        overflow: hidden !important;
-    }
-}
 
