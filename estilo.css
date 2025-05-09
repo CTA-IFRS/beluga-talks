@@ -345,6 +345,9 @@ div.main .main-col .alpha .col {
         font-size: calc(1rem + 1.5vh) !important;
         vertical-align: middle;
         line-height: 0.5rem;
+    }
+    div.main .main-col div button.predictor-button span {
+        font-size: calc(1rem + 0.5vw) !important;
     } 
     div.main .main-col textarea {
         font-size: calc(1rem + 1.1vh) !important;
@@ -359,7 +362,7 @@ div.main .main-col .alpha .col {
         height: 100%;
     }
     div.main .main-col.set-letters .sc-row {
-        height: calc(85%/9);
+        height: calc(85%/10);
     }
     div.main .main-col.set-letters .text {
         height: 15%;
@@ -389,6 +392,9 @@ div.main .main-col .alpha .col {
         vertical-align: middle;
         line-height: 0.5rem;
     }
+    div.main .main-col div button.predictor-button span {
+        font-size: calc(1rem + 0.5vw) !important;
+    }
     div.main .main-col textarea {
         font-size: calc(1rem + 1.1vw) !important;
     }
@@ -402,12 +408,12 @@ div.main .main-col .alpha .col {
         height: 100%;
     }
     div.main .main-col.set-letters .sc-row {
-        height: calc(100%/4);
+        height: calc(100%/5);
     }
     div.main .main-col.set-letters div.specials {
         flex: 0 0 11%;
         max-width: 11%;
-        max-height: calc(100%/4);
+        max-height: calc(100%/5);
     }
     div.main .main-col.set-letters div.specials > .row:first-child {
         display: block;    
