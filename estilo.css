@@ -418,6 +418,10 @@ div.main .main-col .alpha .col {
     div.main .main-col.set-letters div.specials > .row:first-child {
         display: block;    
     }
+    div.main .main-col.set-letters div.specials div:nth-child(2),
+    div.main .main-col.set-letters div.specials div:nth-child(3){
+        height: 150% !important;
+    }
 
 
     /* Digits */
@@ -466,6 +470,11 @@ div.main .main-col .alpha .col {
     div.main .main-col.set-letters div.specials > .row:first-child .col {
         display: inline-block;
         width: calc(100%/4) !important;
+    }
+
+    div.main .main-col.set-letters div.specials div:nth-child(2),
+    div.main .main-col.set-letters div.specials div:nth-child(3){
+        height: 100% !important;
     }
 }
 

@@ -104,7 +104,7 @@ function Layout() {
         tags += '</div>';
 
         // Predictor
-        tags += '<div class="row sc-row alpha-row">';
+        tags += '<div class="row sc-row alpha-row predictor-row">';
         tags += '<div class="col h-100">';
         tags += '<div data-in-groups="group-1"\
                         data-next-group="predictor" class="row h-100 alpha predictor-pool">'
@@ -171,7 +171,7 @@ function Layout() {
         tags += '</div>';
 
         // Predictor
-        tags += '<div class="row sc-row alpha-row">';
+        tags += '<div class="row sc-row alpha-row predictor-row">';
         tags += '<div class="col h-100">';
         tags += '<div data-in-groups="group-1"\
                         data-next-group="predictor" class="row h-100 alpha predictor-pool">'
