@@ -41,6 +41,8 @@
 
 	<script src="./varredura.js"></script>
 	<script src="./layout.js"></script>
+	<script src="./predictor_words.js"></script>
+	<script src="./predictor.js"></script>
 
 	<script>
 
@@ -50,6 +52,7 @@
 		var storageContrast = "contrast_opt";
 		var minInterval = 500; 
 		var maxInterval = 5000;
+		var predictorMaxResults = 4;
 
 		function updateTextAreaScroll() {
 			var textArea = document.getElementById("text");
@@ -61,6 +64,17 @@
 			updateTextAreaScroll();
             var fala = new SpeechSynthesisUtterance(val);
             window.speechSynthesis.speak(fala);
+			document.getElementById("text").dispatchEvent(new Event("change"));
+		};
+
+		function escreve_predicao(val) {
+			var words = $("#text").val().trim().split(" ");
+			words.pop();
+			document.getElementById("text").value = (words.join(" ") + " " + val).toUpperCase();
+			updateTextAreaScroll();
+            var fala = new SpeechSynthesisUtterance(val);
+            window.speechSynthesis.speak(fala);
+			document.getElementById("text").dispatchEvent(new Event("change"));
 		};
 
 		function falar(texto) {
@@ -72,16 +86,19 @@
 			falar("Apagar");
 			var input = $('#text')[0];
 			input.value = input.value.replace(/.$/, '');
+			document.getElementById("text").dispatchEvent(new Event("change"));
 		}
 
 		function clearText() {
 			falar("Limpar");
 			$("#text").val("");
+			document.getElementById("text").dispatchEvent(new Event("change"));
 		}
 
 		function space() {
 			falar("Espaço");
 			$("#text").val($("#text").val() + " ");
+			document.getElementById("text").dispatchEvent(new Event("change"));
 		}
 
 		function speakLoud () {
@@ -140,7 +157,19 @@
 			}
     	};
 
+		function updatePredictorPool(layout, predictor) {
+			var currText = $("#text").val();
+			var results = predictor.preditcNextWords(currText, predictorMaxResults);
+			var pool = document.querySelector(".predictor-pool")
+			pool.innerHTML = "";
+			results.forEach(function (text) {
+				pool.innerHTML += layout.buildStringPredictorButton((text + " ").toLowerCase(), 'predictor', 'group-1');
+			});
+		}
+
 		$(document).ready(function(){	
+			var word_predictor = new WordPredictor();
+
 			var contrastOpt = localStorage.getItem(storageContrast) || "normal";
 			if (contrastOpt == "contrast") {
 				$("#modo-contraste").prop("checked", true);
@@ -164,6 +193,11 @@
 					var currText = $("#text").val();
 					layout.buildLayoutForSmallScreen(".main-col");
 					$("#text").val(currText);
+					predictorMaxResults = 2;
+					updatePredictorPool(layout, word_predictor);
+					$("#text").on("change", function (ev) {
+						updatePredictorPool(layout, word_predictor);
+					});
 					updateTextAreaScroll();
 					if (scan.isScanning()) {
 						if ($("div.main-col").hasClass("set-letters")) {
@@ -183,6 +217,11 @@
 					var currText = $("#text").val();
 					layout.buildLayoutForBigScreen(".main-col");
 					$("#text").val(currText);
+					predictorMaxResults = 4;
+					updatePredictorPool(layout, word_predictor);
+					$("#text").on("change", function (ev) {
+						updatePredictorPool(layout, word_predictor);
+					});
 					updateTextAreaScroll();
 					if (scan.isScanning()) {
 						if ($("div.main-col").hasClass("set-letters")) {
@@ -202,6 +241,11 @@
 			} else {
 				layout.buildLayoutForBigScreen(".main-col");
 			}
+
+			updatePredictorPool(layout, word_predictor);
+			$("#text").on("change", function (ev) {
+				updatePredictorPool(layout, word_predictor);
+			});
 
 			$(document).on("keydown", function (ev) {
 				if (ev.keyCode == 27) { //esc
@@ -262,8 +306,8 @@
 	<div class="container-fluid">
 		<div class="menu">
 			<div class="brand">	
-				<a href="/beluga-talks" class="text-decoration-none">
-					<img src="../img/beluga_icon_nav.png" height="30px" class="mr-1">
+				<a href="/" class="text-decoration-none">
+					<img src="imagens/beluga_icon_nav.png" height="30px" class="mr-1">
 					<span class="brand-name">Beluga Talks</span>
 				</a>
 			</div>

@@ -14,6 +14,14 @@ function Layout() {
                 </div>';
     }
 
+    obj.buildStringPredictorButton = function (letter, groups, nextGroup) {
+        return '<div class="col w-100 h-100"> \
+                    <button type="button" onclick="escreve_predicao(\'' + letter.toLowerCase() + '\')" '
+                    + 'data-in-groups="'+ groups + '" data-next-group="'+ nextGroup + '" '
+                    + 'class="btn btn-outline-primary w-100 h-100 predictor-button"><span>' + letter + '</span></button>\
+                </div>';
+    }
+
     obj.buildSpaceButton = function (label, groups, nextGroup) {
         return '<div class="col w-100 h-100"> \
                     <button type="button" onclick="space()" '
@@ -94,6 +102,16 @@ function Layout() {
         tags += this.buildEraseButton();
         tags += this.buildClearButton();
         tags += '</div>';
+
+        // Predictor
+        tags += '<div class="row sc-row alpha-row predictor-row">';
+        tags += '<div class="col h-100">';
+        tags += '<div data-in-groups="group-1"\
+                        data-next-group="predictor" class="row h-100 alpha predictor-pool">'
+       
+        tags += '</div>';
+        tags += '</div>';
+        tags += '</div>';
         
         // letters
         for (var i = 0; i < 24; i += 4) {
@@ -151,6 +169,17 @@ function Layout() {
         tags += this.buildClearButton();    
         tags += '</div></div>';
         tags += '</div>';
+
+        // Predictor
+        tags += '<div class="row sc-row alpha-row predictor-row">';
+        tags += '<div class="col h-100">';
+        tags += '<div data-in-groups="group-1"\
+                        data-next-group="predictor" class="row h-100 alpha predictor-pool">'
+       
+        tags += '</div>';
+        tags += '</div>';
+        tags += '</div>';
+
         // letters
         for (var i = 0; i < 26; i += 9) {
             tags += '<div class="row alpha-row sc-row">';
@@ -169,6 +198,7 @@ function Layout() {
             }
             tags += '</div>';
         }
+
         //digits
         for (var i = 0; i < 8; i += 4) {
             tags += '<div class="row sc-row digit-row" data-in-groups="group-2"\
@@ -186,6 +216,7 @@ function Layout() {
         tags += '</div>';
 
         tags += '</div>';
+    
         
         tags += '<div class="col-1 h-100 specials" data-in-groups="group-1 group-2" data-next-group="specials">';
         tags += '<div class="row h-100 sc-row">'
@@ -197,7 +228,6 @@ function Layout() {
         tags += '</div>';
 
         tags += '</div>';
-
         document.querySelector(dest).innerHTML = tags;
     }
 
