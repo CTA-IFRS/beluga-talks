@@ -147,8 +147,8 @@ function Layout() {
 
         tags += '<div class="row sc-row specials" data-in-groups="group-1 group-2" data-next-group="specials">'
                 + this.buildSpaceButton('__', 'specials', 'group-1')
-                + this.buildStringButton('SIM', 'specials', 'group-1')
-                + this.buildStringButton('NÃO', 'specials', 'group-1')
+                + this.buildStringButton(__t('SIM'), 'specials', 'group-1')
+                + this.buildStringButton(__t('NÃO'), 'specials', 'group-1')
                 + this.buildToggleKeyboardButton()
                 + '</div>';
 
@@ -221,8 +221,8 @@ function Layout() {
         tags += '<div class="col-1 h-100 specials" data-in-groups="group-1 group-2" data-next-group="specials">';
         tags += '<div class="row h-100 sc-row">'
                 + this.buildSpaceButton('__', 'specials', 'group-1')
-                + this.buildStringButton('SIM', 'specials', 'group-1')
-                + this.buildStringButton('NÃO', 'specials', 'group-1')
+                + this.buildStringButton(__t('SIM'), 'specials', 'group-1')
+                + this.buildStringButton(__t('NÃO'), 'specials', 'group-1')
                 + this.buildToggleKeyboardButton()
                 + '</div>';
         tags += '</div>';

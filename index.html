@@ -39,6 +39,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
+	<script src="./translate.js"></script>
 	<script src="./varredura.js"></script>
 	<script src="./layout.js"></script>
 	<script src="./predictor_words.js"></script>
@@ -46,7 +47,6 @@
 
 	<script>
 
-		var lingua = "Brazilian Portuguese Female";
 		var scan = null;
 		var storageSpeedKey = "scan_interval";
 		var storageContrast = "contrast_opt";
@@ -62,9 +62,10 @@
 		function escreve(val) {
 			document.getElementById("text").value += val.toUpperCase();
 			updateTextAreaScroll();
-            var fala = new SpeechSynthesisUtterance(val);
-            window.speechSynthesis.speak(fala);
-			document.getElementById("text").dispatchEvent(new Event("change"));
+            //var fala = new SpeechSynthesisUtterance(val);
+            //window.speechSynthesis.speak(fala);
+			falar(val);
+            document.getElementById("text").dispatchEvent(new Event("change"));
 		};
 
 		function escreve_predicao(val) {
@@ -72,31 +73,33 @@
 			words.pop();
 			document.getElementById("text").value = (words.join(" ") + " " + val).toUpperCase();
 			updateTextAreaScroll();
-            var fala = new SpeechSynthesisUtterance(val);
-            window.speechSynthesis.speak(fala);
+            falar(val);
+            //var fala = new SpeechSynthesisUtterance(val);
+            //window.speechSynthesis.speak(fala);
 			document.getElementById("text").dispatchEvent(new Event("change"));
 		};
 
 		function falar(texto) {
 			var fala = new SpeechSynthesisUtterance(texto);
+            fala.lang = __getLang();
             window.speechSynthesis.speak(fala);
 		}
 
 		function erase() {
-			falar("Apagar");
+			falar(__t("Apagar"));
 			var input = $('#text')[0];
 			input.value = input.value.replace(/.$/, '');
 			document.getElementById("text").dispatchEvent(new Event("change"));
 		}
 
 		function clearText() {
-			falar("Limpar");
+			falar(__t("Limpar"));
 			$("#text").val("");
 			document.getElementById("text").dispatchEvent(new Event("change"));
 		}
 
 		function space() {
-			falar("Espaço");
+			falar(__t("Espaço"));
 			$("#text").val($("#text").val() + " ");
 			document.getElementById("text").dispatchEvent(new Event("change"));
 		}
@@ -107,10 +110,10 @@
 
 		function alternarScan(grupo) {
 			if (scan.isScanning()){
-				falar("Varredura desabilitada");
+				falar(__t("Varredura desabilitada"));
 				scan.stop();
 			} else {
-				falar("Varredura habilitada");
+				falar(__t("Varredura habilitada"));
 				scan.start(grupo);
 			}
 		}
@@ -133,7 +136,7 @@
 			var currInterval = minInterval + (maxInterval - minInterval) * (1 - idx / 100);
 			scan.changeIntervalTime(currInterval);
 			localStorage.setItem(storageSpeedKey, idx);
-			var msg = "Velocidade em " + idx + "%";
+			var msg = __t("Velocidade em ") + idx + "%";
 			falar(msg);
 			mostrarToast(msg);
 		}
@@ -141,15 +144,17 @@
     	function trocaTeclado() {
 			var mainCol = $("div.main-col");
 			if ($("div.main-col").hasClass("set-letters")) {
-				var fala = new SpeechSynthesisUtterance("Teclado numérico");
-             	window.speechSynthesis.speak(fala);
-				$("div.main-col").removeClass("set-letters").addClass("set-digits");
+				//var fala = new SpeechSynthesisUtterance("Teclado numérico");
+             	//window.speechSynthesis.speak(fala);
+				falar(__t("Teclado numérico"));
+                $("div.main-col").removeClass("set-letters").addClass("set-digits");
 				$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-2");
 				$('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-2");
 				if (scan.isScanning()) scan.reset("group-2");
 			} else {
-				var fala = new SpeechSynthesisUtterance("Teclado alfabético");
-             	window.speechSynthesis.speak(fala);
+				//var fala = new SpeechSynthesisUtterance("Teclado alfabético");
+             	//window.speechSynthesis.speak(fala);
+                falar(__t("Teclado alfabético"));
 				$("div.main-col").removeClass("set-digits").addClass("set-letters");
 				$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-1");
 				$('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-1");
@@ -167,7 +172,20 @@
 			});
 		}
 
-		$(document).ready(function(){	
+		$(document).ready(function(){	    
+            // Translate
+            //$(".__t").text(function(idx, txt) {
+            //    
+            //    return __t(txt);
+            //});
+            
+            $(".__t").each(function (idx, elem) {
+                if ($(elem).text() != "") $(elem).html(__t($(elem).html()));
+                if ($(elem).attr("aria-label")){
+                    $(elem).attr("aria-label", __t($(elem).attr("aria-label")));
+                }
+            });
+
 			var word_predictor = new WordPredictor();
 
 			var contrastOpt = localStorage.getItem(storageContrast) || "normal";
@@ -250,7 +268,7 @@
 			$(document).on("keydown", function (ev) {
 				if (ev.keyCode == 27) { //esc
 					if (scan.isScanning()) {
-						falar("Varredura desabilitada");
+						falar(__t("Varredura desabilitada"));
 						scan.stop();
 						$("#varredura").prop("checked", false);
 						$(".varredura-group label").removeClass("active");
@@ -265,10 +283,10 @@
 					} else {
 						scan.start("group-2");
 					}
-					falar("Varredura habilitada");
+					falar(__t("Varredura habilitada"));
 				} else {
 					if (scan.isScanning()) {
-						falar("Varredura desabilitada");
+						falar(__t("Varredura desabilitada"));
 						scan.stop();
 					}		
 				}
@@ -282,20 +300,20 @@
 				if($("body").hasClass("contrast")) {
 					$("body").removeClass("contrast");
 					localStorage.setItem(storageContrast, "normal");
-					falar("Modo escuro desabilitado");
+					falar(__t("Modo escuro desabilitado"));
 				} else {
 					$("body").addClass("contrast");
 					localStorage.setItem(storageContrast, "contrast");
-					falar("Modo escuro habilitado");
+					falar(__t("Modo escuro habilitado"));
 				}
 			});
 
 			$('#navbarToggleExternalContent').on('shown.bs.collapse', function () {
-				$('#menu-toggler-cog').attr("aria-label", "Fechar menu de configuração");
+				$('#menu-toggler-cog').attr("aria-label", __t("Fechar menu de configuração"));
 				$('#menu-config').focus();
 			});
 			$('#navbarToggleExternalContent').on('hide.bs.collapse', function () {
-				$('#menu-toggler-cog').attr("aria-label", "Abrir menu de configuração");
+				$('#menu-toggler-cog').attr("aria-label", __t("Abrir menu de configuração"));
 			});
 			
     	});
@@ -322,7 +340,7 @@
 							<label class="btn btn-secondary w-100 h-100">
 								<input type="checkbox" autocomplete="off" id="modo-contraste">
 								<div class="text-center">
-									<span class="bs-text">Modo escuro</span>
+									<span class="bs-text __t">Modo escuro</span>
 								</div>
 								<div>
 									<span class="fas fa-adjust"></span>
@@ -335,7 +353,7 @@
 							<label class="btn btn-secondary w-100 h-100">
 								<input type="checkbox" autocomplete="off" id="varredura">
 								<div class="text-center">
-									<span class="bs-text">Varredura</span>
+									<span class="bs-text __t">Varredura</span>
 								</div>
 								<div>
 									<span class="fas fa-keyboard"></span>
@@ -346,11 +364,11 @@
 					<li class="nav-item">
 							<div class="text-center velocidade-group">
 								<span class="ss-icon fas fa-tachometer-alt"></span>
-								<span class="bs-text">Velocidade</span>
+								<span class="bs-text __t">Velocidade</span>
 							</div>
 							<div class="text-center velocidade-group">
 								<label for="velocidade" class="sr-only">
-									<span>Velocidade</span>
+									<span class="__t">Velocidade</span>
 								</label>
 								<input type="range" class="form-control-range" min="10" max="100" step="5" id="velocidade">
 							</div>
@@ -360,7 +378,7 @@
 			</nav>
 			<div class="cog">
 				<nav class="navbar">
-					<button class="navbar-toggler h-100" type="button" data-toggle="collapse" 
+					<button class="navbar-toggler h-100 __t" type="button" data-toggle="collapse" 
 							id="menu-toggler-cog"
 							data-target="#navbarToggleExternalContent" 
 							aria-controls="navbarToggleExternalContent" 
