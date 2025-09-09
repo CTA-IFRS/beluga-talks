@@ -2,9 +2,16 @@
 function Layout() {
     var obj = {};
 
-    obj.letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", 
+    var urlParams = new URLSearchParams(document.location.search);
+    var kb = urlParams.get("kb") || "alpha";
+    var alphabetical = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", 
                    "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", 
                    "Y", "Z"];
+    var qwerty = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "A", "S", 
+                   "D", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", 
+                   "N", "M"]
+
+    obj.letters = (kb == "qwerty") ? qwerty : alphabetical;
 
     obj.buildStringButton = function (letter, groups, nextGroup) {
         return '<div class="col w-100 h-100"> \
