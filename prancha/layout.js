@@ -2,9 +2,16 @@
 function Layout() {
     var obj = {};
 
-    obj.letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", 
+    var urlParams = new URLSearchParams(document.location.search);
+    var kb = urlParams.get("kb") || "alpha";
+    var alphabetical = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", 
                    "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", 
                    "Y", "Z"];
+    var qwerty = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "A", "S", 
+                   "D", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", 
+                   "N", "M"]
+
+    obj.letters = (kb == "qwerty") ? qwerty : alphabetical;
 
     obj.buildStringButton = function (letter, groups, nextGroup) {
         return '<div class="col w-100 h-100"> \
@@ -147,8 +154,8 @@ function Layout() {
 
         tags += '<div class="row sc-row specials" data-in-groups="group-1 group-2" data-next-group="specials">'
                 + this.buildSpaceButton('__', 'specials', 'group-1')
-                + this.buildStringButton('SIM', 'specials', 'group-1')
-                + this.buildStringButton('NÃO', 'specials', 'group-1')
+                + this.buildStringButton(__t('SIM'), 'specials', 'group-1')
+                + this.buildStringButton(__t('NÃO'), 'specials', 'group-1')
                 + this.buildToggleKeyboardButton()
                 + '</div>';
 
@@ -221,8 +228,8 @@ function Layout() {
         tags += '<div class="col-1 h-100 specials" data-in-groups="group-1 group-2" data-next-group="specials">';
         tags += '<div class="row h-100 sc-row">'
                 + this.buildSpaceButton('__', 'specials', 'group-1')
-                + this.buildStringButton('SIM', 'specials', 'group-1')
-                + this.buildStringButton('NÃO', 'specials', 'group-1')
+                + this.buildStringButton(__t('SIM'), 'specials', 'group-1')
+                + this.buildStringButton(__t('NÃO'), 'specials', 'group-1')
                 + this.buildToggleKeyboardButton()
                 + '</div>';
         tags += '</div>';

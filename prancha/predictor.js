@@ -1,7 +1,22 @@
 
 function WordPredictor() {
+    var nGramTable = null;
+    switch (__getLang()) {
+        case "pt-BR":
+        case "pt": 
+            nGramTable = getNGrams_ptBR();
+            break;
+        case "en-US":
+        case "en":
+            nGramTable = getNGrams_enUS();
+            break;
+
+        default:
+            nGramTable = getNGrams_ptBR();
+    }
+    
     return {
-        "ngram_list": getNGrams(),
+        "ngram_list": nGramTable,
         "preditcNextWords": function (phrase, max_results) {
             var ngram_list = this.ngram_list;
             var value_split = phrase.trim().split(" ");
