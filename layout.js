@@ -11,6 +11,7 @@ function Layout() {
                    "D", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", 
                    "N", "M"]
 
+    obj.kb = kb;
     obj.letters = (kb == "qwerty") ? qwerty : alphabetical;
 
     obj.buildStringButton = function (letter, groups, nextGroup) {
@@ -188,22 +189,64 @@ function Layout() {
         tags += '</div>';
 
         // letters
-        for (var i = 0; i < 26; i += 9) {
-            tags += '<div class="row alpha-row sc-row">';
-            for (var l = i; l < i+9; l++) {
-                if (l % 3 == 0) {
-                    tags += '<div class="col h-100"><div data-in-groups="group-1"\
+        if (obj.kb != 'qwerty') {
+            for (var i = 0; i < 26; i += 9) {
+                tags += '<div class="row alpha-row sc-row">';
+                for (var l = i; l < i+9; l++) {
+                    if (l % 3 == 0) {
+                        tags += '<div class="col h-100"><div data-in-groups="group-1"\
                         data-next-group="' + 'alpha-' + Math.trunc(l/3) + '" class="row h-100 alpha">';
+                    }
+                    if (l < 26) tags += this.buildStringButton(this.letters[l], 'alpha-' + Math.trunc(l/3), 'group-1');    
+                    if (l + 1 == 26) {
+                        tags += '<div class="col h-100"></div>';
+                    }
+                    if ((l+1) % 3 == 0) {
+                        tags += '</div></div>';
+                    }
                 }
-                if (l < 26) tags += this.buildStringButton(this.letters[l], 'alpha-' + Math.trunc(l/3), 'group-1');    
-                if (l + 1 == 26) {
-                    tags += '<div class="col h-100"></div>';
-                }
-                if ((l+1) % 3 == 0) {
-                    tags += '</div></div>';
-                }
+                tags += '</div>';
             }
-            tags += '</div>';
+        } else {
+                tags += '<div class="row alpha-row sc-row">';
+                for (var i = 0; i < 10; ++i) { 
+                    if (i % 5 == 0) {
+                        tags += '<div class="col h-100"><div data-in-groups="group-1"\
+                        data-next-group="' + 'alpha-' + Math.trunc(i/5) + '" class="row h-100 alpha">';
+                    }
+                    if (i < 10) tags += this.buildStringButton(this.letters[i], 'alpha-' + Math.trunc(i/5), 'group-1');    
+                    if ((i+1) % 5 == 0) {
+                        tags += '</div></div>';
+                    }
+                    
+                }
+                tags += '</div>';
+
+                tags += '<div class="row alpha-row sc-row" style="padding-left: 5%; padding-right: 5%;">';
+                for (var i = 0; i < 9; ++i) { 
+                    if (i % 3 == 0) {
+                        tags += '<div class="col h-100"><div data-in-groups="group-1"\
+                        data-next-group="' + 'alpha-' + Math.trunc(i/3 + 2) + '" class="row h-100 alpha">';
+                    }
+                    if (i < 9) tags += this.buildStringButton(this.letters[i + 10], 'alpha-' + Math.trunc(i/3 + 2), 'group-1');    
+                    if ((i+1) % 3 == 0) {
+                        tags += '</div></div>';
+                    }
+                    
+                }
+                tags += '</div>';
+
+                tags += '<div class="row alpha-row sc-row" style="padding-left: 12.5%; padding-right: 12.5%;">';
+                for (var i = 0; i < 7; ++i) { 
+                    if (i % 7 == 0) {
+                        tags += '<div class="col h-100"><div data-in-groups="group-1"\
+                        data-next-group="' + 'alpha-' + Math.trunc(i/7 + 5) + '" class="row h-100 alpha">';
+                    }
+                    if (i < 7) tags += this.buildStringButton(this.letters[i + 19], 'alpha-' + Math.trunc(i/7 + 5), 'group-1');    
+                    
+                }
+                tags += '</div></div></div>';
+            
         }
 
         //digits
