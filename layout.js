@@ -222,7 +222,7 @@ function Layout() {
                 }
                 tags += '</div>';
 
-                tags += '<div class="row alpha-row sc-row" style="padding-left: 5%; padding-right: 5%;">';
+                tags += '<div class="row alpha-row sc-row qwerty-mid">';
                 for (var i = 0; i < 9; ++i) { 
                     if (i % 3 == 0) {
                         tags += '<div class="col h-100"><div data-in-groups="group-1"\
@@ -236,7 +236,7 @@ function Layout() {
                 }
                 tags += '</div>';
 
-                tags += '<div class="row alpha-row sc-row" style="padding-left: 12.5%; padding-right: 12.5%;">';
+                tags += '<div class="row alpha-row sc-row qwerty-bottom">';
                 for (var i = 0; i < 7; ++i) { 
                     if (i % 7 == 0) {
                         tags += '<div class="col h-100"><div data-in-groups="group-1"\
