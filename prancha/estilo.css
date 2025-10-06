@@ -422,7 +422,14 @@ div.main .main-col .alpha .col {
     div.main .main-col.set-letters div.specials div:nth-child(3){
         height: 150% !important;
     }
-
+    div.main .main-col.set-letters .sc-row.qwerty-mid {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    div.main .main-col.set-letters .sc-row.qwerty-bottom {
+        padding-left: 12.5%;
+        padding-right: 12.5%;
+    }
 
     /* Digits */
     div.main .main-col.set-digits .alpha-row{
