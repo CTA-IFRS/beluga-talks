@@ -77,7 +77,7 @@ function Layout() {
                         onclick="clearText()" \
                         aria-label="Limpar caixa de texto" \
                         class="btn btn-outline-primary w-100 h-100">\
-                        <i class="fas fa-sync-alt"></i>\
+                        <i class="fas fa-trash"></i>\
                     </button>\
                 </div>';
     }

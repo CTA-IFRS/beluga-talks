@@ -1,0 +1,564 @@
+:root {
+    --success: #28A745;
+    --danger: #DC3545;
+    --warning: #FFC107;
+    --info: #17A2B8;
+    --gray100: #F8F9FA;
+    --gray200: #E9ECEF;
+    --gray300: #DEE2E6;
+    --gray400: #CED4DA;
+    --gray500: #ADB5BD;
+    --gray600: #6C757D;
+    --gray700: #495057;
+    --gray800: #343A40;
+    --gray900: #212529;
+    --white: #ffffff;
+    --black: #000000;
+    --be1: #ECF0F4;
+    --be2: #CBDDF0;
+    --be3: #9CBFE4;
+    --be4: #648FBC;
+    --be5: #195392;
+    --be6: #0A305A;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+        
+body {
+    background-color: var(--gray100);
+}
+div.menu {
+    background-color: var(--white);
+    border: 0;
+}
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-weight: 700;
+    color: var(--gray900);
+}
+.h1 {
+    font-size: 40px;
+}
+.h2 {
+    font-size: 32px;
+}
+.h3 {
+    font-size: 28px;
+}
+.h4 {
+    font-size: 24px;
+}
+.h5 {
+    font-size: 20px;
+}
+.h6 {
+    font-size: 16px;
+}
+.base-text {
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+}
+.lead-text {
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 34px;
+}
+.base-text2 {
+    font-family: "Nunito", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+}
+.lead-text2 {
+    font-family: "Nunito", sans-serif;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 34px;
+}
+.strong-text2 {
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 28px;
+}
+.shadow {
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.15) !important;
+}
+.btn-menu {
+    color: var(--gray700);
+    border: 1px solid var(--gray400);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px !important;
+    height: 60px;
+    box-sizing: border-box;
+}
+.custom-btn {
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-transform: uppercase;
+    border-radius: 50rem;
+    width: auto !important;
+    padding: 10px 26px !important;
+    min-height: 48px;
+    align-items: center;
+    display: flex;
+    gap: 8px;
+}
+.custom-btn.custom-btn-primary {
+    border: none !important;
+}
+.custom-btn.custom-btn-primary,
+.custom-btn.custom-btn-secondary.active,
+.custom-btn.custom-btn-secondary:hover,
+.custom-btn.custom-btn-secondary:focus,
+.custom-btn.custom-btn-outline.active,
+.custom-btn.custom-btn-outline:hover,
+.custom-btn.custom-btn-outline:focus {
+    background-color: var(--be5) !important;
+    color: var(--white) !important;
+}
+.custom-btn.custom-btn-primary.active,
+.custom-btn.custom-btn-primary:hover,
+.custom-btn.custom-btn-primary:focus {
+    background-color: var(--be6) !important;
+}
+.custom-btn.custom-btn-secondary {
+    background-color: var(--be1) !important;
+    color: var(--be6) !important;
+}
+.custom-btn.custom-btn-outline {
+    background-color: transparent !important;
+    color: var(--be5) !important;
+    border: 1px solid var(--be5);
+    box-sizing: border-box;
+}
+.custom-btn.custom-btn-primary.custom-btn-gray.active,
+.custom-btn.custom-btn-primary.custom-btn-gray:hover,
+.custom-btn.custom-btn-primary.custom-btn-gray:focus,
+.custom-btn.custom-btn-secondary.custom-btn-gray.active,
+.custom-btn.custom-btn-secondary.custom-btn-gray:hover,
+.custom-btn.custom-btn-secondary.custom-btn-gray:focus,
+.custom-btn.custom-btn-outline.custom-btn-gray.active,
+.custom-btn.custom-btn-outline.custom-btn-gray:hover,
+.custom-btn.custom-btn-outline.custom-btn-gray:focus {
+    background-color: var(--gray800) !important;
+    color: var(--white) !important;
+}
+.custom-btn.custom-btn-primary.custom-btn-gray {
+    background-color: var(--gray700) !important;
+    color: var(--white) !important;
+}
+.custom-btn.custom-btn-secondary.custom-btn-gray {
+    background-color: var(--gray200) !important;
+    color: var(--gray900) !important;
+}
+.custom-btn.custom-btn-outline.custom-btn-gray {
+    background-color: transparent !important;
+    color: var(--gray800) !important;
+    border: 1px solid var(--gray800);
+    box-sizing: border-box;
+}
+#collapseConfiguracoes,
+#collapseMenu {
+    position: fixed;
+    width: 287px;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+    border-radius: 8px 0 0 8px;
+}
+#collapseConfiguracoes li,
+#collapseMenu li {
+    list-style-type: none;
+    list-style: none;
+}
+#collapseConfiguracoes button.icon,
+#collapseConfiguracoes .varredura-group .btn-secondary,
+.velocidade-group {
+    background-color: transparent;
+    background-size: 19px !important;
+    padding-left: 30px;
+    width: fit-content;
+    height: auto;
+    color: var(--gray900);
+    display: flex;
+    align-items: center;
+    border: 0;
+    cursor: pointer;
+    border-radius: 0;
+}
+#collapseConfiguracoes .varredura-group .btn-secondary {
+    padding-left: 0;
+    gap: 12px;
+}
+.velocidade-group {
+    padding: .375rem 0;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+.velocidade-group .base-text {
+    margin-left: 8px;
+}
+#collapseConfiguracoes .varredura-group .btn-secondary.active {
+  background-color: var(--be5);
+  color: white;
+  border-radius: 4px;
+}
+#collapseConfiguracoes.collapsing,
+#collapseMenu.collapsing {
+    transition: none !important;
+}
+header .botoes .btn-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: none;
+    color: var(--gray700);
+}
+.small-btn {
+    font-size: 14px !important;
+    padding: 5px 18px !important;
+    min-height: 36px !important;
+    width: fit-content !important;
+}
+.small-btn-text {
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px !important;
+}
+#collapseConfiguracoes form label {
+    color: var(--gray900);
+}
+.nav-tabs .nav-link {
+    height: 41.6px;
+}
+.nav-tabs .nav-link.active {
+    height: 44.6px;
+    font-weight: 600;
+}
+#collapseMenu {
+    width: 212px;
+}
+#collapseMenu .nav-link {
+    margin-left: -16px;
+    margin-right: -16px;
+    border-left: 2px solid transparent;
+}
+#collapseMenu .nav-link span {
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--gray900) !important;
+}
+#collapseMenu .nav-link:hover,
+#collapseMenu .nav-link:focus {
+    background-color: var(--be1);
+    border-left: 2px solid var(--be5);
+}
+#normal-contrast {
+    background: url(imagens/no-contrast-icon.png) center left no-repeat;
+}
+#sepia-contrast {
+    background: url(imagens/sepia-contrast-icon.png) center left no-repeat;
+}
+#high-contrast {
+    background: url(imagens/high-contrast-icon.png) center left no-repeat;
+}
+#collapseConfiguracoes form {
+    display: flex;
+    flex-direction: column;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--gray800);
+    background-color: var(--gray100);
+    border: 1px solid var(--gray500);
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-weight: 400;
+}
+#accessibility-content {
+    margin-bottom: 0.8rem;
+}
+.form-control option {
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-weight: 400;
+}
+.main {
+    width: calc(100% - 50px);
+    margin: 25px auto !important;
+    border-radius: 12px;
+}
+div.toast-box p.toast-msg {
+    background-color: var(--be6);
+    border-radius: 8px;
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+}
+.btn-close {
+    background-color: transparent;
+    color: var(--gray900);
+}
+div.container-fluid div.main {
+    height: calc(100vh - 120px);
+}
+div.main .main-col {
+    padding: 1rem !important;
+}
+div.main .main-col button:focus
+body.contrast  .main-col button:active, div.main .main-col button:hover, div.main .main-col div[data-in-groups].group-selected button, div.main .main-col div[data-in-groups] button[data-in-groups].group-selected {
+    background-color: var(--be6) !important;
+    border-color: var(--be6) !important;
+    color: var(--white) !important;
+}
+div.main .main-col button, div.main .main-col button span, div.main .main-col div.specials button span {
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-weight: 400;
+}
+div.main .main-col button,
+div.main .main-col textarea {
+    background-color: var(--white);
+    border: 2px solid var(--gray500) !important;
+    color: var(--gray900) !important;
+    border-radius: 8px;
+}
+.predictor-pool {
+    background-color: var(--gray300);
+    border-radius: 8px;
+    margin: 0.5vmin !important;
+    height: 93% !important;
+    padding: 4px !important;
+}
+*:focus,
+.varredura-group .btn-secondary:focus,
+.varredura-group .btn-secondary.focus {
+    outline: 2px solid var(--be5) !important;
+    box-shadow: 0 0 0 .2rem var(--be2);
+}
+@media (orientation: landscape) {
+    div.main .main-col div button.predictor-button span {
+        font-size: calc(1rem + 0.8vw) !important;
+    }
+}
+@media (min-width: 620px) {
+    .modal-dialog {
+        max-width: 600px;
+    }
+}
+/* ALTO CONTRASTE */
+body.contrast { 
+    background-color: var(--black);
+}
+body.contrast header {
+    background-color: var(--gray900) !important;
+}
+body.contrast .logo-container h1 {
+    color: var(--white);
+}
+body.contrast .logo-container img {
+    filter: brightness(100);/* não funcionou */
+}
+body.contrast .btn-menu {
+    background-color: var(--gray900);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+body.contrast .btn-menu:hover {
+    background-color: var(--white);
+    color: var(--black);
+}
+body.contrast .main {
+    background-color: var(--gray900) !important;
+}
+body.contrast div.main button {
+    background-color: var(--black);
+    color: var(--white) !important;
+    border: 2px solid var(--white) !important;
+}
+body.contrast .predictor-pool {
+    background-color: var(--black);
+    border: 2px solid var(--white);
+}
+body.contrast div.main .main-col button:hover,
+body.contrast div.main .main-col button:focus,
+body.contrast div.main .main-col button:active {
+    background-color: var(--white) !important;
+    color: var(--black) !important;
+}
+body.contrast #collapseConfiguracoes,
+body.contrast #collapseMenu {
+    background-color: var(--gray900) !important;
+}
+body.contrast #collapseConfiguracoes h2,
+body.contrast #collapseMenu h2 {
+    color: var(--white);
+}
+body.contrast header .botoes .btn-close {
+    color: var(--gray100);
+}
+body.contrast #collapseConfiguracoes button.icon,
+body.contrast #collapseConfiguracoes .varredura-group .btn-secondary,
+body.contrast .velocidade-group {
+    color: var(--white);
+}
+body.contrast .custom-btn.custom-btn-primary,
+body.contrast .custom-btn.custom-btn-secondary.active,
+body.contrast .custom-btn.custom-btn-secondary:hover,
+body.contrast .custom-btn.custom-btn-secondary:focus,
+body.contrast .custom-btn.custom-btn-outline.active,
+body.contrast .custom-btn.custom-btn-outline:hover,
+body.contrast .custom-btn.custom-btn-outline:focus {
+    background-color: var(--white) !important;
+    color: #000 !important;
+}
+body.contrast .custom-btn.custom-btn-primary.active,
+body.contrast .custom-btn.custom-btn-primary:hover,
+body.contrast .custom-btn.custom-btn-primary:focus {
+    background-color: var(--gray100) !important;
+}
+body.contrast #collapseMenu .nav-link span {
+    color: var(--white) !important;
+}
+body.contrast #collapseMenu .nav-link:hover,
+body.contrast #collapseMenu .nav-link:focus {
+    background-color: var(--black);
+    border-left: 2px solid var(--white);
+}
+body.contrast #collapseMenu .logo-cta {
+    background-color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+}
+body.contrast .form-control {
+    color: var(--black);
+}
+body.contrast .modal-content {
+    background-color: var(--black);
+}
+body.contrast #sobre-modal-label,
+body.contrast .modal-header p,
+body.contrast .modal-body p,
+body.contrast .modal-header .close {
+    color: var(--white) !important;
+}
+body.contrast .modal-footer a {
+    padding: 12px;
+    border-radius: 8px;
+}
+body.contrast .modal-footer a,
+body.contrast .modal-footer img {
+    background-color: var(--white) !important;
+}
+body.contrast #collapseConfiguracoes .varredura-group .btn-secondary.active {
+    background-color: var(--white);
+    color: var(--black);
+}
+body.contrast div.toast-box p.toast-msg {
+    background-color: var(--gray900);
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+body.contrast div.main .main-col button:focus,
+body.contrast div.main .main-col button:active,
+body.contrast div.main .main-col button:hover,
+body.contrast div.main .main-col div[data-in-groups].group-selected button,
+body.contrast div.main .main-col div[data-in-groups] button[data-in-groups].group-selected {
+    background-color: var(--white) !important;
+    border-color: var(--white) !important;
+    color: var(--black) !important;
+}
+/* MODO SÉPIA */
+body.sepia {
+    background-color: #f4ecd8 !important;
+}
+body.sepia header {
+    background-color: #f4ecd8 !important;
+}
+body.sepia .main {
+    background-color: #f4ecd8 !important;
+}
+body.sepia div.main .main-col button,
+body.sepia div.main .main-col textarea {
+    background-color: #f4ecd8 !important;
+}
+body.sepia .predictor-pool {
+    background-color: #f4ecd8;
+    border: 2px solid var(--gray800) !important;
+}
+body.sepia div.main .main-col button,
+body.sepia div.main .main-col textarea {
+    border: 2px solid var(--gray800) !important;
+}
+body.sepia div.main .main-col button:focus,
+body.sepia div.main .main-col button:active,
+body.sepia div.main .main-col button:hover,
+body.sepia div.main .main-col div[data-in-groups].group-selected button,
+body.sepia div.main .main-col div[data-in-groups] button[data-in-groups].group-selected {
+    background-color: var(--gray900) !important;
+    border-color: var(--gray900) !important;
+    color: #f4ecd8 !important;
+}
+body.sepia .btn-menu {
+    background-color: #f4ecd8 !important;
+    color: var(--gray900);
+    border: 1px solid var(--gray900);
+}
+body.sepia .btn-menu:hover {
+    background-color: var(--gray900) !important;
+    color: #f4ecd8;
+}
+body.sepia #collapseConfiguracoes,
+body.sepia #collapseMenu {
+    background-color: #f4ecd8 !important;
+}
+body.sepia #collapseMenu .logo-cta {
+    background-color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+}
+body.sepia #collapseMenu .nav-link:hover,
+body.sepia #collapseMenu .nav-link:focus {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-left: 2px solid var(--gray900);
+}
+body.sepia .custom-btn.custom-btn-primary,
+body.sepia .custom-btn.custom-btn-secondary.active,
+body.sepia .custom-btn.custom-btn-secondary:hover,
+body.sepia .custom-btn.custom-btn-secondary:focus,
+body.sepia .custom-btn.custom-btn-outline.active,
+body.sepia .custom-btn.custom-btn-outline:hover,
+body.sepia .custom-btn.custom-btn-outline:focus {
+    background-color: var(--gray800) !important;
+}
+body.sepia .custom-btn.custom-btn-primary.active,
+body.sepia .custom-btn.custom-btn-primary:hover,
+body.sepia .custom-btn.custom-btn-primary:focus {
+    background-color: var(--gray900) !important;
+}
+body.sepia .modal-content {
+    background-color: #f4ecd8;
+}
+body.sepia #collapseConfiguracoes .varredura-group .btn-secondary.active {
+    background-color: var(--gray900);
+    color: var(--white);
+}
+body.sepia div.toast-box p.toast-msg {
+    background-color: var(--gray900);
+    color: #f4ecd8;
+}
