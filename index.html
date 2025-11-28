@@ -325,12 +325,12 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<header class="py-2 bg-white px-4 shadow">
+		<header class="py-2 bg-white px-3 px-sm-4 shadow">
 			<div class=" d-flex justify-content-between align-items-center">
 				<div class="row logo-container my-2">
-					<div class="text-left">
+					<div class="text-left ml-3">
 						<a href="/beluga"  class="link d-flex" >
-							<img src="imagens/beluga_icon_nav.png" height="47px" alt="logotipo Beluga Talks">
+							<img class="logo-nav" src="imagens/beluga_icon_nav.png" height="47px" alt="logotipo Beluga Talks">
 						</a>
 					</div>
 					<div class="text-center ml-2">
@@ -349,55 +349,59 @@
 								<span class="fa fa-cog" style="font-size: 24px;"></span>
 							</a>
 						</p>
-						<nav class="collapse bg-white shadow p-3" id="collapseConfiguracoes">
-							<div class="d-flex justify-content-between align-items-end mb-3">
-								<h2 class="h5 mb-1 __t">Configurações</h2>
-								<button data-toggle="collapse" href="#collapseConfiguracoes" role="button" aria-expanded="false" aria-controls="collapseConfiguracoes" type="button" class="btn-close">
-									<span class="sr-only __t">Fechar menu de configuração</span>
-									<span class="fa fa-times" style="font-size: 24px;"></span>
-								</button>
+						<nav class="collapse" id="collapseConfiguracoes">
+							<div class="box-configuracoes bg-white shadow p-3">
+								<div class="d-flex justify-content-between align-items-end mb-3">
+									<h2 class="h5 mb-1 __t">Configurações</h2>
+									<button data-toggle="collapse" href="#collapseConfiguracoes" role="button" aria-expanded="false" aria-controls="collapseConfiguracoes" type="button" class="btn-close">
+										<span class="sr-only __t">Fechar menu de configuração</span>
+										<span class="fa fa-times" style="font-size: 24px;"></span>
+									</button>
+								</div>
+								<div class="scroll-y">
+									<a href="#menu-config" id="menu-config" class="sr-only">Início do menu de configuração</a>			
+									<ul id="accessibility-content">
+										<li>
+											<button type="button" id="normal-contrast" class="icon base-text my-2 py-2 __t">Contraste normal</button>
+										</li>
+										<li>
+											<button type="button" id="sepia-contrast" class="icon base-text my-2 py-2 __t">Sépia</button>
+										</li>
+										<li>
+											<button type="button" id="high-contrast" class="icon base-text my-2 py-2 __t">Alto contraste</button>
+										</li>
+										<li>
+											<div class="btn-group-toggle w-100 h-100 varredura-group my-2" data-toggle="buttons">
+												<label class="btn btn-secondary w-100 h-100">
+													<input type="checkbox" autocomplete="off" id="varredura">
+													<span class="fas fa-keyboard"></span>
+													<span class="base-text __t">Varredura</span>
+												</label>
+											</div>
+										</li>
+										<li>
+											<div class="velocidade-group my-2">
+												<label for="velocidade">
+													<span class="ss-icon fas fa-tachometer-alt"></span>
+													<span class="base-text __t">Velocidade</span>
+												</label>
+												<input type="range" class="form-control-range" min="10" max="100" step="5" id="velocidade">
+											</div>
+										</li>
+									</ul>
+									<form>
+										<select id="langSelector" class="form-control">
+											<option value="pt-BR">Português</option>
+											<option value="en-US">English</option>
+										</select>
+										<button onclick="selectLang()" id="aplicarfiltros" type="button" class="custom-btn custom-btn-primary small-btn mt-3">
+											<span class="__t small-btn-text">Aplicar</span>
+											<span class="sr-only __t">idioma selecionado</span>
+											<span class="fa fa-check" style="font-size: 15px;"></span>
+										</button>
+									</form>
+								</div>
 							</div>
-							<a href="#menu-config" id="menu-config" class="sr-only">Início do menu de configuração</a>			
-							<ul id="accessibility-content">
-								<li>
-									<button type="button" id="normal-contrast" class="icon base-text my-2 py-2 __t">Contraste normal</button>
-								</li>
-								<li>
-									<button type="button" id="sepia-contrast" class="icon base-text my-2 py-2 __t">Sépia</button>
-								</li>
-								<li>
-									<button type="button" id="high-contrast" class="icon base-text my-2 py-2 __t">Alto contraste</button>
-								</li>
-								<li>
-									<div class="btn-group-toggle w-100 h-100 varredura-group my-2" data-toggle="buttons">
-										<label class="btn btn-secondary w-100 h-100">
-											<input type="checkbox" autocomplete="off" id="varredura">
-											<span class="fas fa-keyboard"></span>
-											<span class="base-text __t">Varredura</span>
-										</label>
-									</div>
-								</li>
-								<li>
-									<div class="velocidade-group my-2">
-										<label for="velocidade">
-											<span class="ss-icon fas fa-tachometer-alt"></span>
-											<span class="base-text __t">Velocidade</span>
-										</label>
-										<input type="range" class="form-control-range" min="10" max="100" step="5" id="velocidade">
-									</div>
-								</li>
-							</ul>
-							<form>
-								<select id="langSelector" class="form-control">
-									<option value="pt-BR">Português</option>
-									<option value="en-US">English</option>
-								</select>
-								<button onclick="selectLang()" id="aplicarfiltros" type="button" class="custom-btn custom-btn-primary small-btn mt-3">
-									<span class="__t small-btn-text">Aplicar</span>
-									<span class="sr-only __t">idioma selecionado</span>
-									<i class="bi bi-check2 ml-1" style="font-size: 17px;"></i>
-								</button>
-							</form>
 						</nav>
 					</div>
 					<div class="menu ml-2">
@@ -407,26 +411,28 @@
 								<span class="fa fa-bars" style="font-size: 22px;"></span>
 							</a>
 						</p>
-						<div class="collapse bg-white shadow p-3" id="collapseMenu">
-							<div class="d-flex flex-column h-100">
-								<div class="d-flex justify-content-between align-items-end mb-1">
-									<h2 class="h5 __t">Menu</h2>
-									<button data-toggle="collapse" href="#collapseMenu" role="button" aria-expanded="false" aria-controls="collapseMenu" type="button" class="btn-close">
-										<span class="fa fa-times" style="font-size: 24px;"></span>
-										<span class="sr-only __t">Fechar menu</span>
-									</button>
+						<div class="collapse" id="collapseMenu">
+							<div class="box-menu bg-white shadow p-3">
+								<div class="d-flex flex-column h-100">
+									<div class="d-flex justify-content-between align-items-end mb-1">
+										<h2 class="h5 __t">Menu</h2>
+										<button data-toggle="collapse" href="#collapseMenu" role="button" aria-expanded="false" aria-controls="collapseMenu" type="button" class="btn-close">
+											<span class="fa fa-times" style="font-size: 24px;"></span>
+											<span class="sr-only __t">Fechar menu</span>
+										</button>
+									</div>
+									<div>
+										<a href="#" data-toggle="modal" class="nav-link my-2" data-target="#sobre-modal">
+											<span class="__t">Sobre</span>
+										</a>
+										<a href="https://cta-ifrs.github.io/beluga-talks/manual/index.html" class="nav-link my-2">
+											<span class="__t">Manual (link externo)</span>
+										</a>
+									</div>
+									<a href="https://cta.ifrs.edu.br" class="logo-cta mt-auto">
+										<img src="imagens/logo-cta.png" width="160px" alt="Logo do CTA - Centro Tecnológico de Acessibilidade do IFRS" />
+									</a><!--ver aqui-->
 								</div>
-								<div>
-									<a href="#" data-toggle="modal" class="nav-link my-2" data-target="#sobre-modal">
-										<span class="__t">Sobre</span>
-									</a>
-									<a href="https://cta-ifrs.github.io/beluga-talks/manual/index.html" class="nav-link my-2">
-										<span class="__t">Manual (link externo)</span>
-									</a>
-								</div>
-								<a href="https://cta.ifrs.edu.br" class="logo-cta mt-auto">
-									<img src="imagens/logo-cta.png" width="160px" alt="Logo do CTA - Centro Tecnológico de Acessibilidade do IFRS" />
-								</a><!--ver aqui-->
 							</div>
 						</div>
 					</div>

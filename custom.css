@@ -172,7 +172,15 @@ div.menu {
     top: 0;
     right: 0;
     z-index: 9999;
+}
+.box-configuracoes,
+.box-menu {
+    max-width: 287px;
+    height: 100vh;
+    margin-left: auto;
     border-radius: 8px 0 0 8px;
+    display: flex;
+    flex-direction: column;
 }
 #collapseConfiguracoes li,
 #collapseMenu li {
@@ -351,6 +359,11 @@ div.main .main-col textarea {
     outline: 2px solid var(--be5) !important;
     box-shadow: 0 0 0 .2rem var(--be2);
 }
+.scroll-y {
+    overflow-y: scroll;
+    padding: 2px;
+    margin: -2px;
+}
 @media (orientation: landscape) {
     div.main .main-col div button.predictor-button span {
         font-size: calc(1rem + 0.8vw) !important;
@@ -401,8 +414,8 @@ body.contrast div.main .main-col button:active {
     background-color: var(--white) !important;
     color: var(--black) !important;
 }
-body.contrast #collapseConfiguracoes,
-body.contrast #collapseMenu {
+body.contrast #collapseConfiguracoes .box-configuracoes,
+body.contrast #collapseMenu .box-menu {
     background-color: var(--gray900) !important;
 }
 body.contrast #collapseConfiguracoes h2,
@@ -483,6 +496,9 @@ body.contrast div.main .main-col div[data-in-groups] button[data-in-groups].grou
     border-color: var(--white) !important;
     color: var(--black) !important;
 }
+body.contrast .logo-nav {
+    content: url("imagens/beluga_icon_nav_white.png");
+}
 /* MODO SÉPIA */
 body.sepia {
     background-color: #f4ecd8 !important;
@@ -523,8 +539,8 @@ body.sepia .btn-menu:hover {
     background-color: var(--gray900) !important;
     color: #f4ecd8;
 }
-body.sepia #collapseConfiguracoes,
-body.sepia #collapseMenu {
+body.sepia #collapseConfiguracoes .box-configuracoes,
+body.sepia #collapseMenu .box-menu {
     background-color: #f4ecd8 !important;
 }
 body.sepia #collapseMenu .logo-cta {
@@ -561,4 +577,35 @@ body.sepia #collapseConfiguracoes .varredura-group .btn-secondary.active {
 body.sepia div.toast-box p.toast-msg {
     background-color: var(--gray900);
     color: #f4ecd8;
+}
+@media (max-width: 884px) {
+    #collapseConfiguracoes,
+    #collapseMenu {
+        background-color: rgba(0, 0, 0, 0.15);
+        width: 100vw;
+    }
+    div.container-fluid div.main {
+        width: 100%;
+        height: calc(100vh - 90px);
+        margin: 12px auto !important;
+    }
+}
+@media (max-width: 480px) {
+    .logo-nav {
+        height: 38px;
+    }
+    .h4 {
+        font-size: 22px;
+    }
+    .btn-menu {
+        width: 44px !important;
+        height: 44px;
+    }
+    .main {
+        border-radius: 0;
+    }
+    div.container-fluid div.main {
+        height: calc(100vh - 82px);
+        margin-bottom: 0 !important;
+    }
 }
