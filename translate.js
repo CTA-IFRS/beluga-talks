@@ -27,6 +27,13 @@ function __makeTranslationTable(){
         "Abrir menu": "Open menu",
         "Configurações": "Settings",
         "Sobre": "About",
+        "Português": "Portuguese",
+        "Inglês": "English",
+        "Idioma": "language",
+        "selecionado": "selected",
+        "Teclado qwerty marcado": "Qwerty keyboard selected",
+        "Teclado qwerty desmarcado": "Qwerty keyboard deselected",
+        "Teclado Qwerty": "Qwerty keyboard",
         "Manual (link externo)": "Manual (external link)",
         "Sobre o Beluga Talks": "About Beluga Talks",
         "Prancha alfanumérica de CAA": "Alphanumeric AAC board",
@@ -44,7 +51,8 @@ function __makeTranslationTable(){
 
 function __getLang() {
     var urlParams = new URLSearchParams(document.location.search);
-    var lang = (urlParams.get("lang") 
+    var lang = (urlParams.get("lang")
+            || localStorage.getItem("lang_opt")
             || navigator.language 
             || document.documentElement.lang);
 
@@ -57,19 +65,6 @@ function __getLang() {
     }
 }
 
-function selectLang() {
-    const select = document.getElementById("langSelector");
-    const lang = select.value;
-    const url = new URL(window.location);
-    url.searchParams.set("lang", lang);
-    window.location.href = url.toString();
-}
-
-window.addEventListener("DOMContentLoaded", () => {
-    const currentLang = __getLang();
-    const select = document.getElementById("langSelector");
-    select.value = currentLang;
-});
 
 function __t(word) {
     if (typeof __t.table == "undefined"){

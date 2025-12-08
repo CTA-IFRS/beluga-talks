@@ -277,9 +277,17 @@ header .botoes .btn-close {
 #normal-contrast {
     background: url(imagens/no-contrast-icon.png) center left no-repeat;
 }
+.normal-color: {
+    color: rgb(69,79,87);
+}
+
 #sepia-contrast {
     background: url(imagens/sepia-contrast-icon.png) center left no-repeat;
 }
+.sepia-color {
+    color: rgb(236,193,112);
+}
+
 #high-contrast {
     background: url(imagens/high-contrast-icon.png) center left no-repeat;
 }

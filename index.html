@@ -51,6 +51,9 @@
 		var scan = null;
 		var storageSpeedKey = "scan_interval";
 		var storageContrast = "contrast_opt";
+        var storageKbQwerty = "kb_opt";
+        var storageLang = "lang_opt";
+        var storageScan = "scan_opt";
 		var minInterval = 500; 
 		var maxInterval = 5000;
 		var predictorMaxResults = 4;
@@ -173,13 +176,55 @@
 			});
 		}
 
+        function buildAndUpdateBigScreen(layout, word_predictor) {
+            var currText = $("#text").val();
+            layout.buildLayoutForBigScreen(".main-col");
+            $("#text").val(currText);
+            predictorMaxResults = 4;
+            updatePredictorPool(layout, word_predictor);
+            $("#text").on("change", function (ev) {
+                updatePredictorPool(layout, word_predictor);
+            });
+            updateTextAreaScroll();
+            if (scan.isScanning()) {
+                if ($("div.main-col").hasClass("set-letters")) {
+                    $('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-1");
+                    $('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-1");
+                    scan.reset("group-1");
+                } else {
+                    $('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-2");
+                    $('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-2");
+                    scan.reset("group-2");
+                }
+            }
+        } 
+
+        function buildAndUpdateSmallScreen(layout, word_predictor) {
+            var currText = $("#text").val();
+            layout.buildLayoutForSmallScreen(".main-col");
+            $("#text").val(currText);
+            predictorMaxResults = 2;
+            updatePredictorPool(layout, word_predictor);
+            $("#text").on("change", function (ev) {
+                updatePredictorPool(layout, word_predictor);
+            });
+            updateTextAreaScroll();
+            if (scan.isScanning()) {
+                if ($("div.main-col").hasClass("set-letters")) {
+                    $('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-1");
+                    $('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-1");
+                    scan.reset("group-1");
+                } else {
+                    $('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-2");
+                    $('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-2");
+                    scan.reset("group-2");
+                }
+            }
+
+        }
+
+
 		$(document).ready(function(){	    
-            // Translate
-            //$(".__t").text(function(idx, txt) {
-            //    
-            //    return __t(txt);
-            //});
-            
             $(".__t").each(function (idx, elem) {
                 if ($(elem).text() != "") $(elem).html(__t($(elem).html()));
                 if ($(elem).attr("aria-label")){
@@ -189,13 +234,31 @@
 
 			var word_predictor = new WordPredictor();
 
+
+            // Set lang in the mneu's option
+            const currentLang = __getLang();
+            const select = document.getElementById("langSelector");
+            select.value = currentLang;
+
+            // Set kb qwerty option 
+            var currentKb = __getKb();
+            if (currentKb == "qwerty") {
+                $("#kb-option").attr("checked", true);
+                $("#kb-option").parent().addClass("active");
+            }
+
 			var contrastOpt = localStorage.getItem(storageContrast) || "normal";
 			$("body").addClass(contrastOpt);
+            switch (contrastOpt) {
+                case "sepia": $("#sepia-contrast").trigger('click'); break;
+                case "contrast": $("#high-contrast").trigger('click'); break;
+                default: $("#normal-contrast").trigger('click'); break;
+            }
 			
 			var idx = Number.parseInt(localStorage.getItem(storageSpeedKey)) || 70; // %
 			$("#velocidade").val(idx);
 			scan = createScan({
-				interval: minInterval + (maxInterval - minInterval) * (1 - idx/100),
+                interval: minInterval + (maxInterval - minInterval) * (1 - idx/100),
 				goBack: 3,
 				clickRegion: document.querySelector("div.main-col")
 			});
@@ -205,51 +268,13 @@
 			var mediaLandscape = window.matchMedia("(orientation:landscape)");
 			mediaPortrait.addListener(function (m) {
 				if (m.matches) {
-					var currText = $("#text").val();
-					layout.buildLayoutForSmallScreen(".main-col");
-					$("#text").val(currText);
-					predictorMaxResults = 2;
-					updatePredictorPool(layout, word_predictor);
-					$("#text").on("change", function (ev) {
-						updatePredictorPool(layout, word_predictor);
-					});
-					updateTextAreaScroll();
-					if (scan.isScanning()) {
-						if ($("div.main-col").hasClass("set-letters")) {
-							$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-1");
-							$('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-1");
-							scan.reset("group-1");
-						} else {
-							$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-2");
-							$('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-2");
-							scan.reset("group-2");
-						}
-					}
+                    buildAndUpdateSmallScreen(layout, word_predictor);
 				} 
 			});
 			mediaLandscape.addListener(function (m) {
 				if (m.matches) {
-					var currText = $("#text").val();
-					layout.buildLayoutForBigScreen(".main-col");
-					$("#text").val(currText);
-					predictorMaxResults = 4;
-					updatePredictorPool(layout, word_predictor);
-					$("#text").on("change", function (ev) {
-						updatePredictorPool(layout, word_predictor);
-					});
-					updateTextAreaScroll();
-					if (scan.isScanning()) {
-						if ($("div.main-col").hasClass("set-letters")) {
-							$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-1");
-							$('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-1");
-							scan.reset("group-1");
-						} else {
-							$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-2");
-							$('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-2");
-							scan.reset("group-2");
-						}
-					}
-				} 
+                    buildAndUpdateBigScreen(layout, word_predictor);
+                }
 			});
 			if (mediaPortrait.matches) {
 				layout.buildLayoutForSmallScreen(".main-col");
@@ -262,9 +287,32 @@
 				updatePredictorPool(layout, word_predictor);
 			});
 
+            // If scan was active before update kb or lang
+            if (localStorage.getItem(storageScan)) {
+                localStorage.removeItem(storageScan);
+                //$("#varredura").trigger('click');
+                $("#varredura").attr("checked", true);
+                $("#varredura").parent().addClass("active");
+                scan.start("group-1");
+            }
+
+
+            $("#aplicarfiltros").on("click", function (ev) {
+                var lang = $("#langSelector").val();
+                localStorage.setItem(storageLang, lang);
+                if ($("#varredura").is(":checked")) {
+                    localStorage.setItem(storageScan, "on");
+                }
+                window.location.reload();
+            });
+
 			$(document).on("keydown", function (ev) {
 				if (ev.keyCode == 27) { //esc
-					if (scan.isScanning()) {
+                    if ($("#collapseConfiguracoes").hasClass("show")) {
+                        $("#collapseConfiguracoes").collapse('hide');
+                    } else if ($("#collapseMenu").hasClass("show")) {
+                        $("#collapseMenu").collapse('hide');
+                    } else if (scan.isScanning()) {
 						falar(__t("Varredura desabilitada"));
 						scan.stop();
 						$("#varredura").prop("checked", false);
@@ -273,8 +321,35 @@
 				}
 			});
 
+            $("#langSelector").on("change", function (ev) {
+                var currValue = $(this).val();
+                //localStorage.setItem(storageLang, currValue);
+                falar(__t("Idioma") +  " " + __t($(this).children(":checked").text()) + " " +  __t("selecionado"));
+            });
+                
+            $("#kb-option").on(("change"), function (ev) {
+                var currValue = localStorage.getItem(storageKbQwerty) || "alpha";
+                currValue = (currValue == "alpha") ? "qwerty" : "alpha";
+                if (currValue == "qwerty") {
+                    falar(__t("Teclado qwerty marcado"));
+                } else {
+                    falar(__t("Teclado qwerty desmarcado"));
+                }
+                localStorage.setItem(storageKbQwerty, currValue);
+            });
+
+            // Enable keydown on Enter and Space (Apparently, bootstrap disable it)
+            $("#varredura").on("keydown", function (ev) {
+                if (ev.keyCode == 13 || ev.keyCode == 32) { // Enter or Space
+                    if ($(this).is(":checked")) {
+                        $(this).attr("checked", false);
+                    } else {
+                        $(this).attr("checked", true);
+                    }   
+                }
+            });
 			$("#varredura").on("change", function (ev) {
-				if (this.checked) {
+                if (this.checked) {
 					if ($("div.main-col").hasClass("set-letters")){
 						scan.start("group-1");
 					} else {
@@ -295,7 +370,7 @@
 			
 			const contrastModes = ["normal", "sepia", "contrast"];
 
-			$("#normal-contrast, #sepia-contrast, #high-contrast").on("click", function () {
+			$("#normal-contrast, #sepia-contrast, #high-contrast").on("change", function () {
 				contrastModes.forEach(mode => $("body").removeClass(mode));
 				let newMode = "normal";
 				if (this.id === "sepia-contrast") newMode = "sepia";
@@ -361,27 +436,49 @@
 								<div class="scroll-y">
 									<a href="#menu-config" id="menu-config" class="sr-only">Início do menu de configuração</a>			
 									<ul id="accessibility-content">
-										<li>
+										<li class="border-top border-bottom">
+											<div class="btn-group-toggle w-100 h-100 varredura-group my-2" data-toggle="buttons">
+												<label class="btn btn-secondary w-100 h-100 pl-1">
+													<input type="radio" id="normal-contrast" name="contrast-group">
+													<span class="fas fa-adjust normal-color"></span>
+													<span class="base-text __t">Contraste normal</span>
+												</label>
+												<label class="btn btn-secondary w-100 h-100 pl-1">
+													<input type="radio" id="sepia-contrast" name="contrast-group">
+													<span class="fas fa-adjust sepia-color"></span>
+													<span class="base-text __t">Sépia</span>
+												</label>
+												<label class="btn btn-secondary w-100 h-100 pl-1">
+													<input type="radio"  id="high-contrast" name="contrast-group">
+													<span class="fas fa-adjust"></span>
+													<span class="base-text __t">Alto contraste</span>
+												</label>
+											</div>
+
+										</li>
+                                        <!--
+										<li class="border-top">
 											<button type="button" id="normal-contrast" class="icon base-text my-2 py-2 __t">Contraste normal</button>
 										</li>
 										<li>
 											<button type="button" id="sepia-contrast" class="icon base-text my-2 py-2 __t">Sépia</button>
 										</li>
-										<li>
+										<li class="border-bottom">
 											<button type="button" id="high-contrast" class="icon base-text my-2 py-2 __t">Alto contraste</button>
 										</li>
+                                        -->
 										<li>
 											<div class="btn-group-toggle w-100 h-100 varredura-group my-2" data-toggle="buttons">
-												<label class="btn btn-secondary w-100 h-100">
-													<input type="checkbox" autocomplete="off" id="varredura">
+												<label class="btn btn-secondary w-100 h-100 pl-1">
+													<input type="checkbox"  id="varredura">
 													<span class="fas fa-keyboard"></span>
 													<span class="base-text __t">Varredura</span>
 												</label>
 											</div>
 										</li>
-										<li>
-											<div class="velocidade-group my-2">
-												<label for="velocidade">
+										<li class="border-bottom">
+											<div class="velocidade-group my-2 pl-1">
+												<label for="velocidade" class="">
 													<span class="ss-icon fas fa-tachometer-alt"></span>
 													<span class="base-text __t">Velocidade</span>
 												</label>
@@ -389,16 +486,25 @@
 											</div>
 										</li>
 									</ul>
-									<form>
+									<form action="#" class="border-bottom pb-3">
+                                        <div class="btn-group-toggle w-100 h-100 varredura-group my-2" data-toggle="buttons">
+                                            <label class="btn btn-secondary w-100 h-100 pl-1">
+                                                <input type="checkbox" autocomplete="off" id="kb-option">
+                                                <span class="fas fa-keyboard"></span>
+                                                <span class="base-text __t">Teclado Qwerty</span>
+                                            </label>
+                                        </div>
 										<select id="langSelector" class="form-control">
 											<option value="pt-BR">Português</option>
 											<option value="en-US">English</option>
 										</select>
-										<button onclick="selectLang()" id="aplicarfiltros" type="button" class="custom-btn custom-btn-primary small-btn mt-3">
+                                        <div class="mx-auto">
+										<button  id="aplicarfiltros" type="button" class="custom-btn custom-btn-primary small-btn mt-3">
 											<span class="__t small-btn-text">Aplicar</span>
-											<span class="sr-only __t">idioma selecionado</span>
+											<span class="sr-only __t">idioma e teclado selecionado</span>
 											<span class="fa fa-check" style="font-size: 15px;"></span>
 										</button>
+                                        </div>
 									</form>
 								</div>
 							</div>
