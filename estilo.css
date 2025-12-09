@@ -259,9 +259,9 @@ div.main .main-col button {
     background-color: rgb(255,255,89) !important;
 } */
 
-div[data-in-groups].group-selected-parent button{
+div.main .main-col div[data-in-groups].group-selected-parent button{
     /* border-color: black; */
-    border-style: dashed;
+    border-style: dashed !important;
     border-width: 2px;
 }
 div.main .main-col.set-letters span.to-alpha,

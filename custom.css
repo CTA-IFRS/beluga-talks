@@ -318,7 +318,7 @@ header .botoes .btn-close {
 }
 .main {
     width: calc(100% - 50px);
-    margin: 25px auto !important;
+    margin: 20px auto !important;
     border-radius: 12px;
 }
 div.toast-box p.toast-msg {
@@ -335,7 +335,7 @@ div.container-fluid div.main {
     height: calc(100vh - 120px);
 }
 div.main .main-col {
-    padding: 1rem !important;
+    padding: 0.3rem !important;
 }
 div.main .main-col button:focus
 body.contrast  .main-col button:active, div.main .main-col button:hover, div.main .main-col div[data-in-groups].group-selected button, div.main .main-col div[data-in-groups] button[data-in-groups].group-selected {
@@ -347,6 +347,7 @@ div.main .main-col button, div.main .main-col button span, div.main .main-col di
     font-family: "Atkinson Hyperlegible", sans-serif;
     font-weight: 400;
 }
+
 div.main .main-col button,
 div.main .main-col textarea {
     background-color: var(--white);
@@ -361,6 +362,10 @@ div.main .main-col textarea {
     height: 93% !important;
     padding: 4px !important;
 }
+.predictor-row {
+    margin-top: 0.2rem !important;
+}
+
 *:focus,
 .varredura-group .btn-secondary:focus,
 .varredura-group .btn-secondary.focus {
@@ -380,6 +385,11 @@ div.main .main-col textarea {
 @media (min-width: 620px) {
     .modal-dialog {
         max-width: 600px;
+    }
+}
+@media (orientation: landscape) and (max-width: 1200px) {
+    div.set-letters div.specials {
+        margin-top: 0.2rem !important;
     }
 }
 /* ALTO CONTRASTE */
@@ -595,7 +605,7 @@ body.sepia div.toast-box p.toast-msg {
     div.container-fluid div.main {
         width: 100%;
         height: calc(100vh - 90px);
-        margin: 12px auto !important;
+        margin: 6px auto !important;
     }
 }
 @media (max-width: 480px) {
