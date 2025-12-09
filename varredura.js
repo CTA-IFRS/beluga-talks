@@ -148,7 +148,8 @@ function createScan(options = {}) {
 
     changeToGroup: function (groupNameToScan) {
       clearInterval(_intervalId);
-      _currGroup = document.querySelectorAll('[data-in-groups~="' + groupNameToScan + '"]');
+      newGroup = document.querySelectorAll('[data-in-groups~="' + groupNameToScan + '"]');
+      if (newGroup.length > 0) _currGroup = newGroup;  
       if (_currSelection) {
         _currSelection.classList.remove(_cssGroup);
         if (_parentSelection) _parentSelection.classList.remove(_cssParentGroup);
