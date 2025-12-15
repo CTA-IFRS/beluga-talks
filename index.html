@@ -310,6 +310,7 @@
 				if (ev.keyCode == 27) { //esc
                     if ($("#collapseConfiguracoes").hasClass("show")) {
                         $("#collapseConfiguracoes").collapse('hide');
+                        ev.stopPropagation();
                     } else if ($("#collapseMenu").hasClass("show")) {
                         $("#collapseMenu").collapse('hide');
                     } else if (scan.isScanning()) {
@@ -495,8 +496,8 @@
                                             </label>
                                         </div>
 										<select id="langSelector" class="form-control">
-											<option value="pt-BR">Português</option>
-											<option value="en-US">English</option>
+											<option class="__t" value="pt-BR">Português</option>
+											<option class="__t" value="en-US">Inglês</option>
 										</select>
                                         <div class="mx-auto">
 										<button  id="aplicarfiltros" type="button" class="custom-btn custom-btn-primary small-btn mt-3">
