@@ -14,6 +14,8 @@ function __makeTranslationTable(){
         "Teclado numérico": "Numeric keypad",
         "Apagar": "Erase",
         "Limpar": "Clear",
+        "Ativado": "Enabled",
+        "Desativado": "Disabled",
         "Espaço": "Space",
         "Varredura desabilitada": "Scanning disabled",
         "Varredura habilitada": "Scanning enabled", 

@@ -223,8 +223,12 @@
 
         }
 
+        function changeScanStatus(newText) {
+            $("#varredura").parent().children(".status").text("(" + __t(newText) + ")");
+        }
 
 		$(document).ready(function(){	    
+
             $(".__t").each(function (idx, elem) {
                 if ($(elem).text() != "") $(elem).html(__t($(elem).html()));
                 if ($(elem).attr("aria-label")){
@@ -245,7 +249,10 @@
             if (currentKb == "qwerty") {
                 $("#kb-option").attr("checked", true);
                 $("#kb-option").parent().addClass("active");
-            }
+                $("#kb-option").parent().children(".status").text("(" + __t("Ativado") + ")");
+            } else {
+                $("#kb-option").parent().children(".status").text("(" + __t("Desativado") + ")");
+            } 
 
 			var contrastOpt = localStorage.getItem(storageContrast) || "normal";
 			$("body").addClass(contrastOpt);
@@ -294,6 +301,9 @@
                 $("#varredura").attr("checked", true);
                 $("#varredura").parent().addClass("active");
                 scan.start("group-1");
+                changeScanStatus("Ativado");
+            } else {
+                changeScanStatus("Desativado");
             }
 
 
@@ -306,6 +316,7 @@
                 window.location.reload();
             });
 
+
 			$(document).on("keydown", function (ev) {
 				if (ev.keyCode == 27) { //esc
                     if ($("#collapseConfiguracoes").hasClass("show")) {
@@ -316,6 +327,7 @@
                     } else if (scan.isScanning()) {
 						falar(__t("Varredura desabilitada"));
 						scan.stop();
+                        changeScanStatus("Desativado");
 						$("#varredura").prop("checked", false);
 						$(".varredura-group label").removeClass("active");
 					}
@@ -333,19 +345,24 @@
                 currValue = (currValue == "alpha") ? "qwerty" : "alpha";
                 if (currValue == "qwerty") {
                     falar(__t("Teclado qwerty marcado"));
+                    $("#kb-option").parent().children(".status").text("(" + __t("Ativado") + ")");
                 } else {
                     falar(__t("Teclado qwerty desmarcado"));
+                    $("#kb-option").parent().children(".status").text("(" + __t("Desativado") + ")");
                 }
                 localStorage.setItem(storageKbQwerty, currValue);
             });
+
 
             // Enable keydown on Enter and Space (Apparently, bootstrap disable it)
             $("#varredura").on("keydown", function (ev) {
                 if (ev.keyCode == 13 || ev.keyCode == 32) { // Enter or Space
                     if ($(this).is(":checked")) {
                         $(this).attr("checked", false);
+                        changeScanStatus("Desativado");
                     } else {
                         $(this).attr("checked", true);
+                        changeScanStatus("Ativado");
                     }   
                 }
             });
@@ -357,9 +374,11 @@
 						scan.start("group-2");
 					}
 					falar(__t("Varredura habilitada"));
+                    changeScanStatus("Ativado");
 				} else {
 					if (scan.isScanning()) {
 						falar(__t("Varredura desabilitada"));
+                        changeScanStatus("Desativado");
 						scan.stop();
 					}		
 				}
@@ -437,25 +456,33 @@
 								<div class="scroll-y">
 									<a href="#menu-config" id="menu-config" class="sr-only">Início do menu de configuração</a>			
 									<ul id="accessibility-content">
-										<li class="border-top border-bottom">
-											<div class="btn-group-toggle w-100 h-100 varredura-group my-2" data-toggle="buttons">
-												<label class="btn btn-secondary w-100 h-100 pl-1">
-													<input type="radio" id="normal-contrast" name="contrast-group">
-													<span class="fas fa-adjust normal-color"></span>
-													<span class="base-text __t">Contraste normal</span>
-												</label>
-												<label class="btn btn-secondary w-100 h-100 pl-1">
-													<input type="radio" id="sepia-contrast" name="contrast-group">
-													<span class="fas fa-adjust sepia-color"></span>
-													<span class="base-text __t">Sépia</span>
-												</label>
-												<label class="btn btn-secondary w-100 h-100 pl-1">
-													<input type="radio"  id="high-contrast" name="contrast-group">
-													<span class="fas fa-adjust"></span>
-													<span class="base-text __t">Alto contraste</span>
-												</label>
-											</div>
-
+										<li class="mb-3">
+                                            <fieldset>
+                                                <legend class="menu-section-header menu-section-header-color">
+                                                    <div class="row">
+                                                        <div class="col"><div class="header-text-line"></div></div>
+                                                        <div class="text-center">Contraste</div>
+                                                        <div class="col"><div class="header-text-line"></div></div>
+                                                    </div>
+                                                </legend>
+                                                <div class="btn-group-toggle w-100 h-100 varredura-group my-2" data-toggle="buttons">
+                                                    <label class="btn btn-secondary w-100 h-100 pl-1">
+                                                        <input type="radio" id="normal-contrast" name="contrast-group">
+                                                        <span class="fas fa-adjust normal-color"></span>
+                                                        <span class="base-text __t">Contraste normal</span>
+                                                    </label>
+                                                    <label class="btn btn-secondary w-100 h-100 pl-1">
+                                                        <input type="radio" id="sepia-contrast" name="contrast-group">
+                                                        <span class="fas fa-adjust sepia-color"></span>
+                                                        <span class="base-text __t">Sépia</span>
+                                                    </label>
+                                                    <label class="btn btn-secondary w-100 h-100 pl-1">
+                                                        <input type="radio"  id="high-contrast" name="contrast-group">
+                                                        <span class="fas fa-adjust"></span>
+                                                        <span class="base-text __t">Alto contraste</span>
+                                                    </label>
+                                                </div>
+                                            </fieldset>
 										</li>
                                         <!--
 										<li class="border-top">
@@ -469,42 +496,59 @@
 										</li>
                                         -->
 										<li>
-											<div class="btn-group-toggle w-100 h-100 varredura-group my-2" data-toggle="buttons">
-												<label class="btn btn-secondary w-100 h-100 pl-1">
-													<input type="checkbox"  id="varredura">
-													<span class="fas fa-keyboard"></span>
-													<span class="base-text __t">Varredura</span>
-												</label>
-											</div>
-										</li>
-										<li class="border-bottom">
-											<div class="velocidade-group my-2 pl-1">
-												<label for="velocidade" class="">
-													<span class="ss-icon fas fa-tachometer-alt"></span>
-													<span class="base-text __t">Velocidade</span>
-												</label>
-												<input type="range" class="form-control-range" min="10" max="100" step="5" id="velocidade">
-											</div>
+                                            <fieldset>
+                                                <legend class="menu-section-header menu-section-header-color">
+                                                    <div class="row">
+                                                        <div class="col"><div class="header-text-line"></div></div>
+                                                        <div class="text-center">Varredura e velocidade</div>
+                                                        <div class="col"><div class="header-text-line"></div></div>
+                                                    </div>
+                                                </legend>
+                                                <div class="btn-group-toggle w-100 h-100 varredura-group my-2" data-toggle="buttons">
+                                                    <label class="btn btn-secondary w-100 h-100 pl-1">
+                                                        <input type="checkbox"  id="varredura">
+                                                        <span class="fas fa-keyboard"></span>
+                                                        <span class="base-text __t">Varredura</span>
+                                                        <span class="status"></span>
+                                                    </label>
+                                                </div>
+                                                <div class="velocidade-group my-2 pl-1">
+                                                    <label for="velocidade" class="">
+                                                        <span class="ss-icon fas fa-tachometer-alt"></span>
+                                                        <span class="base-text __t">Velocidade</span>
+                                                    </label>
+                                                    <input type="range" class="form-control-range" min="10" max="100" step="5" id="velocidade">
+                                                </div>
+                                            </fieldset>
 										</li>
 									</ul>
-									<form action="#" class="border-bottom pb-3">
+									<form action="#" class="pb-3">
+                                        <fieldset>
+                                            <legend class="menu-section-header menu-section-header-color">
+                                                <div class="row">
+                                                    <div class="col"><div class="header-text-line"></div></div>
+                                                    <div class="text-center">Idiomas e teclado</div>
+                                                    <div class="col"><div class="header-text-line"></div></div>
+                                                </div>
+                                            </legend>
                                         <div class="btn-group-toggle w-100 h-100 varredura-group my-2" data-toggle="buttons">
                                             <label class="btn btn-secondary w-100 h-100 pl-1">
                                                 <input type="checkbox" autocomplete="off" id="kb-option">
                                                 <span class="fas fa-keyboard"></span>
                                                 <span class="base-text __t">Teclado Qwerty</span>
+                                                <span class="status"></span>
                                             </label>
                                         </div>
 										<select id="langSelector" class="form-control">
 											<option class="__t" value="pt-BR">Português</option>
 											<option class="__t" value="en-US">Inglês</option>
 										</select>
-                                        <div class="mx-auto">
-										<button  id="aplicarfiltros" type="button" class="custom-btn custom-btn-primary small-btn mt-3">
-											<span class="__t small-btn-text">Aplicar</span>
-											<span class="sr-only __t">idioma e teclado selecionado</span>
-											<span class="fa fa-check" style="font-size: 15px;"></span>
-										</button>
+                                        <div>
+                                            <button  id="aplicarfiltros" type="button" class="custom-btn custom-btn-primary small-btn mx-auto mt-3">
+                                                <span class="__t small-btn-text">Aplicar</span>
+                                                <span class="sr-only __t">idioma e teclado selecionado</span>
+                                                <span class="fa fa-check" style="font-size: 15px;"></span>
+                                            </button>
                                         </div>
 									</form>
 								</div>

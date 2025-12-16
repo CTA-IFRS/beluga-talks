@@ -392,6 +392,21 @@ div.main .main-col textarea {
         margin-top: 0.2rem !important;
     }
 }
+
+.menu-section-header {
+    text-align: center;
+    font-size: 0.9rem;
+}
+.menu-section-header .header-text-line {
+    border-color: var(--gray400) !important;
+    border-bottom: 1px solid;
+    margin: 0 auto;
+    height: 60%;
+}
+.menu-section-header-color {
+    color: var(--gray600) !important;
+}
+
 /* ALTO CONTRASTE */
 body.contrast { 
     background-color: var(--black);
@@ -517,6 +532,20 @@ body.contrast div.main .main-col div[data-in-groups] button[data-in-groups].grou
 body.contrast .logo-nav {
     content: url("imagens/beluga_icon_nav_white.png");
 }
+body.contrast .menu-section-header {
+    text-align: center;
+    font-size: 0.9rem;
+}
+body.contrast .menu-section-header .header-text-line {
+    border-color: var(--gray500) !important;
+    border-bottom: 1px solid;
+    margin: 0 auto;
+    height: 60%;
+}
+body.contrast .menu-section-header-color {
+    color: var(--gray500) !important;
+}
+
 /* MODO SÉPIA */
 body.sepia {
     background-color: #f4ecd8 !important;
