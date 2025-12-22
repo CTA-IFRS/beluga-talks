@@ -249,9 +249,9 @@
             if (currentKb == "qwerty") {
                 $("#kb-option").attr("checked", true);
                 $("#kb-option").parent().addClass("active");
-                $("#kb-option").parent().children(".status").text("(" + __t("Ativado") + ")");
+                $("#kb-option").parent().children(".status").text("(" + __t("Ativo") + ")");
             } else {
-                $("#kb-option").parent().children(".status").text("(" + __t("Desativado") + ")");
+                $("#kb-option").parent().children(".status").text("(" + __t("Inativo") + ")");
             } 
 
 			var contrastOpt = localStorage.getItem(storageContrast) || "normal";
@@ -301,9 +301,9 @@
                 $("#varredura").attr("checked", true);
                 $("#varredura").parent().addClass("active");
                 scan.start("group-1");
-                changeScanStatus("Ativado");
+                changeScanStatus("Ativo");
             } else {
-                changeScanStatus("Desativado");
+                changeScanStatus("Inativo");
             }
 
 
@@ -327,7 +327,7 @@
                     } else if (scan.isScanning()) {
 						falar(__t("Varredura desabilitada"));
 						scan.stop();
-                        changeScanStatus("Desativado");
+                        changeScanStatus("Inativo");
 						$("#varredura").prop("checked", false);
 						$(".varredura-group label").removeClass("active");
 					}
@@ -345,10 +345,10 @@
                 currValue = (currValue == "alpha") ? "qwerty" : "alpha";
                 if (currValue == "qwerty") {
                     falar(__t("Teclado qwerty marcado"));
-                    $("#kb-option").parent().children(".status").text("(" + __t("Ativado") + ")");
+                    $("#kb-option").parent().children(".status").text("(" + __t("Ativo") + ")");
                 } else {
                     falar(__t("Teclado qwerty desmarcado"));
-                    $("#kb-option").parent().children(".status").text("(" + __t("Desativado") + ")");
+                    $("#kb-option").parent().children(".status").text("(" + __t("Inativo") + ")");
                 }
                 localStorage.setItem(storageKbQwerty, currValue);
             });
@@ -359,10 +359,10 @@
                 if (ev.keyCode == 13 || ev.keyCode == 32) { // Enter or Space
                     if ($(this).is(":checked")) {
                         $(this).attr("checked", false);
-                        changeScanStatus("Desativado");
+                        changeScanStatus("Inativo");
                     } else {
                         $(this).attr("checked", true);
-                        changeScanStatus("Ativado");
+                        changeScanStatus("Ativo");
                     }   
                 }
             });
@@ -374,11 +374,11 @@
 						scan.start("group-2");
 					}
 					falar(__t("Varredura habilitada"));
-                    changeScanStatus("Ativado");
+                    changeScanStatus("Ativo");
 				} else {
 					if (scan.isScanning()) {
 						falar(__t("Varredura desabilitada"));
-                        changeScanStatus("Desativado");
+                        changeScanStatus("Inativo");
 						scan.stop();
 					}		
 				}
