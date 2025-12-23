@@ -31,6 +31,7 @@
 
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 	<link rel="stylesheet" type="text/css" href="estilo.css"/>
+	<link rel="stylesheet" type="text/css" href="custom.css"/>
 	
 	<!-- Bootstrap -->
 	<!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
@@ -50,6 +51,9 @@
 		var scan = null;
 		var storageSpeedKey = "scan_interval";
 		var storageContrast = "contrast_opt";
+        var storageKbQwerty = "kb_opt";
+        var storageLang = "lang_opt";
+        var storageScan = "scan_opt";
 		var minInterval = 500; 
 		var maxInterval = 5000;
 		var predictorMaxResults = 4;
@@ -172,13 +176,59 @@
 			});
 		}
 
+        function buildAndUpdateBigScreen(layout, word_predictor) {
+            var currText = $("#text").val();
+            layout.buildLayoutForBigScreen(".main-col");
+            $("#text").val(currText);
+            predictorMaxResults = 4;
+            updatePredictorPool(layout, word_predictor);
+            $("#text").on("change", function (ev) {
+                updatePredictorPool(layout, word_predictor);
+            });
+            updateTextAreaScroll();
+            if (scan.isScanning()) {
+                if ($("div.main-col").hasClass("set-letters")) {
+                    $('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-1");
+                    $('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-1");
+                    scan.reset("group-1");
+                } else {
+                    $('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-2");
+                    $('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-2");
+                    scan.reset("group-2");
+                }
+            }
+        } 
+
+        function buildAndUpdateSmallScreen(layout, word_predictor) {
+            var currText = $("#text").val();
+            layout.buildLayoutForSmallScreen(".main-col");
+            $("#text").val(currText);
+            predictorMaxResults = 2;
+            updatePredictorPool(layout, word_predictor);
+            $("#text").on("change", function (ev) {
+                updatePredictorPool(layout, word_predictor);
+            });
+            updateTextAreaScroll();
+            if (scan.isScanning()) {
+                if ($("div.main-col").hasClass("set-letters")) {
+                    $('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-1");
+                    $('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-1");
+                    scan.reset("group-1");
+                } else {
+                    $('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-2");
+                    $('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-2");
+                    scan.reset("group-2");
+                }
+            }
+
+        }
+
+        function changeScanStatus(newText) {
+            $("#varredura").parent().children(".status").text("(" + __t(newText) + ")");
+        }
+
 		$(document).ready(function(){	    
-            // Translate
-            //$(".__t").text(function(idx, txt) {
-            //    
-            //    return __t(txt);
-            //});
-            
+
             $(".__t").each(function (idx, elem) {
                 if ($(elem).text() != "") $(elem).html(__t($(elem).html()));
                 if ($(elem).attr("aria-label")){
@@ -188,17 +238,34 @@
 
 			var word_predictor = new WordPredictor();
 
+
+            // Set lang in the mneu's option
+            const currentLang = __getLang();
+            const select = document.getElementById("langSelector");
+            select.value = currentLang;
+
+            // Set kb qwerty option 
+            var currentKb = __getKb();
+            if (currentKb == "qwerty") {
+                $("#kb-option").attr("checked", true);
+                $("#kb-option").parent().addClass("active");
+                $("#kb-option").parent().children(".status").text("(" + __t("Ativo") + ")");
+            } else {
+                $("#kb-option").parent().children(".status").text("(" + __t("Inativo") + ")");
+            } 
+
 			var contrastOpt = localStorage.getItem(storageContrast) || "normal";
-			if (contrastOpt == "contrast") {
-				$("#modo-contraste").prop("checked", true);
-				$(".modo-contraste-group label").addClass("active");
-			}
 			$("body").addClass(contrastOpt);
+            switch (contrastOpt) {
+                case "sepia": $("#sepia-contrast").trigger('click'); break;
+                case "contrast": $("#high-contrast").trigger('click'); break;
+                default: $("#normal-contrast").trigger('click'); break;
+            }
 			
 			var idx = Number.parseInt(localStorage.getItem(storageSpeedKey)) || 70; // %
 			$("#velocidade").val(idx);
 			scan = createScan({
-				interval: minInterval + (maxInterval - minInterval) * (1 - idx/100),
+                interval: minInterval + (maxInterval - minInterval) * (1 - idx/100),
 				goBack: 3,
 				clickRegion: document.querySelector("div.main-col")
 			});
@@ -208,51 +275,13 @@
 			var mediaLandscape = window.matchMedia("(orientation:landscape)");
 			mediaPortrait.addListener(function (m) {
 				if (m.matches) {
-					var currText = $("#text").val();
-					layout.buildLayoutForSmallScreen(".main-col");
-					$("#text").val(currText);
-					predictorMaxResults = 2;
-					updatePredictorPool(layout, word_predictor);
-					$("#text").on("change", function (ev) {
-						updatePredictorPool(layout, word_predictor);
-					});
-					updateTextAreaScroll();
-					if (scan.isScanning()) {
-						if ($("div.main-col").hasClass("set-letters")) {
-							$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-1");
-							$('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-1");
-							scan.reset("group-1");
-						} else {
-							$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-2");
-							$('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-2");
-							scan.reset("group-2");
-						}
-					}
+                    buildAndUpdateSmallScreen(layout, word_predictor);
 				} 
 			});
 			mediaLandscape.addListener(function (m) {
 				if (m.matches) {
-					var currText = $("#text").val();
-					layout.buildLayoutForBigScreen(".main-col");
-					$("#text").val(currText);
-					predictorMaxResults = 4;
-					updatePredictorPool(layout, word_predictor);
-					$("#text").on("change", function (ev) {
-						updatePredictorPool(layout, word_predictor);
-					});
-					updateTextAreaScroll();
-					if (scan.isScanning()) {
-						if ($("div.main-col").hasClass("set-letters")) {
-							$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-1");
-							$('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-1");
-							scan.reset("group-1");
-						} else {
-							$('[data-in-groups="controls"][data-next-group]').attr("data-next-group", "group-2");
-							$('[data-in-groups="specials"][data-next-group]').attr("data-next-group", "group-2");
-							scan.reset("group-2");
-						}
-					}
-				} 
+                    buildAndUpdateBigScreen(layout, word_predictor);
+                }
 			});
 			if (mediaPortrait.matches) {
 				layout.buildLayoutForSmallScreen(".main-col");
@@ -265,28 +294,91 @@
 				updatePredictorPool(layout, word_predictor);
 			});
 
+            // If scan was active before update kb or lang
+            if (localStorage.getItem(storageScan)) {
+                localStorage.removeItem(storageScan);
+                //$("#varredura").trigger('click');
+                $("#varredura").attr("checked", true);
+                $("#varredura").parent().addClass("active");
+                scan.start("group-1");
+                changeScanStatus("Ativo");
+            } else {
+                changeScanStatus("Inativo");
+            }
+
+
+            $("#aplicarfiltros").on("click", function (ev) {
+                var lang = $("#langSelector").val();
+                localStorage.setItem(storageLang, lang);
+                if ($("#varredura").is(":checked")) {
+                    localStorage.setItem(storageScan, "on");
+                }
+                window.location.reload();
+            });
+
+
 			$(document).on("keydown", function (ev) {
 				if (ev.keyCode == 27) { //esc
-					if (scan.isScanning()) {
+                    if ($("#collapseConfiguracoes").hasClass("show")) {
+                        $("#collapseConfiguracoes").collapse('hide');
+                        ev.stopPropagation();
+                    } else if ($("#collapseMenu").hasClass("show")) {
+                        $("#collapseMenu").collapse('hide');
+                    } else if (scan.isScanning()) {
 						falar(__t("Varredura desabilitada"));
 						scan.stop();
+                        changeScanStatus("Inativo");
 						$("#varredura").prop("checked", false);
 						$(".varredura-group label").removeClass("active");
 					}
 				}
 			});
 
+            $("#langSelector").on("change", function (ev) {
+                var currValue = $(this).val();
+                //localStorage.setItem(storageLang, currValue);
+                falar(__t("Idioma") +  " " + __t($(this).children(":checked").text()) + " " +  __t("selecionado"));
+            });
+                
+            $("#kb-option").on(("change"), function (ev) {
+                var currValue = localStorage.getItem(storageKbQwerty) || "alpha";
+                currValue = (currValue == "alpha") ? "qwerty" : "alpha";
+                if (currValue == "qwerty") {
+                    falar(__t("Teclado qwerty marcado"));
+                    $("#kb-option").parent().children(".status").text("(" + __t("Ativo") + ")");
+                } else {
+                    falar(__t("Teclado qwerty desmarcado"));
+                    $("#kb-option").parent().children(".status").text("(" + __t("Inativo") + ")");
+                }
+                localStorage.setItem(storageKbQwerty, currValue);
+            });
+
+
+            // Enable keydown on Enter and Space (Apparently, bootstrap disable it)
+            $("#varredura").on("keydown", function (ev) {
+                if (ev.keyCode == 13 || ev.keyCode == 32) { // Enter or Space
+                    if ($(this).is(":checked")) {
+                        $(this).attr("checked", false);
+                        changeScanStatus("Inativo");
+                    } else {
+                        $(this).attr("checked", true);
+                        changeScanStatus("Ativo");
+                    }   
+                }
+            });
 			$("#varredura").on("change", function (ev) {
-				if (this.checked) {
+                if (this.checked) {
 					if ($("div.main-col").hasClass("set-letters")){
 						scan.start("group-1");
 					} else {
 						scan.start("group-2");
 					}
 					falar(__t("Varredura habilitada"));
+                    changeScanStatus("Ativo");
 				} else {
 					if (scan.isScanning()) {
 						falar(__t("Varredura desabilitada"));
+                        changeScanStatus("Inativo");
 						scan.stop();
 					}		
 				}
@@ -295,16 +387,22 @@
 			$("#velocidade").on("change", function (ev) {
 				changeSpeed(this.value);
 			});
+			
+			const contrastModes = ["normal", "sepia", "contrast"];
 
-			$("#modo-contraste").on("change", function (ev) {
-				if($("body").hasClass("contrast")) {
-					$("body").removeClass("contrast");
-					localStorage.setItem(storageContrast, "normal");
-					falar(__t("Modo escuro desabilitado"));
-				} else {
-					$("body").addClass("contrast");
-					localStorage.setItem(storageContrast, "contrast");
-					falar(__t("Modo escuro habilitado"));
+			$("#normal-contrast, #sepia-contrast, #high-contrast").on("change", function () {
+				contrastModes.forEach(mode => $("body").removeClass(mode));
+				let newMode = "normal";
+				if (this.id === "sepia-contrast") newMode = "sepia";
+				if (this.id === "high-contrast") newMode = "contrast";
+				$("body").addClass(newMode);
+				localStorage.setItem(storageContrast, newMode);
+				if (this.id === "normal-contrast") {
+					falar(__t("Contraste normal habilitado"));
+				} else if (this.id === "sepia-contrast") {
+					falar(__t("Modo sépia habilitado"));
+				} else if (this.id === "high-contrast") {
+					falar(__t("Alto contraste habilitado"));
 				}
 			});
 
@@ -322,74 +420,178 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<div class="menu">
-			<div class="brand">	
-				<a href="/beluga-talks" class="text-decoration-none">
-					<img src="imagens/beluga_icon_nav.png" height="30px" class="mr-1">
-					<span class="brand-name">Beluga Talks</span>
-				</a>
-			</div>
-			<nav class="menu-options collapse" id="navbarToggleExternalContent">
-				<h1 class="navbar-brand">
-					Beluga Talks
-				</h1>
-				<ul class="navbar-nav">
-					<li class="nav-item">			
-						<a href="#menu-config" id="menu-config" class="sr-only">Início do menu de configuração</a>			
-						<div class="btn-group-toggle w-100 h-100 modo-contraste-group" data-toggle="buttons">
-							<label class="btn btn-secondary w-100 h-100">
-								<input type="checkbox" autocomplete="off" id="modo-contraste">
-								<div class="text-center">
-									<span class="bs-text __t">Modo escuro</span>
-								</div>
-								<div>
-									<span class="fas fa-adjust"></span>
-								</div>
-							</label>
-						</div>
-					</li>			
-					<li class="nav-item">
-						<div class="btn-group-toggle w-100 h-100 varredura-group" data-toggle="buttons">
-							<label class="btn btn-secondary w-100 h-100">
-								<input type="checkbox" autocomplete="off" id="varredura">
-								<div class="text-center">
-									<span class="bs-text __t">Varredura</span>
-								</div>
-								<div>
-									<span class="fas fa-keyboard"></span>
-								</div>
-							</label>
-						</div>
-					</li>			
-					<li class="nav-item">
-							<div class="text-center velocidade-group">
-								<span class="ss-icon fas fa-tachometer-alt"></span>
-								<span class="bs-text __t">Velocidade</span>
-							</div>
-							<div class="text-center velocidade-group">
-								<label for="velocidade" class="sr-only">
-									<span class="__t">Velocidade</span>
-								</label>
-								<input type="range" class="form-control-range" min="10" max="100" step="5" id="velocidade">
-							</div>
+		<header class="py-2 bg-white px-3 px-sm-4 shadow">
+			<div class=" d-flex justify-content-between align-items-center">
+				<div class="row logo-container my-2">
+					<div class="text-left ml-3">
+						<a href="/beluga-talks"  class="link d-flex" >
+							<img class="logo-nav" src="imagens/beluga_icon_nav.png" height="47px" alt="logotipo Beluga Talks">
+						</a>
+					</div>
+					<div class="text-center ml-2">
+						<div style="height:30%"></div>
+						<a href="/beluga-talks"  class="link" >
+							<h1 class="h4 d-inline">Beluga Talks</h1>
+						</a>
+					</div>
+				</div>
+				<div class="botoes d-flex align-items-center">
+					<div class="configuracoes">
 						
-					</li>
-				</ul>
-			</nav>
-			<div class="cog">
-				<nav class="navbar">
-					<button class="navbar-toggler h-100 __t" type="button" data-toggle="collapse" 
-							id="menu-toggler-cog"
-							data-target="#navbarToggleExternalContent" 
-							aria-controls="navbarToggleExternalContent" 
-							aria-expanded="false" aria-label="Abrir menu de configuração">
-							<span class="fa fa-bars"></span>
-					</button>
-				  </nav>
+						<p class="m-0">
+							<a class="btn-menu rounded" data-toggle="collapse" href="#collapseConfiguracoes" role="button" aria-expanded="false" aria-controls="collapseConfiguracoes">
+								<span class="sr-only __t">Abrir menu de configuração</span>
+								<span class="fa fa-cog" style="font-size: 24px;"></span>
+							</a>
+						</p>
+						<nav class="collapse" id="collapseConfiguracoes">
+							<div class="box-configuracoes bg-white shadow p-3">
+								<div class="d-flex justify-content-between align-items-end mb-3">
+									<h2 class="h5 mb-1 __t">Configurações</h2>
+									<button data-toggle="collapse" href="#collapseConfiguracoes" role="button" aria-expanded="false" aria-controls="collapseConfiguracoes" type="button" class="btn-close">
+										<span class="sr-only __t">Fechar menu de configuração</span>
+										<span class="fa fa-times" style="font-size: 24px;"></span>
+									</button>
+								</div>
+								<div class="scroll-y">
+									<a href="#menu-config" id="menu-config" class="sr-only">Início do menu de configuração</a>			
+									<ul id="accessibility-content">
+										<li class="mb-3">
+                                            <fieldset>
+                                                <legend class="menu-section-header menu-section-header-color">
+                                                    <div class="row">
+                                                        <div class="col"><div class="header-text-line"></div></div>
+                                                        <div class="text-center">Contraste</div>
+                                                        <div class="col"><div class="header-text-line"></div></div>
+                                                    </div>
+                                                </legend>
+                                                <div class="btn-group-toggle w-100 h-100 varredura-group my-2" data-toggle="buttons">
+                                                    <label class="btn btn-secondary w-100 h-100 pl-1">
+                                                        <input type="radio" id="normal-contrast" name="contrast-group">
+                                                        <span class="fas fa-adjust normal-color"></span>
+                                                        <span class="base-text __t">Contraste normal</span>
+                                                    </label>
+                                                    <label class="btn btn-secondary w-100 h-100 pl-1">
+                                                        <input type="radio" id="sepia-contrast" name="contrast-group">
+                                                        <span class="fas fa-adjust sepia-color"></span>
+                                                        <span class="base-text __t">Sépia</span>
+                                                    </label>
+                                                    <label class="btn btn-secondary w-100 h-100 pl-1">
+                                                        <input type="radio"  id="high-contrast" name="contrast-group">
+                                                        <span class="fas fa-adjust"></span>
+                                                        <span class="base-text __t">Alto contraste</span>
+                                                    </label>
+                                                </div>
+                                            </fieldset>
+										</li>
+                                        <!--
+										<li class="border-top">
+											<button type="button" id="normal-contrast" class="icon base-text my-2 py-2 __t">Contraste normal</button>
+										</li>
+										<li>
+											<button type="button" id="sepia-contrast" class="icon base-text my-2 py-2 __t">Sépia</button>
+										</li>
+										<li class="border-bottom">
+											<button type="button" id="high-contrast" class="icon base-text my-2 py-2 __t">Alto contraste</button>
+										</li>
+                                        -->
+										<li>
+                                            <fieldset>
+                                                <legend class="menu-section-header menu-section-header-color">
+                                                    <div class="row">
+                                                        <div class="col"><div class="header-text-line"></div></div>
+                                                        <div class="text-center">Varredura e velocidade</div>
+                                                        <div class="col"><div class="header-text-line"></div></div>
+                                                    </div>
+                                                </legend>
+                                                <div class="btn-group-toggle w-100 h-100 varredura-group my-2" data-toggle="buttons">
+                                                    <label class="btn btn-secondary w-100 h-100 pl-1">
+                                                        <input type="checkbox"  id="varredura">
+                                                        <span class="fas fa-keyboard"></span>
+                                                        <span class="base-text __t">Varredura</span>
+                                                        <span class="status"></span>
+                                                    </label>
+                                                </div>
+                                                <div class="velocidade-group my-2 pl-1">
+                                                    <label for="velocidade" class="">
+                                                        <span class="ss-icon fas fa-tachometer-alt"></span>
+                                                        <span class="base-text __t">Velocidade</span>
+                                                    </label>
+                                                    <input type="range" class="form-control-range" min="10" max="100" step="5" id="velocidade">
+                                                </div>
+                                            </fieldset>
+										</li>
+									</ul>
+									<form action="#" class="pb-3">
+                                        <fieldset>
+                                            <legend class="menu-section-header menu-section-header-color">
+                                                <div class="row">
+                                                    <div class="col"><div class="header-text-line"></div></div>
+                                                    <div class="text-center">Idiomas e teclado</div>
+                                                    <div class="col"><div class="header-text-line"></div></div>
+                                                </div>
+                                            </legend>
+                                        <div class="btn-group-toggle w-100 h-100 varredura-group my-2" data-toggle="buttons">
+                                            <label class="btn btn-secondary w-100 h-100 pl-1">
+                                                <input type="checkbox" autocomplete="off" id="kb-option">
+                                                <span class="fas fa-keyboard"></span>
+                                                <span class="base-text __t">Teclado Qwerty</span>
+                                                <span class="status"></span>
+                                            </label>
+                                        </div>
+										<select id="langSelector" class="form-control">
+											<option class="__t" value="pt-BR">Português</option>
+											<option class="__t" value="en-US">Inglês</option>
+										</select>
+                                        <div>
+                                            <button  id="aplicarfiltros" type="button" class="custom-btn custom-btn-primary small-btn mx-auto mt-3">
+                                                <span class="__t small-btn-text">Aplicar</span>
+                                                <span class="sr-only __t">idioma e teclado selecionado</span>
+                                                <span class="fa fa-check" style="font-size: 15px;"></span>
+                                            </button>
+                                        </div>
+									</form>
+								</div>
+							</div>
+						</nav>
+					</div>
+					<div class="menu ml-2">
+						<p class="m-0">
+							<a class="btn-menu rounded" data-toggle="collapse" href="#collapseMenu" role="button" aria-expanded="false" aria-controls="collapseMenu">
+								<span class="sr-only">Abrir menu</span>
+								<span class="fa fa-bars" style="font-size: 22px;"></span>
+							</a>
+						</p>
+						<div class="collapse" id="collapseMenu">
+							<div class="box-menu bg-white shadow p-3">
+								<div class="d-flex flex-column h-100">
+									<div class="d-flex justify-content-between align-items-end mb-1">
+										<h2 class="h5 __t">Menu</h2>
+										<button data-toggle="collapse" href="#collapseMenu" role="button" aria-expanded="false" aria-controls="collapseMenu" type="button" class="btn-close">
+											<span class="fa fa-times" style="font-size: 24px;"></span>
+											<span class="sr-only __t">Fechar menu</span>
+										</button>
+									</div>
+									<div>
+										<a href="#" data-toggle="modal" class="nav-link my-2" data-target="#sobre-modal">
+											<span class="__t">Sobre</span>
+										</a>
+										<a href="https://cta-ifrs.github.io/beluga-talks/manual/index.html" class="nav-link my-2">
+											<span class="__t">Manual (link externo)</span>
+										</a>
+									</div>
+									<a href="https://cta.ifrs.edu.br" class="logo-cta mt-auto">
+										<img src="imagens/logo-cta.png" width="160px" alt="Logo do CTA - Centro Tecnológico de Acessibilidade do IFRS" />
+									</a><!--ver aqui-->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="main row">
-			<div class="main-col set-letters col-12"></div>
+		</header>
+		<div class="main row bg-white shadow">
+			<div class="main-col set-letters col-12 p-3"></div>
 		</div>
 	</div>
 
@@ -397,7 +599,35 @@
 		<p class="toast-msg">
 		</p>
 	</div>	
-
+	
+	<div class="modal fade" id="sobre-modal" tabindex="-1" role="dialog" aria-labelledby="sobre-modal-label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content p-4">
+                <div class="modal-header p-0 pb-3">
+                    <div>
+						<h5 class="modal-title h4 __t" id="sobre-modal-label">Sobre o Beluga Talks</h5>
+						<p class="strong-text2 m-0 __t">Prancha alfanumérica de CAA</p>
+					</div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+						<span aria-hidden="true" style="font-size: 35px;">&times;</span>
+					</button>
+                </div>
+                <div class="modal-body px-0">
+                    <p class="base-text __t">O Beluga Talks é uma prancha alfanumérica de Comunicação Aumentativa e Alternativa (CAA). Através dela, é possível selecionar letras e números, formar palavras e frases e utilizar o sintetizador de voz para que o conteúdo seja lido em voz alta.</p>
+                    <p class="base-text __t">O aplicativo contém duas pranchas, sendo uma alfabética e uma numérica, contendo, também, as teclas ‘‘sim’’ e ‘‘não’’, tecla para leitura em voz alta, botão para acessar as configurações e tecla para alternar entre uma prancha e outra. Nas configurações, a ferramenta oferece opção de navegação por varredura e modo escuro.</p>
+                    <p class="base-text __t">Desenvolvido pelo Centro Técnológico de Acessibilidade do Instituto Federal de Educação, Ciências e Tecnologia do Rio Grande do Sul, disponibilizado de forma gratuita e com código fonte sob a licença GPLv3 e Creative Commons NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0).</p>
+                </div>
+                <div class="modal-footer px-0 pb-2 pt-4 justify-content-center">
+                    <a href="https://cta.ifrs.edu.br" class="mr-4">
+                        <img src="imagens/logo-cta.png" width="160px" alt="Logo do CTA - Centro Tecnológico de Acessibilidade do IFRS" />
+                    </a>
+                    <a href="https://ifrs.edu.br">
+                        <img src="imagens/logo-ifrs.png" width="311px" alt="Logo do IFRS - Instituto Federal de Educação Ciência e Tecnologia do Rio Grande do Sul" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 	
 </body>
 </html>

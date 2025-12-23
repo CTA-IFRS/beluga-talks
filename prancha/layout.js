@@ -1,9 +1,14 @@
 
+function __getKb() {
+    var urlParams = new URLSearchParams(document.location.search);
+    var kb = urlParams.get("kb") || localStorage.getItem("kb_opt") || "alpha";
+    return kb;
+}
+
 function Layout() {
     var obj = {};
 
-    var urlParams = new URLSearchParams(document.location.search);
-    var kb = urlParams.get("kb") || "alpha";
+    var kb = __getKb(); 
     var alphabetical = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", 
                    "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", 
                    "Y", "Z"];
@@ -77,7 +82,7 @@ function Layout() {
                         onclick="clearText()" \
                         aria-label="Limpar caixa de texto" \
                         class="btn btn-outline-primary w-100 h-100">\
-                        <i class="fas fa-sync-alt"></i>\
+                        <i class="fas fa-trash"></i>\
                     </button>\
                 </div>';
     }
