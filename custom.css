@@ -180,6 +180,7 @@ header .menu-box {
 .box-menu {
     max-width: 287px;
     height: 100vh;
+    height: 100dvh;
     margin-left: auto;
     border-radius: 8px 0 0 8px;
     display: flex;
@@ -336,7 +337,11 @@ div.toast-box p.toast-msg {
 }
 div.container-fluid div.main {
     /*height: calc(100vh - 120px)*/;
-    height: 87%;
+    height: 89%;
+}
+div.container-fluid header {
+    /*height: calc(100vh - 120px)*/;
+    height: 8%;
 }
 div.main .main-col {
     padding: 0.3rem !important;
@@ -377,6 +382,7 @@ div.main .main-col textarea {
     box-shadow: 0 0 0 .2rem var(--be2);
 }
 .scroll-y {
+    overflow-x: hidden;
     overflow-y: scroll;
     padding: 2px;
     margin: -2px;
