@@ -87,6 +87,9 @@ div.menu {
 .shadow {
     box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.15) !important;
 }
+header .menu-box {
+    height: 100%;
+}
 .btn-menu {
     color: var(--gray700);
     border: 1px solid var(--gray400);
@@ -94,7 +97,7 @@ div.menu {
     align-items: center;
     justify-content: center;
     width: 60px !important;
-    height: 60px;
+    height: 50px;
     box-sizing: border-box;
 }
 .custom-btn {
@@ -177,6 +180,7 @@ div.menu {
 .box-menu {
     max-width: 287px;
     height: 100vh;
+    height: 100dvh;
     margin-left: auto;
     border-radius: 8px 0 0 8px;
     display: flex;
@@ -318,7 +322,7 @@ header .botoes .btn-close {
 }
 .main {
     width: calc(100% - 50px);
-    margin: 20px auto !important;
+    margin: 10px auto !important;
     border-radius: 12px;
 }
 div.toast-box p.toast-msg {
@@ -332,7 +336,12 @@ div.toast-box p.toast-msg {
     color: var(--gray900);
 }
 div.container-fluid div.main {
-    height: calc(100vh - 120px);
+    /*height: calc(100vh - 120px)*/;
+    height: 89%;
+}
+div.container-fluid header {
+    /*height: calc(100vh - 120px)*/;
+    height: 8%;
 }
 div.main .main-col {
     padding: 0.3rem !important;
@@ -373,10 +382,32 @@ div.main .main-col textarea {
     box-shadow: 0 0 0 .2rem var(--be2);
 }
 .scroll-y {
+    overflow-x: hidden;
     overflow-y: scroll;
     padding: 2px;
     margin: -2px;
 }
+@media(max-height: 640px) {
+    div.container-fluid header {
+    	height: 17%;
+    }
+}
+@media(orientation: portrait) {
+    div.container-fluid div.main {
+        height: 88%;
+    }
+    div.container-fluid header{
+        height: 10%;
+    }
+}  
+@media(orientation: landscape) and (max-height: 640px) {
+    div.container-fluid div.main {
+        height: 80%;
+    }
+    div.container-fluid header{
+        height: 17%;
+    }
+}  
 @media (orientation: landscape) {
     div.main .main-col div button.predictor-button span {
         font-size: calc(1rem + 0.8vw) !important;
@@ -633,7 +664,7 @@ body.sepia div.toast-box p.toast-msg {
     }
     div.container-fluid div.main {
         width: 100%;
-        height: calc(100vh - 90px);
+        /*height: calc(100vh - 90px);*/
         margin: 6px auto !important;
     }
 }
@@ -652,7 +683,7 @@ body.sepia div.toast-box p.toast-msg {
         border-radius: 0;
     }
     div.container-fluid div.main {
-        height: calc(100vh - 82px);
+        /*height: calc(100vh - 82px);*/
         margin-bottom: 0 !important;
     }
 }
