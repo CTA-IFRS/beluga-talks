@@ -52,7 +52,8 @@
 .alto-contraste .btn-dark,
 .alto-contraste span.badge,
 .alto-contraste .menu-principal .navbar-toggler,
-.alto-contraste .btn-goto-beluga
+.alto-contraste .btn-goto-beluga,
+.alto-contraste .navbar-light .navbar-toggler
 {
     background-color: #ffffff !important;
     color: #000000 !important;
@@ -64,4 +65,34 @@
 .alto-contraste .btn-primary:focus,
 .alto-contraste .btn-primary:hover{
     box-shadow: 0 0 1em #1069D9;
+}
+
+body.alto-contraste .navbar-brand img {
+    content: url("../prancha/imagens/beluga_icon_nav_white.png");
+}
+
+.alto-contraste .btn.btn-primary.active, .alto-contraste .btn.btn-primary:hover, .alto-contraste .btn.btn-primary:focus {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+.alto-contraste .btn-dark:focus, .alto-contraste .btn-dark:hover, .alto-contraste .btn-primary:focus, .alto-contraste .btn-primary:hover, .alto-contraste .btn-primary:not(:disabled):not(.disabled).active:focus, .alto-contraste .btn-primary:not(:disabled):not(.disabled):active:focus, .alto-contraste .show > .btn-primary.dropdown-toggle:focus, .alto-contraste .btn-primary.focus, .btn-primary:focus {
+    box-shadow: 0 0 1em #F0D9F2 !important;
+}
+
+.alto-contraste .h1,
+.alto-contraste .h2,
+.alto-contraste .h3,
+.alto-contraste .h4,
+.alto-contraste .h5,
+.alto-contraste .h6,
+.alto-contraste h1,
+.alto-contraste h2,
+.alto-contraste h3,
+.alto-contraste h4,
+.alto-contraste h5,
+.alto-contraste h6,
+.alto-contraste .base-text2,
+.alto-contraste .docs-article .docs-time {
+    color: #ffffff !important;
 }

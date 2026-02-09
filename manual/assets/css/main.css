@@ -19,3 +19,44 @@ nav.barra-acessibilidade .ml-auto {
 nav.barra-acessibilidade .btn-a11y {
     box-shadow: none;
 }
+.docs-logo-wrapper {
+    top: 50%;
+    transform: translateY(-50%);
+}
+nav.barra-acessibilidade .badge.badge-dark {
+    color: #fff;
+    background-color: #343a40;
+    padding: .25em .4em;
+    border-radius: .25rem;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    color: #212529 !important;
+}
+.lead-text2 {
+    color: #495057 !important;
+}
+.docs-article .docs-time {
+    font-size: 13px;
+    color: #495057;
+}
+.docs-sidebar {
+    top: 130px;
+}
+#section-1 {
+    padding-top: 100px;
+}
+.docs-article {
+    padding-top: 80px;
+    padding-bottom: 0;
+    margin-bottom: -40px;
+}
+.docs-section {
+    padding-top: 80px !important;
+    margin-bottom: -40px;
+}
+.docs-section:last-child {
+    margin-bottom: 0;
+}
+.docs-content {
+    padding-bottom: 0;
+}

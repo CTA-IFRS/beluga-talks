@@ -1,0 +1,285 @@
+:root {
+    --success: #28A745;
+    --danger: #DC3545;
+    --warning: #FFC107;
+    --info: #17A2B8;
+    --gray100: #F8F9FA;
+    --gray200: #E9ECEF;
+    --gray300: #DEE2E6;
+    --gray400: #CED4DA;
+    --gray500: #ADB5BD;
+    --gray600: #6C757D;
+    --gray700: #495057;
+    --gray800: #343A40;
+    --gray900: #212529;
+    --white: #ffffff;
+    --black: #000000;
+    --be1: #ECF0F4;
+    --be2: #CBDDF0;
+    --be3: #9CBFE4;
+    --be4: #648FBC;
+    --be5: #195392;
+    --be6: #0A305A;
+}
+.btn-primary {
+    background-color: var(--be5);
+    border-color: var(--be5);
+}
+.btn-primary:hover,
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle,
+.btn-primary.focus, .btn-primary:focus {
+    background-color: var(--be6);
+    border-color: var(--be6);
+}
+nav.barra-acessibilidade {
+    background-color: var(--gray300);
+}
+.bg-light {
+    background-color: var(--gray100) !important;
+}
+.text-dark {
+    color: var(--gray800) !important;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: var(--gray600);
+}
+.navbar-light .navbar-brand,
+body {
+    color: var(--gray900);
+}
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+nav.barra-acessibilidade {
+    background-color: var(--gray300);
+}
+.bg-gray100 {
+    background-color: var(--gray100);
+}
+body {
+    background-color: var(--gray100)
+}
+.btn-primary {
+    background-color: var(--be5);
+    border-color: var(--be5);
+}
+.btn-primary:hover,
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle,
+.btn-primary.focus, .btn-primary:focus {
+    background-color: var(--be6);
+    border-color: var(--be6);
+}
+.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-primary.dropdown-toggle:focus,
+.btn-primary.focus, .btn-primary:focus {
+    box-shadow: 0 0 0 .2rem var(--be2) !important;
+}
+nav.barra-acessibilidade {
+    background-color: var(--gray200);
+    position: relative;
+    z-index: 2;
+}
+.bg-light {
+    background-color: var(--white) !important;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.12);
+}
+.text-dark {
+    color: var(--gray800) !important;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: var(--gray700);
+}
+.navbar-light .navbar-brand,
+body {
+    color: var(--gray900);
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-weight: 700;
+    color: var(--gray900);
+}
+.h1 {
+    font-size: 40px;
+}
+.h2 {
+    font-size: 32px;
+}
+.h3 {
+    font-size: 28px;
+}
+.h4 {
+    font-size: 24px;
+}
+.h5 {
+    font-size: 20px;
+}
+.h6 {
+    font-size: 16px;
+}
+.base-text {
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    color: var(--gray600);
+}
+.lead-text {
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 34px;
+    color: var(--gray600);
+}
+.base-text2 {
+    font-family: "Nunito", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    color: var(--gray700);
+}
+.lead-text2 {
+    font-family: "Nunito", sans-serif;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 34px;
+    color: var(--gray600);
+}
+.lead-text3 {
+    font-family: "Nunito", sans-serif;
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 34px;
+    color: var(--gray700);
+}
+.strong-text2 {
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 28px;
+    color: var(--gray900);
+}
+.small-text {
+    font-family: "Nunito", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+.nav-link {
+    font-family: "Nunito", sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    color: var(--gray700);
+}
+.nav-link:hover,
+.nav-link:focus,
+.nav-link.focus {
+    color: var(--gray900);
+}
+.btn {
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-transform: uppercase;
+    border-radius: 50rem;
+    width: auto !important;
+    padding: 10px 26px !important;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    gap: 8px;
+}
+.btn.btn-fit {
+    width: fit-content !important;
+}
+.btn.btn-primary,
+.btn.btn-secondary.active,
+.btn.btn-secondary:hover,
+.btn.btn-secondary:focus,
+.btn.btn-outline.active,
+.btn.btn-outline:hover,
+.btn.btn-outline:focus {
+    background-color: var(--be5) !important;
+    color: var(--white) !important;
+}
+.btn.btn-primary.active,
+.btn.btn-primary:hover,
+.btn.btn-primary:focus {
+    background-color: var(--be6) !important;
+}
+.btn.btn-secondary {
+    background-color: var(--be1) !important;
+    color: var(--be6) !important;
+}
+.btn.btn-outline {
+    background-color: transparent !important;
+    color: var(--be5) !important;
+    border: 1px solid var(--be5);
+    box-sizing: border-box;
+}
+.btn.btn-primary.btn-gray.active,
+.btn.btn-primary.btn-gray:hover,
+.btn.btn-primary.btn-gray:focus,
+.btn.btn-secondary.btn-gray.active,
+.btn.btn-secondary.btn-gray:hover,
+.btn.btn-secondary.btn-gray:focus,
+.btn.btn-outline.btn-gray.active,
+.btn.btn-outline.btn-gray:hover,
+.btn.btn-outline.btn-gray:focus {
+    background-color: var(--gray800) !important;
+    color: var(--white) !important;
+}
+.btn.btn-primary.btn-gray {
+    background-color: var(--gray700) !important;
+    color: var(--white) !important;
+}
+.btn.btn-secondary.btn-gray {
+    background-color: var(--gray200) !important;
+    color: var(--gray900) !important;
+}
+.btn.btn-outline.btn-gray {
+    background-color: transparent !important;
+    color: var(--gray800) !important;
+    border: 1px solid var(--gray800);
+    box-sizing: border-box;
+}
+.btn-dark {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #343a40;
+}
+.btn-dark:hover {
+    color: #fff;
+    background-color: #23272b;
+    border-color: #1d2124;
+}
+.btn-dark:not(:disabled):not(.disabled).active, .btn-dark:not(:disabled):not(.disabled):active, .show > .btn-dark.dropdown-toggle {
+    color: #fff;
+    background-color: #1d2124;
+    border-color: #171a1d;
+}
+.btn-dark.focus, .btn-dark:focus {
+    color: #fff;
+    background-color: #23272b;
+    border-color: #1d2124;
+    box-shadow: 0 0 0 .2rem rgba(82,88,93,.5);
+}
+#btn-back-to-top {
+    padding: 6px 13px !important;
+    font-size: 1.7rem;
+}
+.navbar-toggler {
+    padding: 8px;
+    font-size: 18px;
+}
+.navbar-light .navbar-toggler {
+    color: #54595E;
+    border-color: var(--gray400);
+}
+.navbar-light .navbar-toggler {
+  color: #54595E;
+  border-color: var(--gray400);
+}
+.navbar .container {
+    padding: 28px 0;
+}
+.navbar-light .navbar-toggler {
+    color: #54595E;
+    border-color: var(--gray400);
+}

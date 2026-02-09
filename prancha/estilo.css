@@ -348,6 +348,7 @@ div.main .main-col .alpha .col {
     }
     div.main .main-col div button.predictor-button span {
         font-size: calc(1rem + 0.5vw) !important;
+        line-height: calc(1rem + 0.5vw) !important;
     } 
     div.main .main-col textarea {
         font-size: calc(1rem + 1.1vh) !important;
