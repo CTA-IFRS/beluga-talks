@@ -351,6 +351,12 @@
                     $("#kb-option").parent().children(".status").text("(" + __t("Inativo") + ")");
                 }
                 localStorage.setItem(storageKbQwerty, currValue);
+				layout = Layout();
+				if (mediaPortrait.matches) {
+					buildAndUpdateSmallScreen(layout, word_predictor);
+				} else {
+					buildAndUpdateBigScreen(layout, word_predictor);
+				}
             });
 
 

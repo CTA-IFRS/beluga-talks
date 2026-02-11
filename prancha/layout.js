@@ -137,8 +137,8 @@ function Layout() {
         }
         tags += '<div class="row sc-row alpha-row alpha" data-in-groups="group-1" data-next-group="alpha-6">';
         tags += '<div class="col w-100 h-100"></div>'
-                + this.buildStringButton("Y", "alpha-6", "group-1")
-                + this.buildStringButton("Z", "alpha-6", "group-1")
+                + this.buildStringButton(this.letters[24], "alpha-6", "group-1")
+                + this.buildStringButton(this.letters[25], "alpha-6", "group-1")
                 + '<div class="col w-100 h-100"></div>';
         tags += '</div>';
 

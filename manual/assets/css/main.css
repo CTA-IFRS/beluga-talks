@@ -50,13 +50,14 @@ nav.barra-acessibilidade .badge.badge-dark {
     padding-bottom: 0;
     margin-bottom: -40px;
 }
-.docs-section {
-    padding-top: 80px !important;
-    margin-bottom: -40px;
-}
 .docs-section:last-child {
     margin-bottom: 0;
 }
 .docs-content {
     padding-bottom: 0;
+}
+.fa-sr-only, .sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
 }

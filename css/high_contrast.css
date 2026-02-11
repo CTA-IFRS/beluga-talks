@@ -39,10 +39,6 @@
     color: #ffffff !important;
 }
 
-.alto-contraste footer{
-    border-top: 1px solid #ffffff;
-}
-
 .alto-contraste nav a{
     border-color: #ffffff;
     margin: 0 2px;
@@ -95,4 +91,12 @@ body.alto-contraste .navbar-brand img {
 .alto-contraste .base-text2,
 .alto-contraste .docs-article .docs-time {
     color: #ffffff !important;
+}
+
+.alto-contraste .navbar-toggler {
+    border-color: #ffffff;
+}
+
+.alto-contraste .docs-sidebar-toggler span {
+    background-color: #ffffff;
 }
