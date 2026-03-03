@@ -100,3 +100,7 @@ body.alto-contraste .navbar-brand img {
 .alto-contraste .docs-sidebar-toggler span {
     background-color: #ffffff;
 }
+
+.alto-contraste .docs-article .docs-time {
+    color: #ffffff !important;
+}
