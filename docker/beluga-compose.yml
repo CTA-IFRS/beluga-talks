@@ -1,0 +1,8 @@
+services:
+  beluga-talk:
+    image: docker.io/library/nginx:stable-alpine
+    container_name: beluga-talks
+    volumes:
+      - ..:/usr/share/nginx/html
+    ports:
+      - 8888:80
